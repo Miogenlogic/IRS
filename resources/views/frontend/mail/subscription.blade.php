@@ -1,0 +1,5 @@
+
+Dear {{$name}}
+
+THANK YOU SO MUCH FOR SUBSCRIPTION.
+
