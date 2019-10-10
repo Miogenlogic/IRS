@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php
+    $userSession=Session::get('user');
+    //echo $metades;
+@endphp
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="keyword" content="@if(isset($metakey)) {{$metakey}} @else @endif">
+    <meta name="description" content="@if(isset($metades)) {{$metades}} @else @endif">
     <meta name="author" content="Rimpi Das">
     <meta name="format-detection" content="telephone=no">
-    <title>BioPed Clinic | Hyperbaric Oxygen Therapy (HBOT) Clinic in Kolkata</title>
+    <title>BioPed Clinic | @if(isset($title)) {{$title}} @else Hyperbaric Oxygen Therapy (HBOT) Clinic in Kolkata @endif</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/vendor/slick/slick.css')}}" >
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/vendor/animate/animate.min.css')}}" >
@@ -18,6 +22,7 @@
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/css/custom.css')}}" >
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/color/color.css')}}" >
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/css/user-module.css')}}" >
+
     <!--Favicon-->
     <link rel="icon" href="{{URL::asset('public/assets/frontend/images/logo.jpeg')}}" type="image/x-icon">
     <!--<link rel="icon" href="{{URL::asset('public/assets/frontend/images/favicon.png')}}" type="image/x-icon">-->

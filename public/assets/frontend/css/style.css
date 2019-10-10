@@ -10668,7 +10668,7 @@ body.noScroll {
         margin-left: -15px;
         margin-right: -15px; } }
     .service-card-photo:after {
-      content: '';
+      /*content: '';*/
       position: absolute;
       width: 100%;
       height: 120%;
@@ -10683,7 +10683,17 @@ body.noScroll {
       transition: opacity 0 ease 0;
       pointer-events: none; }
   .service-card:hover .service-card-photo {
-    border-radius: 50%; }
+    /*border-radius: 50%; */
+  transform: scale(1.1);
+  }
+
+
+  .service-card-photo img {
+    height: 265px;
+    width: 100%;
+    object-fit: cover;
+  }
+
   .service-card:hover .service-card-photo:after {
     opacity: .2;
     transition: opacity 0.5s ease 0.2s; }

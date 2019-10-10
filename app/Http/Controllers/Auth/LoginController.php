@@ -15,7 +15,8 @@ use Alert;
 use Input;
 use Eloquent;
 use App\Models\User;
-//use App\Models\UserDetails;
+use App\Models\UserDetails;
+use App\Models\DoctorDetails;
 use App\Models\RoleUser;
 use Zizaco\Entrust\Entrust;
 
@@ -62,6 +63,20 @@ class LoginController extends Controller
             return view('auth.login');
             exit;
         }
+        if($user->hasRole(['admin','patient','doctor'])){
+            $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
+            //dd($userDetails);die;
+           // $doctorDetails = DoctorDetails::where('user_id','=',$user->id)->get()->first();
+            //dd($doctorDetails);die;
+            $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'user_type'=>$user->user_type];
+            Session::put('user',$user_session);
+
+            return redirect('/admin/admin-dashboard');
+        }else{
+            //Session::flush();
+            //return redirect('/');
+        }
+
 /*
        if($user->hasRole(['admin', 'doctor', 'clinic_attendant', 'pharmacy_admin', 'pharmacy_attendant'])){
             $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
@@ -75,8 +90,8 @@ class LoginController extends Controller
        }else{
            //Session::flush();
            //return redirect('/');
-       }
-*/
+       }*/
+
     }
 
     public function checklogin(Request $request) {
@@ -87,20 +102,21 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials,$request->has('remember_me'))) {
             $user = Auth::user();
-            //$userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
-            $user_session=[ 'user_id'=>$user->id,'username'=>$user->username,'email'=>$user->email ];
+            $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
+            $doctorDetails = DoctorDetails::where('user_id','=',$user->id)->get()->first();
+            $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'user_type'=>$user->user_type ];
             Session::put('user',$user_session);
 
             if($user->hasRole('admin')){
                 return redirect('/admin/admin-dashboard');
 
-            }/*elseif($user->hasRole('doctor')){
-                return redirect('/admin/doctor-dashboard');
+            }elseif($user->hasRole('patient')){
+                return redirect('/my-dashboard');
 
-            }elseif ($user->hasRole('clinic_attendant')){
-                return redirect('/admin/agent-dashboard');
+            }elseif ($user->hasRole('doctor')){
+                return redirect('/admin/admin-dashboard');
 
-            }elseif ($user->hasRole(['pharmacy_admin','pharmacy_attendant'])){
+            }/*elseif ($user->hasRole(['pharmacy_admin','pharmacy_attendant'])){
                 return redirect('/admin/pharmacy-dashboard');
 
             }elseif ($user->hasRole('patient')){
@@ -123,11 +139,11 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    public function registration(){
+   /* public function register(){
         return view('auth.registration');
     }
 
-   /* public function registerStore(RegisterRequest $request){
+    public function registerStore(RegisterRequest $request){
 
         //$myrequest=$request->all();
         //dd($myrequest);

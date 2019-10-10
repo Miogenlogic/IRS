@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProfileEditRequest;
+use App\Models\Country;
 use App\Models\Email;
 use App\Models\Service;
 use App\Models\Slider;
@@ -31,17 +32,22 @@ use DB;
 class PatientController extends Controller
 {
 
-    public function ProfileEdit($id)
+    public function ProfileEdit()
     {
-        //$id=Session::get('user_id');
-        //$profile=User::find($id);
-        //$Patient=UserDetails::where('user_id','=',$id);
+        $user_session=Session::get('user');
+        //dd($user_session);die;
+        $profile=User::find($user_session['user_id']);
 
-        $Patient=UserDetails::find($id);
+        $Patient=UserDetails::where('user_id','=',$profile->id)->get()->first();
+
+        $country=Country::where('status','=','Active')->get();
+
+        //$Patient=UserDetails::find($id);
 
         return view('frontend.patient.editPatient')
-            //->with('profile',$profile)
-            ->with('Patient',$Patient);
+            ->with('profile',$profile)
+            ->with('Patient',$Patient)
+            ->with('country',$country);
     }
 
     public function ProfileSave(ProfileEditRequest $request)
@@ -50,6 +56,7 @@ class PatientController extends Controller
         //dd($myrequest);
 
         $obj=UserDetails::find($request['id']);
+
         $obj->name=$request['name'];
         if ($request->file('image')) {
             $imgfile = $request->file('image');
@@ -75,13 +82,21 @@ class PatientController extends Controller
         $obj->email=$request['email'];
         $obj->age=$request['age'];
         $obj->gender=$request['gender'];
+
         $obj->country=$request['country'];
-        $obj->city=$request['city'];
+        //$obj->country=$request[$country->country];
+        $obj->state=$request['state'];
         $obj->address=$request['address'];
         $obj->save();
 
+        /*$obj2=Country::find($request['cid']);
+        $obj2->name=$request['name'];
+        $obj2->save();
+        $obj2->save();*/
+
         return redirect('my-dashboard');
     }
+
 
 
 }

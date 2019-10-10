@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//bookingform
+Route::post('/booking-add', ['uses' => 'frontend\HomeController@bookingFormAdd']);
+
+Route::post('/service-associated-doctors', ['uses' => 'frontend\HomeController@serviceAssociatedDoctors']);
+Route::post('/service-type', ['uses' => 'frontend\HomeController@typeService']);
+
 
 //Admin
 Route::group(['prefix' => 'admin'], function(){
@@ -31,6 +37,81 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/cms-edit/{id}', ['uses' => 'CmsController@cmsEdit']);
         Route::post('/cms-edit-store', ['uses' => 'CmsController@cmsEditStore']);
         Route::get('/cms-delete/{id}', ['uses' => 'CmsController@cmsDelete']);
+
+
+
+        //CmsMain Home Page
+        Route::get('/cms-home-edit/{id}', ['uses' => 'CmsPageController@cmsHomeEdit']);
+        Route::post('/cms-home-edit-store', ['uses' => 'CmsPageController@cmsHomeEditStore']);
+        Route::get('/cms-home-list', ['uses' => 'CmsPageController@cmsHomeList']);
+        Route::get('/cms-home-get-table', ['uses' => 'CmsPageController@getTableCmsHome']);
+
+        //CmsMain About Page
+        Route::get('/cms-about-edit/{id}', ['uses' => 'CmsPageController@cmsAboutEdit']);
+        Route::post('/cms-about-edit-store', ['uses' => 'CmsPageController@cmsAboutEditStore']);
+        Route::get('/cms-about-list', ['uses' => 'CmsPageController@cmsAboutList']);
+        Route::get('/cms-about-get-table', ['uses' => 'CmsPageController@getTableCmsAbout']);
+
+        //Cms visionmission
+        Route::get('/cms-vision-edit/{id}', ['uses' => 'CmsPageController@cmsVisionEdit']);
+        Route::post('/cms-vision-edit-store', ['uses' => 'CmsPageController@cmsVisionEditStore']);
+        Route::get('/cms-vision-list', ['uses' => 'CmsPageController@cmsVisionList']);
+        Route::get('/cms-vision-get-table', ['uses' => 'CmsPageController@getTableCmsVision']);
+
+
+        //Cms contact
+        Route::get('/cms-contact-edit/{id}', ['uses' => 'CmsPageController@cmsContactEdit']);
+        Route::post('/cms-contact-edit-store', ['uses' => 'CmsPageController@cmsContactEditStore']);
+        Route::get('/cms-contact-list', ['uses' => 'CmsPageController@cmsContactList']);
+        Route::get('/cms-contact-get-table', ['uses' => 'CmsPageController@getTableCmsContact']);
+
+        //service
+        Route::get('/cms-service-edit/{id}', ['uses' => 'CmsPageController@servicetEdit']);
+        Route::post('/cms-service-edit-store', ['uses' => 'CmsPageController@serviceEditStore']);
+        Route::get('/cms-service-list', ['uses' => 'CmsPageController@serviceList']);
+        Route::get('cms-service-get-table', ['uses' => 'CmsPageController@getTableService']);
+
+        //service page
+        Route::get('/cms-service-page-edit/{id}', ['uses' => 'CmsPageController@servicetPageEdit']);
+        Route::post('/cms-service-page-edit-store', ['uses' => 'CmsPageController@servicePageEditStore']);
+        Route::get('/cms-service-page-list', ['uses' => 'CmsPageController@servicePageList']);
+        Route::get('cms-service-page-get-table', ['uses' => 'CmsPageController@getTableServicePage']);
+
+
+
+
+       /* Route::get('/cms-main-add', ['uses' => 'CmsMainController@cmsMainAdd']);
+        Route::post('/cms-main-add-store', ['uses' => 'CmsMainController@cmsMainAddStore']);
+        Route::get('/cms-main-list', ['uses' => 'CmsMainController@cmsMainList']);
+        Route::get('/cms-main-get-table', ['uses' => 'CmsMainController@getTableCmsMain']);
+        Route::get('/cms-main-edit/{id}', ['uses' => 'CmsMainController@cmsMainEdit']);
+        Route::post('/cms-main-edit-store', ['uses' => 'CmsMainController@cmsMainEditStore']);
+        Route::get('/cms-main-delete/{id}', ['uses' => 'CmsMainController@cmsMainDelete']);
+
+        //CmsPage
+        Route::get('/cms-page-add/{id}', ['uses' => 'CmsPageController@cmsPageAdd']);
+        Route::post('/cms-page-add-store', ['uses' => 'CmsPageController@cmsPageAddStore']);
+        Route::get('/cms-page-list/{id}', ['uses' => 'CmsPageController@cmsPageList']);
+        Route::get('/cms-page-get-table', ['uses' => 'CmsPageController@getTableCmsPage']);
+        Route::get('/cms-page-edit/{id}', ['uses' => 'CmsPageController@cmsPageEdit']);
+        Route::post('/cms-page-edit-store', ['uses' => 'CmsPageController@cmsPageEditStore']);
+        Route::get('/cms-page-delete/{id}', ['uses' => 'CmsPageController@cmsPageDelete']);*/
+
+
+
+        //user
+        Route::get('/user-add', ['uses' => 'UserController@userAdd']);
+        Route::post('/user-add-store', ['uses' => 'UserController@userAddStore']);
+        Route::get('/user-list', ['uses' => 'UserController@userList']);
+        Route::get('/user-get-table', ['uses' => 'UserController@getTableUser']);
+
+        Route::get('/user-edit/{id}', ['uses' => 'UserController@userEdit']);
+        Route::post('/user-edit-store', ['uses' => 'UserController@userEditStore']);
+
+
+
+
+
 
         //homemainslider
 
@@ -60,7 +141,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 
          //requestform(demo)
-        Route::get('/request-form-add', ['uses' => 'RequestFormController@requestFormAdd']);
+        //Route::get('/request-form-add', ['uses' => 'RequestFormController@requestFormAdd']);
 
 
 
@@ -85,11 +166,16 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/settings', ['uses' => 'SettingsController@settingsEdit']);
         Route::post('/settings-save', [ 'uses' => 'SettingsController@settingsSave']);
 
+     //inquery
+        Route::get('/inquiry-list', ['uses' => 'InquiryController@inquiryList']);
+        Route::get('/inquiry-get-table', ['uses' => 'InquiryController@getTableInquiry']);
 
 
+        //Reply Inquiry
+        Route::get('/reply-inquiry/{id}', ['uses' => 'InquiryController@replyInquiry']);
+        Route::get('/reply-inquiry-send', ['uses' => 'InquiryController@getTableReplyInquiry']);
 
-
-
+        Route::post('/confirm-emil', ['uses' => 'InquiryController@emilConfirm']);
 
 
     });
@@ -107,6 +193,19 @@ Route::group(['middleware' => 'auth'], function () {
 
 //frontend//
 Route::group(['namespace' => 'Frontend'], function(){
+    Route::group(['middleware' => 'auth'], function() {
+
+        Route::get('my-dashboard', ['uses' => 'HomeController@mydashboard']);
+        Route::get('appointments', ['uses' => 'HomeController@appointments']);
+        Route::get('my-payment-history', ['uses' => 'HomeController@mypaymenthistory']);
+        Route::get('my-prescription', ['uses' => 'HomeController@myprescription']);
+        Route::get('reschedule-appointments', ['uses' => 'HomeController@rescheduleappointments']);
+
+
+    });
+    //AJAX
+    Route::post('/state-by-country-id', ['uses' => 'AjaxController@stateByCountryId']);
+    Route::post('/city-by-state-id', ['uses' => 'AjaxController@cityByStateId']);
 
     Route::get('/', ['uses' => 'HomeController@index']);
 
@@ -116,15 +215,6 @@ Route::group(['namespace' => 'Frontend'], function(){
 
     Route::get('about', ['uses' => 'HomeController@about']);
 
-    Route::get('my-dashboard', ['uses' => 'HomeController@mydashboard']);
-
-    Route::get('appointments', ['uses' => 'HomeController@appointments']);
-
-    Route::get('my-payment-history', ['uses' => 'HomeController@mypaymenthistory']);
-
-    Route::get('my-prescription', ['uses' => 'HomeController@myprescription']);
-
-    Route::get('reschedule-appointments', ['uses' => 'HomeController@rescheduleappointments']);
 
 
     Route::get('visionmission', ['uses' => 'HomeController@visionmision']);
@@ -134,8 +224,7 @@ Route::group(['namespace' => 'Frontend'], function(){
     //requestform
     Route::post('/request-add', ['uses' => 'HomeController@requestFormAdd']);
 
-    //bookingform
-    Route::post('/booking-add', ['uses' => 'HomeController@bookingFormAdd']);
+
 
    //ask expert
     Route::post('/ask-add', ['uses' => 'HomeController@askAdd']);
@@ -150,7 +239,7 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::post('/emil-add', ['uses' => 'HomeController@emilAdd']);
 
     //edit patient profile
-    Route::get('/edit-profile/{id}', ['uses' => 'PatientController@ProfileEdit']);
+    Route::get('/edit-profile', ['uses' => 'PatientController@ProfileEdit']);
     Route::post('/edit-profile-save', [ 'uses' => 'PatientController@ProfileSave']);
 
 

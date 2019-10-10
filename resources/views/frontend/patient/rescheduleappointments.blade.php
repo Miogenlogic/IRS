@@ -182,9 +182,9 @@
 									<!-- END SIDEBAR USER TITLE -->
 									<!-- SIDEBAR BUTTONS -->
 									<div class="profile-userbuttons">
-										<a href="edit-profile.html" class="btn btn-success btn-sm btn-outline-red">Edit Profile</a>
+										<a href="{{url('edit-profile')}}" class="btn btn-success btn-sm btn-outline-red">Edit Profile</a>
 
-										<button type="button" class="btn btn-danger btn-sm btn-logout">Log Out</button>
+										<a href="{{ url('/logout') }}"><button type="button" class="btn btn-danger btn-sm btn-logout">Log Out</button></a>
 									</div>
 									<!-- END SIDEBAR BUTTONS -->
 									<!-- SIDEBAR MENU -->
@@ -194,7 +194,7 @@
 												<a href="{{url('my-dashboard')}}">My Dashboard </a>
 											</li>
 											<li>
-												<a href="manage-profile.html">Manage Profile </a>
+												<a href="{{url('edit-profile')}}">Edit Profile </a>
 											</li>
 											<li>
 												<a href="{{url('appointments')}}">Appointments </a>
@@ -253,6 +253,9 @@
 				</div>
 				<!--//section services-->
 			</div>
+
+			<!--//section services-->
+
 
 
 

@@ -22,23 +22,23 @@
 
                                 <!--<div class="col">
                                     <a href="#" class="link">
-                                        <i class="icon-clock"></i><span>{{$homeSection7->title}}</span>
+                                        <i class="icon-clock"></i><span>{-{$homeSection7->title}}</span>
                                     </a>
                                    <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-clock"></i>{{$homeSection7->title}}</h5>
+                                        <h5 class="link-drop-title"><i class="icon-clock"></i>{--{$homeSection7->title}}</h5>
 
-                                          {!! $homeSection7->content  !!}
+                                          {-!! $homeSection7->content  !!}
                                     </div>
                                 </div>
 
 
                                 <div class="col">
                                     <a href="#" class="link">
-                                        <i class="icon-emergency-call"></i><span>{{$homeSection8->title}}</span>
+                                        <i class="icon-emergency-call"></i><span>{-{$homeSection8->title}}</span>
                                     </a>
                                     <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-emergency-call"></i>{{$homeSection8->title}}</h5>
-                                    {!! $homeSection8->content  !!}
+                                        <h5 class="link-drop-title"><i class="icon-emergency-call"></i>{-{$homeSection8->title}}</h5>
+                                    {-!! $homeSection8->content  !!}
                                     </div>
                                 </div>-->
 
@@ -159,7 +159,7 @@
                                 <div class="vert">
                                     <div class="container">
                                 {!! $sli->content  !!}
-                                        <div class="slide-btn"><a href="{{url('services')}}" class="btn btn-white" data-animation="fadeInUp" data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Know more</span><i class="icon-right-arrow"></i></a></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -175,35 +175,7 @@
         <!--section under slider-->
         <div class="section mt-0 shadow-bot pt-2 pb-2 welcome-bot" style="margin-bottom: 4px;" >
             <div class="container">
-                <div class="row js-icn-text-alt-carousel">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="icn-text-alt">
-                            <div class="icn-text-alt-icn"><i class="icon-first-aid-kit"></i></div>
-                            <div>
-                                <h4 class="icn-text-alt-title">{{$homeSection9->title}}</h4>
-                                <p>{!! $homeSection9->content  !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="icn-text-alt">
-                            <div class="icn-text-alt-icn"><i class="icon-flask"></i></div>
-                            <div>
-                                <h4 class="icn-text-alt-title">{{$homeSection10->title}}</h4>
-                                <p>{!! $homeSection10->content  !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="icn-text-alt">
-                            <div class="icn-text-alt-icn"><i class="icon-doctor"></i></div>
-                            <div>
-                                <h4 class="icn-text-alt-title">{{$homeSection11->title}}</h4>
-                                <p>{!! $homeSection11->content  !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {!! $home_contents[0]->content  !!}
             </div>
         </div>
         <!--//section under slider-->
@@ -212,21 +184,14 @@
 
         <div class="section" style="margin-top: 2px;">
             <div class="container pt-lg-2" style="text-align: justify">
-                <div class="row mt-2 mt-md-3 mt-lg-0">
-                    <div class="col-md-6">
-                        {!! $homeSection1->content  !!}
-                        <div class="mt-2 mt-md-4"></div>
-                        <a href="#" class="btn-link" data-toggle="modal" data-target="#modalBookingForm">Book an Appointment<i class="icon-right-arrow"></i></a>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="{{asset('public/assets/uploads/cms/image').'/'.$homeSection1->image}}">
-                    </div>
-                </div>
+                {!! $home_contents[1]->content  !!}
+
             </div>
         </div>
+
         <!--<div class="section" style="margin-top: 2px;">
             <div class="container pt-lg-2" style="text-align: justify">
-                {!! $homeSection1->content  !!}
+                {--!! $homeSection1->content  !!}
 
 
                 <a href="#" class="btn-link" data-toggle="modal" data-target="#modalBookingForm">Book an Appointment<i class="icon-right-arrow"></i></a>
@@ -240,12 +205,7 @@
         <div class="section page-content-first mt-4" style="margin-bottom: 2px;">
             <div class="container">
                 <div class="text-center mb-2  mb-md-3 mb-lg-4">
-                    <div class="h-sub theme-color">What We Offer</div>
-                    <h1>{{$homeSection16->title}}</h1>
-                    <div class="h-decor"></div>
-                    <div class="text-center mt-4">
-                        <p>{!!$homeSection16->content  !!}</p>
-                    </div>
+                    {!! $home_contents[2]->content  !!}
                 </div>
             </div>
             <div class="container">
@@ -255,7 +215,7 @@
                    <div class="col-md-6 col-lg-4">
                         <div class="service-card">
                             <div class="service-card-photo" >
-                                <a href="{{url('service-page').'/'.$ser1->seo_url}}"><img style="height: 100%;width: 100%;" src="{{asset('public/assets/uploads/service/image').'/'.$ser1->image}}" class="img-fluid" alt=""></a>
+                                <a href="{{url('service-page').'/'.$ser1->seo_url}}"><img src="{{asset('public/assets/uploads/service/image').'/'.$ser1->image}}" class="img-fluid" alt=""></a>
                             </div>
                             <h5 class="service-card-name"><a href="{{url('service-page').'/'.$ser1->seo_url}}">{{$ser1->title}}</a></h5>
                             <div class="h-decor"></div>
@@ -269,81 +229,11 @@
             </div>
         </div>
     <!--//section services-->
-        <!--section mission & vision-->
 
-        <!--<div class="section">
-            <div class="container">
-                <div class="title-wrap text-center">
-                    <h2 class="h1">{{$homeSection12->title}}</h2>
-                    <div class="h-decor"></div>
-                </div>
-                <p class="max-900 text-center">{!! $homeSection12->content  !!}</p>
-                <div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
-                    <div class="col-md">
-                        <div class="icn-text">
-                            <div class="icn-text-circle"><i class="icon-medicine"></i></div>
-                            <div>
-                                <h5 class="icn-text-title">{{$homeSection13->title}}</h5>
-                                <p>{!! $homeSection13->content  !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="icn-text">
-                            <div class="icn-text-circle"><i class="icon-pharmacy"></i></div>
-                            <div>
-                                <h5 class="icn-text-title">{{$homeSection14->title}}</h5>
-                                <p>{!! $homeSection14->content  !!} </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="icn-text">
-                            <div class="icn-text-circle"><i class="icon-principles"></i></div>
-                            <div>
-                                <h5 class="icn-text-title">{{$homeSection15->title}}</h5>
-                                <p>{!! $homeSection15->content  !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-    <!--//section mission & vision -->
     <!--section services tabs-->
         <div class="section bg-grey py-0">
             <div class="container-fluid px-0">
-                <div class="row no-gutters flex-wrap flex-md-nowrap">
-                    <div class="col-md col-lg-6">
-                        <div class="services-tab-wrap float-right">
-                            <div class="service-tab-banner d-sm-none mb-3">
-                                <img src="{{asset('public/assets/uploads/cms/image').'/'.$addservice1->image}}" alt="">
-                            </div>
-                            <h2 class="h1">{{$addservice1->title}}</h2>
-                            <div class="d-flex flex-column flex-md-row position-relative mt-1 mt-md-3">
-                                <div class="nav nav-pills mt-2 mt-md-0" role="tablist">
-                                    <a class="nav-link active" data-toggle="pill" href="#tab-D" role="tab">{{$addservice2->title}}</a>
-                                    <a class="nav-link" data-toggle="pill" href="#tab-E" role="tab">{{$addservice3->title}}</a>
-                                    <a class="nav-link" data-toggle="pill" href="#tab-F" role="tab">{{$addservice4->title}}</a>
-                                </div>
-                            </div>
-                            <div id="tab-content" class="tab-content mt-1">
-                                <div id="tab-D" class="tab-pane fade show active" role="tabpanel">
-                                    {!! $addservice2->content !!}
-                                </div>
-                                <div id="tab-E" class="tab-pane fade" role="tabpanel">
-                                    {!! $addservice3->content !!}
-                                </div>
-                                <div id="tab-F" class="tab-pane fade" role="tabpanel">
-                                    {!! $addservice4->content !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-auto col-lg-6 service-tab-banner d-none d-sm-block">
-                        <img src="{{asset('public/assets/uploads/cms/image').'/'.$addservice1->image}}" alt="">
-                    </div>
-                </div>
+                {!! $home_contents[3]->content  !!}
             </div>
         </div>
 
@@ -380,39 +270,19 @@
     <!--//section single service --><!--section promotion-->
         <div class="section">
             <div class="container-fluid px-0">
-                <div class="banner-center bg-cover" style="background-image: url({{asset('public/assets/uploads/cms/image').'/'.$homeSection4->image}})">
-                    <div class="banner-center-caption text-center">
-                        {!! $homeSection4->content  !!}
-                        <a href="#" data-toggle="modal" data-target="#modalBookingForm" class="btn btn-white mt-2 mt-sm-3 mt-lg-5"><i class="icon-right-arrow"></i><span>Book an appointment</span><i class="icon-right-arrow"></i></a>
-                    </div>
-                </div>
+                {!! $home_contents[4]->content  !!}
             </div>
         </div>
 
     <!--<div class="section">
               <div class="container-fluid px-0">
-                  {!! $homeSection4->content  !!}
+                  {-!! $homeSection4->content  !!}
          </div>
          </div>-->
     <!--//section promotion--><!--section faq-->
              <div class="section bg-grey py-0 mt-lg-0">
                  <div class="container-fluid px-0">
-                     <div class="row no-gutters">
-                         <div class="col-xl-6 banner-left bg-fullheight" style="background-image: url(https://hyperbaric-chamber.com/wp-content/uploads/monoplace-hyperbaric-chamber-hybrid-3200.jpg);background-size: cover;background-position: 79%;"></div>
-                         <div class="col-xl-6">
-                             <div class="faq-wrap px-15 px-lg-8">
-                                 <div class="title-wrap">
-                                     <h2 class="h1">{{$homeSection5->title}}</h2>
-                                 </div>
-                                 <div class="nav nav-pills mt-2 mt-lg-3" role="tablist">
-                                     <a class="nav-link active" data-toggle="pill" href="#tab-A" role="tab">General</a>
-                                     <a class="nav-link" data-toggle="pill" href="#tab-B" role="tab">Urgent</a>
-                                 </div>
-            {!! $homeSection5->content  !!}
-                                 <a href="#" class="btn mt-3" data-toggle="modal" data-target="#modalQuestionForm"><i class="icon-right-arrow"></i><span>Ask Question</span><i class="icon-right-arrow"></i></a>
-                             </div>
-                         </div>
-                     </div>
+                     {!! $home_contents[5]->content  !!}
                  </div>
              </div>
 
@@ -421,24 +291,13 @@
         <div class="section mt-5">
             <div class="container">
                 <div class="banner-call">
-                    <div class="row no-gutters">
-                        <div class="col-sm-5 col-lg-5 order-2 order-sm-1 mt-3 mt-md-0 text-center text-md-right">
-                            <img src="{{asset('public/assets/uploads/cms/image').'/'.$homeSection6->image}}" alt="" class="shift-left-1">
-                        </div>
-                        <div class="col-sm-7 col-lg-7 col-lg-7 d-flex align-items-center order-1 order-sm-2">
-                            <div class="text-center pt-2 pt-lg-8">
-                                <h2><span class="theme-color">{{$homeSection6->title}}</span></h2>
-                                <div class="h-decor"></div>
-                                {!! $homeSection6->content  !!}
-                            </div>
-                        </div>
-                    </div>
+                    {!! $home_contents[6]->content  !!}
                 </div>
             </div>
         </div>
         <!--<div class="section mt-5">
             <div class="container">
-            {!! $homeSection6->content  !!}
+            {-!! $homeSection6->content  !!}
             </div>
         </div>-->
     <!--//section call us-->

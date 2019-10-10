@@ -1,5 +1,7 @@
 @extends('frontend.include.layout')
-
+@php
+//print_r($user_session);die;
+@endphp
 		<!--section-->
 		@section('after_header')
 		  <div class="section mt-0">
@@ -47,7 +49,7 @@
 									<!-- END SIDEBAR USER TITLE -->
 									<!-- SIDEBAR BUTTONS -->
 									<div class="profile-userbuttons">
-										<a href="edit-profile.html" class="btn btn-success btn-sm btn-outline-red">Edit Profile</a>
+										<a href="{{url('edit-profile')}}" class="btn btn-success btn-sm btn-outline-red">Edit Profile</a>
 
 										<button type="button" class="btn btn-danger btn-sm btn-logout">Log Out</button>
 									</div>
@@ -59,7 +61,7 @@
 												<a href="{{url('my-dashboard')}}">My Dashboard </a>
 											</li>
 											<li>
-												<a href="manage-profile.html">Manage Profile </a>
+												<a href="{{url('edit-profile')}}">Edit Profile </a>
 											</li>
 											<li>
 												<a href="{{url('appointments')}}">Appointments </a>
@@ -143,8 +145,8 @@
 													<div class="form-group">
 														<label for="email">Gender</label>
 														<select name="gender" class="form-control">
-															<option value="Male" {{old('Male')=='Male'?'Selected':($Patient->gender=='Male'?'Selected':'')}}>Male</option>
-															<option value="Female" {{old('gender')=='Female'?'Selected':($Patient->gender=='Female'?'Selected':'')}}>Female</option>
+															<option value="MALE" {{old('gender')=='MALE'?'Selected':($Patient->gender=='MALE'?'Selected':'')}}>MALE</option>
+															<option value="FEMALE" {{old('gender')=='FEMALE'?'Selected':($Patient->gender=='FEMALE'?'Selected':'')}}>FEMALE</option>
 														</select>
 													</div>
 
@@ -155,19 +157,21 @@
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
 														<label for="email">Country</label>
-														<input type="text" class="form-control" id="" placeholder="" name="country" value="{{old('country')?old('country'):$Patient->country}}">
-														@if($errors->has('country'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('country')}}</div>
-														@endif
-													</div>
+															<select name="country" class="form-control">
+																@foreach($country as $coun)
+																	<option value="{{$coun->country}}" {{(old('country')==$Patient->country)? 'selected':($coun->country==$Patient->country?'Selected':'')}}>{{$coun->country}}</option>
+                                                                @endforeach
 
+															</select>
+													</div>
 												</div>
+
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
-														<label for="pwd">City</label>
-														<input type="text" class="form-control" id="" placeholder="" name="city" value="{{old('city')?old('city'):$Patient->city}}">
-														@if($errors->has('city'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('city')}}</div>
+														<label for="pwd">State</label>
+														<input type="text" class="form-control" id="" placeholder="" name="state" value="{{old('state')?old('state'):$Patient->state}}">
+														@if($errors->has('state'))
+															<div class="invalid-feedback" style="display:block;">{{$errors->first('state')}}</div>
 														@endif
 													</div>
 
@@ -176,8 +180,8 @@
 											<div class="row">
 												<div class="col-md-12" style="clear:both">
 													<div class="form-group">
-														<label for="pwd">Address</label>
-														<input type="text" class="form-control" id="" placeholder="" name="address" value="{{old('address')?old('address'):$Patient->address}}">
+														<label for="address">Address</label>
+                                                           <textarea type="text" class="form-control" id="address" placeholder="" name="address">{{old('address')?old('address'):$Patient->address}}</textarea>
 														@if($errors->has('address'))
 															<div class="invalid-feedback" style="display:block;">{{$errors->first('address')}}</div>
 														@endif
@@ -190,6 +194,7 @@
 												<div class="col-md-12" style="clear:both">
 													<div class="form-group">
 														<input type="hidden" name="id" value="{{$Patient->id}}">
+
 														<input type="hidden" name="_token" value="{{csrf_token()}}">
 														<button  type="submit" class="btn btn-outline-success">Submit</button>
 														<button  type="cancel" class="btn btn-outline-danger">Cancel</button>

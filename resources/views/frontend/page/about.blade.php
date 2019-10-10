@@ -1,303 +1,1 @@
-@extends('frontend.include.layout')
-
-		<!--section-->
-		@section('after_header')
-		  <div class="section mt-0">
-			<div class="breadcrumbs-wrap">
-				<div class="container">
-					<div class="breadcrumbs">
-						<a href="{{url('/')}}">Home</a>
-						<span>About Us</span>
-					</div>
-				</div>
-			</div>
-		   </div>
-	    @endsection
-		<!--//section-->
-		<!--section-->
-		@section('body')
-			<div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
-				<div class="sticky-wrapper"><div class="quickLinks js-quickLinks">
-						<div class="container">
-							<div class="row no-gutters">
-
-							<!--<div class="col">
-                                    <a href="#" class="link">
-                                        <i class="icon-clock"></i><span>{{$homeSection7->title}}</span>
-                                    </a>
-                                   <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-clock"></i>{{$homeSection7->title}}</h5>
-
-                                          {!! $homeSection7->content  !!}
-									</div>
-                                </div>
-
-
-                                <div class="col">
-                                    <a href="#" class="link">
-                                        <i class="icon-emergency-call"></i><span>{{$homeSection8->title}}</span>
-                                    </a>
-                                    <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-emergency-call"></i>{{$homeSection8->title}}</h5>
-                                    {!! $homeSection8->content  !!}
-									</div>
-                                </div>-->
-
-
-								<div class="col">
-									<a href="#" class="link" data-toggle="modal" data-target="#modalBookingForm">
-										<i class="icon-pencil-writing"></i><span>Book an Appointment</span>
-									</a>
-								<!--<div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Request Form</h5>
-                                        <div class="alert alert-danger print-error-msg" style="display:none">
-                                            <ul></ul>
-                                        </div>
-                                        <form id="requestForm">
-                                            <div class="successform">
-                                                <p>Your message was sent successfully!</p>
-                                            </div>
-                                            <div class="errorform">
-                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                            </div>
-                                            <div class="input-group">
-                                                <span>
-                                                <i class="icon-user"></i>
-                                            </span>
-                                                <input name="requestname" type="text" class="form-control" placeholder="Your Name*">
-
-                                            </div>
-                                            <span id="error_requestname" style="display: none;">Field is required</span>
-                                            <div class="row row-sm-space mt-1">
-                                                <div class="col">
-                                                    <div class="input-group">
-                                                        <span>
-                                                        <i class="icon-email2"></i>
-                                                    </span>
-                                                        <input name="requestemail" type="text" class="form-control" placeholder="Your Email*">
-
-                                                    </div>
-                                                    <span id="error_requestemail" style="display: none;">Field is required</span>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="input-group">
-                                                        <span>
-                                                        <i class="icon-smartphone"></i>
-                                                    </span>
-                                                        <input name="requestphone" type="text" class="form-control" placeholder="Your Phone*">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="selectWrapper input-group mt-1">
-                                                <span>
-                                                <i class="icon-tooth"></i>
-                                            </span>
-                                                <select name="requestservice" class="form-control">
-                                                    <option selected="selected" disabled="disabled">Select Service</option>
-                                                    <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
-                                                    <option value="General Dentistry">General Dentistry</option>
-                                                    <option value="Orthodontics">Orthodontics</option>
-                                                    <option value="Children`s Dentistry">Children`s Dentistry</option>
-                                                    <option value="Dental Implants">Dental Implants</option>
-                                                    <option value="Dental Emergency">Dental Emergency</option>
-                                                </select>
-
-                                            </div>
-                                            <span id="error_requestservice" style="display: none;">Field is required</span>
-                                            <div class="row row-sm-space mt-1">
-                                                <div class="col-sm-6">
-                                                    <div class="input-group flex-nowrap">
-                                                        <span>
-                                                            <i class="icon-calendar2"></i>
-                                                        </span>
-                                                        <div class="datepicker-wrap">
-                                                            <input name="requestdate" type="text" class="form-control datetimepicker" id="datepicker" placeholder="date" value="">
-                                                            <span id="error_requestdate" style="display: none;">Field is required</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mt-1 mt-sm-0">
-                                                    <div class="input-group flex-nowrap">
-                                                        <span>
-                                                                <i class="icon-clock"></i>
-                                                        </span>
-                                                        <div class="datepicker-wrap">
-                                                            <input name="requesttime" type="text" class="form-control timepicker" placeholder="Time" readonly="">
-                                                            <span id="error_requesttime" style="display: none;">Field is required</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-right mt-2">
-                                                <button type="button" onclick="requestForm();" class="btn btn-sm btn-hover-fill">Request</button>
-                                            </div>
-                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                        </form>
-                                    </div>-->
-								</div>
-
-								<div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close panel"></i></a></div>
-							</div>
-						</div>
-						<div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="" data-original-title="Open panel">+</span></div>
-					</div></div>
-			</div>
-
-			<div class="page-content">
-
-
-			<div class="section page-content-first">
-			<div class="container">
-			    {!! $about1->content  !!}
-
-			</div>
-		</div>
-		<!--//section-->
-		<!--section-->
-				<div class="section">
-					<div class="container">
-						<div class="row no-gutters">
-							<div class="col-xl-6" style="padding-top:50px">
-								<div class="max-670 mx-lg-auto px-15">
-									<div class="title-wrap">
-										<h2 class="h1"><span class="theme-color">{{$about2->title}}</span></h2>
-									</div>
-									<div class="mt-lg-5"></div>
-									<div class="row">
-										<div class="col-sm-7">
-											<ul class="marker-list-md">
-												{!! $about2->content  !!}
-											</ul>
-										</div>
-
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6 banner-left bg-full" style="background-image: url({{asset('public/assets/uploads/cms/image').'/'.$about2->image}})"></div>
-						</div>
-					</div>
-				</div>
-		<!--<div class="section">
-			<div class="container">
-
-			    {!! $about2->content  !!}
-			</div>
-		</div>-->
-		<!--//section-->
-			<!--section-->
-				<div class="section">
-					<div class="container">
-						<div class="title-wrap text-center">
-							<div class="h-sub theme-color">{{$about3->title}}</div>
-							<h2 class="h1">{!! $about3->content  !!}</h2>
-							<div class="h-decor"></div>
-						</div>
-						<div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
-							<div class="col-md">
-								<div class="icn-text">
-									<div class="icn-text-simple"><i class="icon-innovation"></i></div>
-									<div>
-										<h5 class="icn-text-title">{{$about6->title}}</h5>
-										{!! $about6->content  !!}
-									</div>
-								</div>
-							</div>
-							<div class="col-md">
-								<div class="icn-text">
-									<div class="icn-text-simple"><i class="icon-compassion"></i></div>
-									<div>
-										<h5 class="icn-text-title">{{$about7->title}}</h5>
-										{!! $about7->content  !!}
-									</div>
-								</div>
-							</div>
-							<div class="col-md">
-								<div class="icn-text">
-									<div class="icn-text-simple"><i class="icon-integrity"></i></div>
-									<div>
-										<h5 class="icn-text-title">{{$about8->title}}</h5>
-										{!! $about8->content  !!}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-		<!--<div class="section">
-			<div class="container">
-			     {!! $about3->content  !!}
-			</div>
-		</div>-->
-		<!--//section-->
-			<!--section promotion-->
-				<div class="section">
-					<div class="container-fluid px-0">
-						<div class="banner-center bg-cover" style="background-image: url({{asset('public/assets/uploads/cms/image').'/'.$about4->image}})">
-							<div class="banner-center-caption text-center">
-								{!! $about4->content  !!}
-								<a href="#" data-toggle="modal" data-target="#modalBookingForm" class="btn btn-white mt-2 mt-sm-3 mt-lg-5"><i class="icon-right-arrow"></i><span>Book an appointment</span><i class="icon-right-arrow"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-		<!--<div class="section">
-			<div class="container-fluid px-0">
-			      {!! $about4->content  !!}
-			</div>
-		</div>-->
-		<!--//section promotion-->
-		
-		<!--section-->
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4">
-						{!! $about5->content  !!}
-							<!--<div class="title-wrap">
-								<h2 class="h1">Our Office </h2>
-								<div class="h-decor"></div>
-							</div>
-							<p>Unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-							<div class="mt-4"></div>
-							<h3>Amenities</h3>
-							<div class="mt-lg-4"></div>
-							<ul class="marker-list-md">
-								<li>TV’s in each treatment room</li>
-								<li>Complimentary coffee, Juice</li>
-								<li>Wireless Internet</li>
-								<li>Warm lavender towels</li>
-							</ul>-->
-						</div>
-
-					<div class="col-lg-8 mt-4 mt-lg-0">
-						<div class="slider-gallery">
-
-							    <ul class="slider-gallery-main list-unstyled js-slider-gallery-main">
-									@foreach($slider1 as $sli1)
-										<li><img class="d-block" src="{{asset('public/assets/uploads/aboutslider/image').'/'.$sli1->image}}" alt="{{$sli1->name}}"></li>
-									@endforeach
-								</ul>
-
-							       <ul class="slider-gallery-thumbs list-unstyled js-slider-gallery-thumbs">
-									   @foreach($slider1 as $sli1)
-									       <li><img class="d-block" src="{{asset('public/assets/uploads/aboutslider/thumbs').'/'.$sli1->image}}" alt="{{$sli1->name}}"></li>
-								         @endforeach
-							        </ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-			<!--//section-->
-	</div>
-@endsection
-	<!--footer-->
-
-	<!--//footer-->
-
-
-
+@extends('frontend.include.layout')		<!--section-->		@section('after_header')		  <div class="section mt-0">			<div class="breadcrumbs-wrap">				<div class="container">					<div class="breadcrumbs">						<a href="{{url('/')}}">Home</a>						<span>About Us</span>					</div>				</div>			</div>		   </div>	    @endsection		<!--//section-->		<!--section-->		@section('body')			<div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">				<div class="sticky-wrapper"><div class="quickLinks js-quickLinks">						<div class="container">							<div class="row no-gutters">								<div class="col">									<a href="#" class="link" data-toggle="modal" data-target="#modalBookingForm">										<i class="icon-pencil-writing"></i><span>Book an Appointment</span>									</a>								</div>								<div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close panel"></i></a></div>							</div>						</div>						<div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="" data-original-title="Open panel">+</span></div>					</div></div>			</div>			<div class="page-content">			<div class="section page-content-first" style="margin-top:0px ">				<div class="container">					{!! $about_contents[0]->content  !!}				</div>		    </div>		<!--//section-->				<div class="section">					<div class="container">						{!! $about_contents[1]->content  !!}					</div>				</div>		<!--section-->				<div class="section">					<div class="container">						{!! $about_contents[2]->content  !!}					</div>				</div>		<!--<div class="section">			<div class="container">			    {-!! $about2->content  !!}			</div>		</div>-->		<!--//section-->			<!--section-->				<div class="section">					<div class="container">						{!! $about_contents[3]->content  !!}					</div>				</div>		<!--//section-->			<!--section promotion-->		<!--<div class="section">			<div class="container-fluid px-0">			      {-!! $about4->content  !!}			</div>		</div>-->		<!--//section promotion-->				<!--section-->			<div class="section">				<div class="container">					<div class="row">						<div class="col-lg-4">							{!! $about_contents[4]->content  !!}						</div>					<div class="col-lg-8 mt-4 mt-lg-0">						<div class="slider-gallery">							    <ul class="slider-gallery-main list-unstyled js-slider-gallery-main">									@foreach($slider1 as $sli1)										<li><img class="d-block" src="{{asset('public/assets/uploads/aboutslider/image').'/'.$sli1->image}}" alt="{{$sli1->name}}"></li>									@endforeach								</ul>							       <ul class="slider-gallery-thumbs list-unstyled js-slider-gallery-thumbs">									   @foreach($slider1 as $sli1)									       <li><img class="d-block" src="{{asset('public/assets/uploads/aboutslider/thumbs').'/'.$sli1->image}}" alt="{{$sli1->name}}"></li>								         @endforeach							        </ul>						</div>					</div>				</div>			</div>		</div>			<!--//section-->	</div>@endsection	<!--footer-->	<!--//footer-->

@@ -62,6 +62,16 @@
                         </div>
 
                     </div>
+                    <div class="col-md-6" style="clear:both">
+                        <div class="form-group">
+                            <label for="pwd">Meta Description</label>
+                            <input type="text" class="form-control" id="" placeholder="" name="meta_description" value="{{old('meta_description')?old('meta_description'):$cms->meta_description}}">
+                            @if($errors->has('meta_description'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('meta_description')}}</div>
+                            @endif
+                        </div>
+
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="clear:both">

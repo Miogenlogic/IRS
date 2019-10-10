@@ -63,18 +63,18 @@
                         <div class="sidebar-submenu" {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'style="display: block;"' : '' }}>
                             <ul>
                                 <li>
-                                    <a href="{{url('admin/cms-list')}}">CMS</a>
+                                    <a href="{{url('admin/cms-home-list')}}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('admin/service-list')}}" >Service</a>
-                                </li>
-                                <!--<li>
-                                    <a href="{{url('admin/video-gallery-list')}}">Video</a>
-                                </li>-->
-                                <!--<li>
-                                    <a href="{{url('admin/slider-list')}}">Slider</a>
+                                    <a href="{{url('admin/cms-about-list')}}" >About</a>
                                 </li>
                                 <li>
+                                    <a href="{{url('admin/cms-vision-list')}}">Vision Mission</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('admin/cms-contact-list')}}">Contact</a>
+                                </li>
+                                <!--<li>
                                     <a href="{{url('admin/slider-list1')}}">HomeSlider</a>
                                 </li>
                                 <li>
@@ -84,11 +84,34 @@
                         </div>
                     </li>
                 @endif
+                @if(Entrust::hasRole('admin'))
+                    <li class="sidebar-dropdown {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-briefcase"></i>
+                            <span>Service Management</span>
+                            <span class="badge badge-pill badge-danger"></span>
+                        </a>
+                        <div class="sidebar-submenu" {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'style="display: block;"' : '' }}>
+                            <ul>
+                                <li>
+                                    <a href="{{url('admin/cms-service-list')}}">Service </a>
+                                </li>
+                                <li>
+                                    <a href="{{url('admin/service-list')}}" >Service List</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('admin/cms-service-page-list')}}">Service Page</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 @if(Entrust::hasRole('admin'))
                     <li class="sidebar-dropdown {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'active' : '' }}">
                         <a href="#">
-                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-slideshare"></i>
                             <span>Slider Management</span>
                             <span class="badge badge-pill badge-danger"></span>
                         </a>
@@ -111,7 +134,7 @@
                 @if(Entrust::hasRole('admin'))
                     <li class="sidebar-dropdown {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'active' : '' }}">
                         <a href="#">
-                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-cog"></i>
                             <span>Settings</span>
                             <span class="badge badge-pill badge-danger"></span>
                         </a>
@@ -126,7 +149,32 @@
                     </li>
                 @endif
 
+                @if(Entrust::hasRole('admin'))
+                    <li class="sidebar-dropdown {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-info-circle"></i>
+                            <span>Inquiry Management</span>
+                            <span class="badge badge-pill badge-danger"></span>
+                        </a>
+                        <div class="sidebar-submenu" {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'style="display: block;"' : '' }}>
+                            <ul>
+                                <li>
+                                    <a href="{{url('admin/inquiry-list')}}">Inquiry Details</a>
+                                </li>
 
+                            </ul>
+                        </div>
+                    </li>
+            @endif
+            @if(Entrust::hasRole('admin'))
+                <li>
+                    <a href="{{url('admin/user-list')}}">
+                        <i class="fa fa-user"></i>
+                        <span>USER</span>
+                        <span class="badge badge-pill badge-primary"></span>
+                    </a>
+                </li>
+            @endif
 
             @if(Entrust::hasRole('admin'))
                 <!--<li>
@@ -231,7 +279,7 @@
 
     <!-- sidebar-footer  -->
     <div class="sidebar-footer">
-        <a href="#">
+        <!--<a href="#">
             <i class="fa fa-bell"></i>
             <span class="badge badge-pill badge-warning notification">3</span>
         </a>
@@ -242,8 +290,8 @@
         <a href="#">
             <i class="fa fa-cog"></i>
             <span class="badge-sonar"></span>
-        </a>
-        <a href="#">
+        </a>-->
+        <a href="{{url('/logout')}}">
             <i class="fa fa-power-off"></i>
         </a>
     </div><!-- /sidebar-footer  -->

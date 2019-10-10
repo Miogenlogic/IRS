@@ -25,8 +25,9 @@ class ServiceRequest extends FormRequest
     {
         return [
 
-            'featured'=> 'required',
-            'content'=> 'required',
+            //'featured'=> 'required',
+            'title'=> 'required',
+            'seo_url'=> 'required|unique:service,seo_url,'.$this->id.',id',
 
         ];
     }
@@ -34,11 +35,11 @@ class ServiceRequest extends FormRequest
     public function messages()
     {
             return [
-                'featured.required' => 'Field is required.',
-               // 'page.regex' => 'Field must consist of a-zA-Z0-9.',
-                //'title.required' => 'Field is required.',
+                //'featured.required' => 'Field is required.',
+                //'page.regex' => 'Field must consist of a-zA-Z0-9.',
+                'title.required' => 'Field is required.',
                 //'title.regex' => 'Field must consist of a-zA-Z0-9.',
-                'content.required' => 'Field is required.',
+                'seo_url.required' => 'Field will be unique.',
                  ];
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
+use App\Models\AppointmentType;
+use App\Models\CmsMain;
+use App\Models\CmsPage;
 use App\Models\Email;
 use App\Models\Service;
 use App\Models\Slider;
@@ -25,68 +28,165 @@ use Redirect;
 use Alert;
 use Input;
 use DB;
+use Carbon\Carbon;
+use App\Models\DoctorDetails;
+
 class HomeController extends Controller
 {
     public function index()
     {
         $slider=Slider::where('status', '=', 'Active')->get();
-        $homeSection1=Cms::where('page', '=', 'home-section1')->get()->first();
-        $homeSection3=Cms::where('page', '=', 'home-section3')->get()->first();
-        $homeSection4=Cms::where('page', '=', 'home-section4')->get()->first();
-        $homeSection5=Cms::where('page', '=', 'home-section5')->get()->first();
-        $homeSection6=Cms::where('page', '=', 'home-section6')->get()->first();
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-        $homeSection9=Cms::where('page', '=', '24 Hour Emergency')->get()->first();
-        $homeSection10=Cms::where('page', '=', 'Complete-Lab-Services')->get()->first();
-        $homeSection11=Cms::where('page', '=', 'Medical-Professionals')->get()->first();
-        $homeSection12=Cms::where('page', '=', 'Mission & Vision Statement')->get()->first();
-        $homeSection13=Cms::where('page', '=', 'Our Mission')->get()->first();
-        $homeSection14=Cms::where('page', '=', 'Vision Statement')->get()->first();
-        $homeSection15=Cms::where('page', '=', 'Clinic Principles')->get()->first();
-        $homeSection16=Cms::where('page', '=', 'Our Services')->get()->first();
-        $addservice1=Cms::where('page', '=', 'home-section3')->get()->first();
-        $addservice2=Cms::where('page', '=', 'home-addition-service-tab1')->get()->first();
-        $addservice3=Cms::where('page', '=', 'home-addition-service-tab2')->get()->first();
-        $addservice4=Cms::where('page', '=', 'home-addition-service-tab3')->get()->first();
+
+        $home=CmsMain::where('page', '=', 'home')->get()->first();
+        //dd($home);
+        $home_contents=CmsPage::where('cms_id','=',$home->id)->get();
+       //dd($home_contents);
+
 
         $service=Service::where('status','=','Active')
             ->orderBy('id', 'asc')
             ->offset(0)
             ->limit(3)
             ->get();
+
         $slider2=HomeSlider::where('status','=','Active')
             ->orderBy('id', 'asc')
             ->offset(0)
             ->limit(6)
             ->get();
-
+        $metakey=$home->meta_key;
+        $metades=$home->meta_description;
+        $title=$home->title;
         return view('frontend.page.home')
-            ->with('slider',$slider)->with('service',$service)
+            ->with('slider',$slider)
             ->with('slider2',$slider2)
-            ->with('homeSection1',$homeSection1)
-            ->with('homeSection3',$homeSection3)
-            ->with('homeSection4',$homeSection4)
-            ->with('homeSection5',$homeSection5)
-            ->with('homeSection6',$homeSection6)
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8)
-            ->with('homeSection9',$homeSection9)
-            ->with('homeSection10',$homeSection10)
-            ->with('homeSection11',$homeSection11)
-            ->with('homeSection12',$homeSection12)
-            ->with('homeSection13',$homeSection13)
-            ->with('homeSection14',$homeSection14)
-            ->with('homeSection15',$homeSection15)
-            ->with('homeSection16',$homeSection16)
+            ->with('home',$home)
+            ->with('home_contents',$home_contents)
             ->with('service',$service)
-            ->with('addservice1',$addservice1)
-            ->with('addservice2',$addservice2)
-            ->with('addservice3',$addservice3)
-            ->with('addservice4',$addservice4);
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
+    }
+
+    public function about()
+    {
+        $about=CmsMain::where('page', '=', 'about')->get()->first();
+        //dd($home);
+        $about_contents=CmsPage::where('cms_id','=',$about->id)->get();
+        $slider1=AboutSlider::where('status', '=', 'Active')->get();
+
+        /* $about1=Cms::where('page', '=', 'aboutus-About-Our-Clinic')->get()->first();
+         $about2=Cms::where('page', '=', 'aboutus-Our-Advantages')->get()->first();
+         $about3=Cms::where('page', '=', 'aboutus-Motivation-is-easy')->get()->first();
+
+         $about4=Cms::where('page', '=', 'home-section4')->get()->first();
+         $about5=Cms::where('page', '=', 'aboutus-Our-Office')->get()->first();
+
+         $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
+         $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
+         $about6=Cms::where('page', '=', 'aboutus-Motivation-is-easy2')->get()->first();
+         $about7=Cms::where('page', '=', 'aboutus-Motivation-is-easy3')->get()->first();
+         $about8=Cms::where('page', '=', 'aboutus-Motivation-is-easy4')->get()->first();*/
+        $metakey=$about->meta_key;
+        $metades=$about->meta_description;
+        $title=$about->title;
+        return view('frontend.page.about')
+            ->with('about',$about)
+            ->with('about_contents',$about_contents)
+            ->with('slider1',$slider1)
+
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
+
+    }
+
+    public function visionmision()
+    {
+        $vision=CmsMain::where('page', '=', 'vision-mision ')->get()->first();
+        //dd($home);
+        $vision_contents=CmsPage::where('cms_id','=',$vision->id)->get();
+
+
+        $metakey=$vision->meta_key;
+        $metades=$vision->meta_description;
+        $title=$vision->title;
+        return view('frontend.page.visionmission')
+            ->with('vision',$vision)
+            ->with('vision_contents',$vision_contents)
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
     }
 
 
+    public function contact()
+    {
+        $contact=CmsMain::where('page', '=', 'contact')->get()->first();
+        //dd($home);
+        $contact_contents=CmsPage::where('cms_id','=',$contact->id)->get();
+
+        $metakey=$contact->meta_key;
+        $metades=$contact->meta_description;
+        $title=$contact->title;
+        return view('frontend.page.contact')
+            ->with('contact',$contact)
+            ->with('contact_contents',$contact_contents)
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
+
+    }
+
+
+    public function services()
+    {
+        $service=CmsMain::where('page', '=', 'service')->get()->first();
+        //dd($home);
+        $service_contents=CmsPage::where('cms_id','=',$service->id)->get();
+
+        //$homeSection16=Cms::where('page', '=', 'Our Services')->get()->first();
+        $service1=Service::where('status','=','Active')
+            ->orderBy('id', 'asc')
+            ->offset(0)
+            ->limit(3)
+            ->get();
+
+
+        $metakey=$service->meta_key;
+        $metades=$service->meta_description;
+        $title=$service->title;
+        return view('frontend.page.services')
+            ->with('service',$service)
+            ->with('service_contents',$service_contents)
+            ->with('service1',$service1)
+
+            //->with('homeSection16',$homeSection16)
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
+    }
+
+    public function servicePage($seo_url)
+    {
+        $servicepage=CmsMain::where('page', '=', 'servicepage')->get()->first();
+        $servicepage_contents=CmsPage::where('cms_id','=',$servicepage->id)->get();
+        $service2=Service::where('seo_url','=',$seo_url)->get()->first();
+
+
+
+
+        $metakey=$servicepage->meta_key;
+        $metades=$servicepage->meta_description;
+        $title=$service2->title;
+        return view('frontend.page.servicePage')
+            ->with('servicepage',$servicepage)
+            ->with('servicepage_contents',$servicepage_contents)
+            ->with('service2',$service2)
+            ->with('metakey',$metakey)
+            ->with('metades',$metades)
+            ->with('title',$title);
+    }
 
 
     public function requestFormAdd(Request $request)
@@ -113,12 +213,19 @@ class HomeController extends Controller
 
     public function askQuestionAdd(Request $request)
     {
-
+        $country=explode('-',$request['questioncountry']);
         $obj = new Askquestion();
         $obj->name = $request['name'];
         $obj->email = $request['email'];
-        $obj->phone = $request['phone'];
+
         $obj->message = $request['message'];
+        if(isset($country[1])){
+            $obj->country_id=$country[1];
+            $obj->phone = $request['phone'];
+        }else{
+            $obj->country_id=NULL;
+            $obj->phone = NULL;
+        }
         $obj->save();
 
         if (isset($obj->id)) {
@@ -133,16 +240,19 @@ class HomeController extends Controller
 
     public function bookingFormAdd(Request $request)
     {
-
+        $country=explode('-',$request['bookingcountry']);
         $obj = new Booking();
         $obj->name = $request['bookingname'];
         $obj->email = $request['bookingemail'];
         $obj->phone = $request['bookingphone'];
         $obj->age = $request['bookingage'];
         $obj->select_service = $request['bookingservice'];
+        $obj->doctor = $request['doctor'];
+        $obj->service_type = $request['service_type'];
         $obj->date = $request['bookingdate'];
         $obj->time = $request['bookingtime'];
         $obj->comment = $request['bookingmessage'];
+        $obj->country_id=$country[1];
         $obj->save();
 
         if (isset($obj->id)) {
@@ -157,12 +267,20 @@ class HomeController extends Controller
 
     public function askAdd(Request $request)
     {
-
-        $obj = new ask();
+        $country=explode('-',$request['expertcountry']);
+        $obj = new Askquestion();
         $obj->name = $request['name'];
         $obj->email = $request['email'];
-        $obj->phone = $request['phone'];
+
         $obj->message = $request['message'];
+        $obj->service_id = $request['service_id'];
+        if(isset($country[1])){
+            $obj->country_id=$country[1];
+            $obj->phone = $request['phone'];
+        }else{
+            $obj->country_id=NULL;
+            $obj->phone = NULL;
+        }
         $obj->save();
 
         if (isset($obj->id)) {
@@ -175,71 +293,12 @@ class HomeController extends Controller
     }
 
 
-    public function servicePage($seo_url)
-    {
-        $service2=Service::where('seo_url','=',$seo_url)->get()->first();
-        $service1=Cms::where('page', '=', 'servicepage-submenu1')->get()->first();
-        $service3=Cms::where('page', '=', 'servicePage-Working-Time')->get()->first();
-        $service4=Cms::where('page', '=', 'servicePage-Contact-Info')->get()->first();
-
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-
-        return view('frontend.page.servicePage')
-            ->with('service1',$service1)
-            ->with('service2',$service2)
-            ->with('service3',$service3)
-            ->with('service4',$service4)
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8);
-    }
-
-    public function services()
-    {
-        $service1=Service::where('status','=','Active')
-            ->orderBy('id', 'asc')
-            ->offset(0)
-            ->limit(3)
-            ->get();
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-        $homeSection16=Cms::where('page', '=', 'Our Services')->get()->first();
-        return view('frontend.page.services')
-            ->with('service1',$service1)
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8)
-            ->with('homeSection16',$homeSection16);
-    }
 
 
-    public function about()
-    {
-        $about1=Cms::where('page', '=', 'aboutus-About-Our-Clinic')->get()->first();
-        $about2=Cms::where('page', '=', 'aboutus-Our-Advantages')->get()->first();
-        $about3=Cms::where('page', '=', 'aboutus-Motivation-is-easy')->get()->first();
 
-        $about4=Cms::where('page', '=', 'home-section4')->get()->first();
-        $about5=Cms::where('page', '=', 'aboutus-Our-Office')->get()->first();
-        $slider1=AboutSlider::where('status', '=', 'Active')->get();
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-        $about6=Cms::where('page', '=', 'aboutus-Motivation-is-easy2')->get()->first();
-        $about7=Cms::where('page', '=', 'aboutus-Motivation-is-easy3')->get()->first();
-        $about8=Cms::where('page', '=', 'aboutus-Motivation-is-easy4')->get()->first();
-        return view('frontend.page.about')
-            ->with('about1',$about1)
-            ->with('about2',$about2)
-            ->with('about3',$about3)
-            ->with('about4',$about4)
-            ->with('about5',$about5)
-            ->with('about6',$about6)
-            ->with('about7',$about7)
-            ->with('about8',$about8)
-            ->with('slider1',$slider1)
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8);
 
-    }
+
+
     public function mydashboard()
     {
         $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
@@ -288,46 +347,26 @@ class HomeController extends Controller
 
 
 
-    public function visionmision()
-    {
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-        $visionmission=Cms::where('page', '=', 'visionmission')->get()->first();
-        return view('frontend.page.visionmission')
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8)
-            ->with('visionmission',$visionmission);
-    }
 
-    public function contact()
-    {
-        $contact1=Cms::where('page', '=', 'contact-iframe')->get()->first();
-        $contact2=Cms::where('page', '=', 'contact-Clinic-Location')->get()->first();
-        $contact3=Cms::where('page', '=', 'contact-info')->get()->first();
-        $contact4=Cms::where('page', '=', 'contact-get-touch')->get()->first();
-        $contact5=Cms::where('page', '=', 'contact-workingtime')->get()->first();
-        $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
-        $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
-        return view('frontend.page.contact')
-            ->with('contact1',$contact1)
-            ->with('contact2',$contact2)
-            ->with('contact3',$contact3)
-            ->with('contact4',$contact4)
-            ->with('contact5',$contact5)
-            ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8);
 
-    }
+
 
 
     public function contactAdd(Request $request)
     {
-
+        $country=explode('-',$request['contactcountry']);
         $obj = new Contact();
         $obj->name = $request['name'];
         $obj->email = $request['email'];
-        $obj->phone = $request['phone'];
+
         $obj->message = $request['message'];
+        if(isset($country[1])){
+            $obj->country_id=$country[1];
+            $obj->phone = $request['phone'];
+        }else{
+            $obj->country_id=NULL;
+            $obj->phone = NULL;
+        }
         $obj->save();
 
         if (isset($obj->id)) {
@@ -348,12 +387,22 @@ class HomeController extends Controller
             $obj->email = $request['subscribe_mail'];
             $obj->save();
 
-            $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
+
+
+            $to_email = $obj->email;
+            $subject = 'Subscription';
+            $message = $contents = view('frontend.mail.subscription', ['name'=>$request['name'],'email'=>$request['subscribe_mail']])->render();
+            $headers = 'From:'.\Config::get('env.service_mail');
+            mail($to_email, $subject, $message, $headers);
+
+
             //email to subscriber
-            Mail::send('frontend.mail.subscription', $data, function($message) use ($data) {
+            /*
+             *  $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
+             * Mail::send('frontend.mail.subscription', $data, function($message) use ($data) {
                 $message->to($data['email'],'Subscriber')->subject('Subscription');
                 $message->from('support@biopedclinic.com','Bioped Clinic');
-            });
+            });*/
             echo 'Success';
             exit(0);
         }else{
@@ -364,5 +413,36 @@ class HomeController extends Controller
         echo 'failure';
         exit(0);
     }
+
+
+
+
+
+    /* service associated doctors */
+    public function serviceAssociatedDoctors(Request $request)
+    {
+        $users = UserHelper::doctorservice();
+        $str='<option selected="selected" disabled="disabled">Select Doctor</option>';
+        if(!isset($users->user_id)) {
+            foreach ($users as $key => $value) {
+                $str .='<option value='.$value['user_id'].'>'.$value['name'].'</option>';
+            }
+        }
+        echo $str;
+    }
+
+    //type of service(virtual or physical)
+    public function typeService(Request $request)
+    {
+        $appointType=AppointmentType::get();
+        $str='<option selected="selected" disabled="disabled">Select Consultation Type</option>';
+        if(!isset($appointType->id)) {
+            foreach ($appointType as $key => $value) {
+                $str .='<option value='.$value['id'].'>'.$value['type'].'</option>';
+            }
+        }
+        echo $str;
+    }
+
 
 }

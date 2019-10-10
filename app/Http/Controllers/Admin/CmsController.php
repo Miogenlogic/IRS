@@ -36,6 +36,7 @@ class CmsController extends Controller
         $obj->title = $request['title'];
         $obj->seo_url = $request['seo_url'];
         $obj->meta_key = $request['meta_key'];
+        $obj->meta_description = $request['meta_description'];
         if ($request->file('image')) {
             $imgfile = $request->file('image');
             $tmp = explode('.', $imgfile->getClientOriginalName());
@@ -105,6 +106,7 @@ class CmsController extends Controller
         $obj->title = $request['title'];
         $obj->seo_url = $request['seo_url'];
         $obj->meta_key = $request['meta_key'];
+        $obj->meta_description = $request['meta_description'];
         if ($request->file('image')) {
             $imgfile = $request->file('image');
             $tmp = explode('.', $imgfile->getClientOriginalName());

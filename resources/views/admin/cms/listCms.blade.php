@@ -20,8 +20,8 @@
                                 <td>#</td>
                                 <td>Page</td>
                                 <td>Title</td>
-                                <td>Seo Url</td>
-                                <td>Meta Key</td>
+                                <!--<td>Seo Url</td>
+                                <td>Meta Key</td>-->
                                 <td>Created Date</td>
                                 <td>Action</td>
                             </tr>
@@ -54,8 +54,8 @@
                     {data: 'id', name: 'id', orderable: false, searchable: false},
                     {data: 'page', name: 'page'},
                     {data: 'title', name: 'title'},
-                    {data: 'seo_url', name: 'seo_url'},
-                    {data: 'meta_key', name: 'meta_key'},
+                    //{data: 'seo_url', name: 'seo_url'},
+                    //{data: 'meta_key', name: 'meta_key'},
                     //{data: 'content', name: 'content'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false} ,

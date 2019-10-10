@@ -55,6 +55,9 @@
                             <div class="custom-control custom-checkbox" style=" padding-top: 20px;">
                                 <input type="checkbox" class="custom-control-input" id="customCheck" name="featured" value="1">
                                 <label class="custom-control-label" for="customCheck" style=" padding-top: 5px;">Featured</label>
+                                @if($errors->has('featured'))
+                                    <div class="invalid-feedback" style="display:block;">{{$errors->first('featured')}}</div>
+                                @endif
                             </div>
                         </div>
                     </div>
