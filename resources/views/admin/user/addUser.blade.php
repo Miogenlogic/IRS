@@ -3,6 +3,11 @@
 @section('after_styles')
 
 @endsection
+@php
+    //$userSession=Session::get('user');
+    $country=App\Helpers\UserHelper::country();
+    //dd($userSession);
+@endphp
 
 @section('body')
 
@@ -90,13 +95,14 @@
                 <div class="row">
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="email">Mobile</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="phone">
-                            @if($errors->has('phone'))
-                                <div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
-                            @endif
+                            <label for="email">Status</label>
+                            <select name="status" class="form-control">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
                             <label for="email">Age</label>
@@ -133,17 +139,41 @@
                 <div class="row">
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="email">Status</label>
-                            <select name="status" class="form-control">
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
+                            <label for="email">Country</label>
+                            <select name="usercountry" id="usercountry" class="form-control">
+
+                                <option selected="selected" disabled="disabled">Select Country For Phonecode</option>
+                                @foreach($country as $wks)
+
+                                    <option value="{{$wks->id.'-'.$wks->phonecode}}">{{$wks->country}}</option>
+
+                                @endforeach
                             </select>
                         </div>
                     </div>
+                    {{--<div class="col-md-1">--}}
+
+
+                        {{--<input style="margin-top: 23px;" type="text" class="form-control" value="+213" readonly >--}}
+                    {{--</div>--}}
                     <div class="col-md-6" style="clear:both">
-                        <div class="form-group">
+
+                        <div  class="form-group">
+
+                            <label style="position: relative;
+    right: 54px;" for="email">Mobile</label>
+                            <input style="margin-top: 22px;
+    width: 12%;
+    float: left;" type="text" id="xyz" class="form-control" value="" readonly >
+                            <input style="  width: 88%;
+    float: left;" type="text" class="form-control" id="" placeholder="enter" name="phone" >
+                            @if($errors->has('phone'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
+                            @endif
                         </div>
+
                     </div>
+
                 </div>
 
                 <div class="row">
@@ -172,8 +202,13 @@
             //startDate: 'd'
         });
     </script>-->
-
-
+    <script type="text/javascript">
+        $("#usercountry").change(function(){
+            var countryCode=$(this).val();
+            var res = countryCode.split("-");
+            $("#xyz").val('+'+res[1]);
+        });
+    </script>
 
 
 @endsection

@@ -5,7 +5,8 @@
 
 @endsection
 @php
-  //  print_r($service);die;
+    //$servicetype=\App\Helpers\UserHelper::servicetype($service->select_service);
+          // print_r($servicetype);die;
 @endphp
 @section('body')
 
@@ -13,7 +14,7 @@
     <!-- Last Records from Every scenerio -->
     <div class="card">
         <div class="card-body">
-            <form method="post" action="{{url('admin/')}}" enctype="multipart/form-data">
+            <form method="post" action="{{url('admin/confirm-emil')}}" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-md-12">
@@ -56,19 +57,23 @@
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
                             <label for="pwd">Doctor</label>
+                            @if($service->doctor>0)
                             @php
                                 $doctor=\App\Helpers\UserHelper::userById($service->doctor);
                             @endphp
                             <input type="text" class="form-control" id="" placeholder="" name="username" value="{{$doctor->name}}" disabled>
+                            @endif
                         </div>
                     </div>
                    <div class="col-md-6" style="clear:both">
                         <div class="form-group">
                             <label for="pwd">Consultation Type</label>
+                            @if($service->service_type>0)
                             @php
                                 $type=\App\Helpers\UserHelper::appointmentType($service->service_type);
                             @endphp
                             <input type="text" class="form-control" id="" placeholder="" name="type" value="{{$type->type}}" disabled>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -87,9 +92,10 @@
                         <div class="form-group">
                             <label for="email">Status</label>
                             <select name="status" class="form-control">
+                                <option value="Confirmed" {{old('status')=='Confirmed'?'Selected':($service->status=='Confirmed'?'Selected':'')}}>Confirmed</option>
                                 <option value="Active" {{old('status')=='Active'?'Selected':($service->status=='Active'?'Selected':'')}}>Active</option>
-                                <option value="Inactive" {{old('status')=='Confirmed'?'Selected':($service->status=='Confirmed'?'Selected':'')}}>Confirmed</option>
-                                <option value="Inactive" {{old('status')=='Rescheduled'?'Selected':($service->status=='Rescheduled'?'Selected':'')}}>Rescheduled</option>
+
+                                <option value="Rescheduled" {{old('status')=='Rescheduled'?'Selected':($service->status=='Rescheduled'?'Selected':'')}}>Rescheduled</option>
                             </select>
                         </div>
                     </div>
@@ -118,7 +124,7 @@
 
                         <div class="form-group">
                             <label for="pwd"> Confirmed Date</label>
-                            <input type="text" class="form-control datetimepicker" id="confirmeddatepicker" placeholder="" name="date" value="{{old('date')?old('date'):$service->date}}" >
+                            <input type="text" class="form-control datetimepicker" id="confirmeddatepicker" placeholder="" name="confirmed_date" value="{{old('date')?old('date'):$service->confirmed_date!="0000-00-00" ?  $service->confirmed_date : $service->date}}" >
 
                         </div>
                     </div>
@@ -126,7 +132,7 @@
 
                         <div class="form-group">
                             <label for="pwd">Confirmed Time</label>
-                            <input type="text" class="form-control timepicker" placeholder="" name="time" value="{{old('time')?old('time'):$service->time}}" >
+                            <input type="text" class="form-control timepicker" placeholder="" id="confirmed_time" name="confirmed_time" value="{{old('time')?old('time'):$service->confirmed_time !="" ?  $service->confirmed_time : $service->time}}" >
 
                         </div>
                     </div>
@@ -149,7 +155,7 @@
                         <div class="form-group">
                             <input type="hidden" name="id" value="{{$service->id}}">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <button  type="submit" class="btn btn-outline-success">Send </button>
+                            <button  type="submit"  class="btn btn-outline-success">Send </button>
                             <button  type="cancel" class="btn btn-outline-danger">Cancel</button>
                         </div>
                     </div>
@@ -164,11 +170,20 @@
 
 
 @section('after_scripts')
-    <script src="{{asset('public/assets/admin/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js')}}"></script>
-    <script src="{{URL::asset('public/assets/admin/vendors/bootstrap-datetimepicker/moment.js')}}"></script>
+
+
 
     <script src="{{asset('public/assets/admin/ckeditor/ckeditor.js')}}"></script>
     <script type="text/javascript">
+        $(function () {
+            $('#confirmed_time').datetimepicker({
+                format: 'LT'
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+
         CKEDITOR.replace('content', {
             //filebrowserUploadUrl: "{{url('admin/ckeditor-upload/')}}?_token={{csrf_token()}}",
             filebrowserImageBrowseUrl: "{{url('laravel-filemanager/')}}?type=Images",
@@ -186,7 +201,12 @@
             format: "YYYY-MM-DD"
         });
 
+
+
+
+
     </script>
+
 
 
 @endsection

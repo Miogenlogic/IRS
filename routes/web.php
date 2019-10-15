@@ -173,7 +173,7 @@ Route::group(['prefix' => 'admin'], function(){
 
         //Reply Inquiry
         Route::get('/reply-inquiry/{id}', ['uses' => 'InquiryController@replyInquiry']);
-        Route::get('/reply-inquiry-send', ['uses' => 'InquiryController@getTableReplyInquiry']);
+       // Route::get('/reply-inquiry-send', ['uses' => 'InquiryController@getTableReplyInquiry']);
 
         Route::post('/confirm-emil', ['uses' => 'InquiryController@emilConfirm']);
 
@@ -254,5 +254,12 @@ Route::post('/loginchk', [ 'uses' => 'Auth\LoginController@checklogin']);
 
 Route::get('/registration', ['uses' => 'Auth\LoginController@registration']);
 
+Route::post('/register-save', [ 'uses' => 'Auth\LoginController@registerStore']);
+//mail for otp
+Route::post('/otp-mail', [ 'uses' => 'Auth\LoginController@otpMail']);
+
+Route::get('/otp-form', ['uses' => 'Auth\LoginController@otpValidate']);
+
+Route::post('/otp-validate/', ['uses' => 'Auth\LoginController@otpValidation']);
 
 Route::get('/logout', [ 'uses' => 'Auth\LoginController@logout']);

@@ -1,16 +1,113 @@
 @extends('frontend.include.layout')
 
 @section('after_header')
+    <style>
+        ul.tabs{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        ul.tabs li{
+            background: none;
+            color: #222;
+            display: inline-block;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        ul.tabs li.current{
+            background: #ededed;
+            color: #222;
+        }
+
+        .tab-content{
+            display: none;
+            background: #ededed;
+            padding: 15px;
+        }
+
+        .tab-content.current{
+            display: inherit;
+        }
+
+
+        /*Accordion CSS*/
+        .accordion{
+            height: 46px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(225,225,225,1);
+            overflow: hidden;
+            transition: height 0.3s ease;
+            margin-bottom: 8px;
+        }
+        .accordion .accordion_tab{
+            padding: 9px;
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .accordion .accordion_tab .accordion_arrow{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion .accordion_tab .accordion_arrow img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .accordion .accordion_tab.active .accordion_arrow{
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .accordion.active{
+            height: 320px;
+        }
+
+        .accordion .accordion_content{
+            padding: 20px;
+            border-top: 1px solid #e9e9e9;
+        }
+
+        .accordion .accordion_content .accordion_item{
+            margin-bottom: 20px;
+        }
+
+        .accordion .accordion_content .accordion_item p.item_title{
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #207dc8;
+        }
+
+        .accordion .accordion_content .accordion_item p:last-child{
+            color: #9a9b9f;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    </style>
+    <style>
+        .welcome-bot p {
+            margin-bottom: 0px;
+        }
+    </style>
 @endsection
 
 @section('body')
     <div class="page-content">
         
-        <style>
-            .welcome-bot p {
-                margin-bottom: 0px;
-            }
-        </style>
+
         
         <!--section slider-->
         <div class="section mt-0">
@@ -302,4 +399,35 @@
         </div>-->
     <!--//section call us-->
     </div>
+@endsection
+
+
+@section("after_scripts")
+    <script>
+        $(document).ready(function(){
+
+            $('ul.tabs li').click(function(){
+                var tab_id = $(this).attr('data-tab');
+
+                $('ul.tabs li').removeClass('current');
+                $('.tab-content').removeClass('current');
+
+                $(this).addClass('current');
+                $("#"+tab_id).addClass('current');
+            })
+
+        })
+    </script>
+
+    <!--Accordion-->
+    <script>
+        $(".accordion_tab").click(function(){
+            $(".accordion_tab").each(function(){
+                $(this).parent().removeClass("active");
+                $(this).removeClass("active");
+            });
+            $(this).parent().addClass("active");
+            $(this).addClass("active");
+        });
+    </script>
 @endsection

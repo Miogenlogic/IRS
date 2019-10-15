@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,13 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            //'page'=> 'required|regex:/^[a-zA-Z0-9\-]+( [a-zA-Z0-9\-\s]+)*$/',
-           // 'title'=> 'required|regex:/^[a-zA-Z0-9\-]+( [a-zA-Z0-9\-\s]+)*$/',
-           'name'=> 'required',
-
+            'name'=> 'required',
+            //'featured'=> 'required',
+            //'title'=> 'required',
             'email'=> 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
-            'username'=> 'required',
+
             'phone' => 'min:10|numeric'
+
 
         ];
     }
@@ -39,14 +39,14 @@ class UserRequest extends FormRequest
     {
             return [
                 'name.required' => 'Field is required.',
-
+                //'page.regex' => 'Field must consist of a-zA-Z0-9.',
+                //'title.required' => 'Field is required.',
+                //'title.regex' => 'Field must consist of a-zA-Z0-9.',
                 'email.required' => 'Field is required.',
 
                 'email.regex' => 'Please enter a valid email address',
-                'username.required' => 'Field is required.',
-
                 'phone.min' => 'Please enter 10 digit phone number',
-               // 'phone.max' => 'Please enter only 10 digit phone number',
+                // 'phone.max' => 'Please enter only 10 digit phone number',
                 'phone.numeric' => 'Please enter numeric phone number',
                  ];
     }

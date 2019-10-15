@@ -8505,7 +8505,7 @@ form label.error {
   color: #ff0000;
   font-size: 13px !important;
   opacity: 1 !important;
-  margin-top: -18px; }
+  margin-top: 0px; }
 
 .modal-form .modal-content .form-control + label.error {
   margin-top: 0; }

@@ -3,6 +3,12 @@
 @section('after_styles')
 
 @endsection
+@php
+    //$userSession=Session::get('user');
+    $country=App\Helpers\UserHelper::country();
+    //dd($userSession);
+//print_r();die;
+@endphp
 
 @section('body')
     <!-- Last Records from Every scenerio -->
@@ -88,13 +94,14 @@
                 <div class="row">
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="email">Mobile</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="phone" value="{{old('phone')?old('phone'):$user_detail->phone}} ">
-                            @if($errors->has('phone'))
-                                <div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
-                            @endif
+                            <label for="email">Status</label>
+                            <select name="status" class="form-control">
+                                <option value="Active" {{old('status')=='Active'?'Selected':($user->status=='Active'?'Selected':'')}}>Active</option>
+                                <option value="Inactive" {{old('status')=='Inactive'?'Selected':($user->status=='Inactive'?'Selected':'')}}>Inactive</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
                             <label for="email">Age</label>
@@ -105,8 +112,25 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
+                <div class="col-md-6" style="clear:both">
+                    <div class="form-group">
+                        <label for="pwd">Image</label>
+                        <input type="file" class="form-control" id="" placeholder="" name="image" value="{{old('image')?old('image'):$user_detail->image}}">
+                        @if($user_detail['image']!='')
+
+                            <img src="{{asset('public/assets/uploads/user/image').'/'.$user_detail->image}}"  style="width:100px;height:100px;margin-top: 10px;">
+
+                        @endif
+                        @if($errors->has('image'))
+                            <div class="invalid-feedback" style="display:block;">{{$errors->first('image')}}</div>
+                        @endif
+                    </div>
+                </div>
+
+
+
+
                     <div class="col-md-6" style="clear:both;margin-bottom:1rem;font-size: 0.875rem;">
                         <div class="form-group" style="margin-bottom:0.5rem">
                             <label for="pwd">Gender</label>
@@ -124,24 +148,44 @@
                 <div class="row">
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="email">Status</label>
-                            <select name="status" class="form-control">
-                                <option value="Active" {{old('status')=='Active'?'Selected':($user->status=='Active'?'Selected':'')}}>Active</option>
-                                <option value="Inactive" {{old('status')=='Inactive'?'Selected':($user->status=='Inactive'?'Selected':'')}}>Inactive</option>
+                            <label for="email">Country</label>
+                            <select name="usercountry" id="usercountry" class="form-control">
+
+                                <option selected="selected" disabled="disabled">Select Country For Phonecode</option>
+                                @foreach($country as $wks)
+                                    <option value="{{$wks->id.'-'.$wks->phonecode}}" {{(old('country_id')==$user_detail->country_id)? 'selected':($wks->phonecode==$user_detail->country_id?'Selected':'')}}>{{$wks->country}}</option>
+
+
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6" style="clear:both">
-                        <div class="form-group">
-                        </div>
-                    </div>
+
+
+                            <div class="col-md-6" style="clear:both">
+                                <div class="form-group">
+                                    <label style="position: relative;
+    right: 54px;" for="email">Mobile</label>
+                                    <input style="margin-top: 22px;
+    width: 12%;
+    float: left;" type="text" id="xyz" class="form-control" value="{{old('country_id')?old('country_id'):$user_detail->country_id}}" readonly >
+                                    <input style="  width: 88%;
+    float: left;" type="text" class="form-control" id="" placeholder="enter" name="phone" value="{{old('phone')?old('phone'):$user_detail->phone}} ">
+
+                                    @if($errors->has('phone'))
+                                        <div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
+                                    @endif
+                                </div>
+                            </div>
+
+
                 </div>
 
                 <div class="row">
                     <div class="col-md-12" style="clear:both">
                         <div class="form-group">
                             <input type="hidden" name="id" value="{{$user->id}}">
-                            <input type="hidden" name="id" value="{{$user_detail['id']}}">
+
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <button  type="submit" class="btn btn-outline-success">Submit</button>
                             <button  type="cancel" class="btn btn-outline-danger">Cancel</button>
@@ -165,7 +209,13 @@
             //startDate: 'd'
         });
     </script>-->
-
+    <script type="text/javascript">
+        $("#usercountry").change(function(){
+            var countryCode=$(this).val();
+            var res = countryCode.split("-");
+            $("#xyz").val('+'+res[1]);
+        });
+    </script>
 
 
 

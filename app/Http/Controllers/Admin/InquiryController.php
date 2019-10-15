@@ -62,7 +62,7 @@ class InquiryController extends Controller
     {
 
         //$service = Service::where('service_id','=',$inuiry->select_service)->get();
-
+       $book=Booking::find($id);
         $service = Booking::select('booking.*','service.title')
             ->leftjoin('service','service.id','=','booking.select_service')
             ->where('booking.id','=',$id)
@@ -71,42 +71,41 @@ class InquiryController extends Controller
 
 
         return view('admin.inquiry.replyInquiry')
+          ->with('book',$book)
             ->with('service',$service);
 
     }
 
     public function emilConfirm(Request $request)
     {
-        $obj = Booking::where('email','=',$request['subscribe_mail'])->get()->first();
-        if(!isset($obj->email)){
-            $obj = new Booking();
-            $obj->name = $request['name'];
-            $obj->email = $request['subscribe_mail'];
-            $obj->phone = $request['phone'];
-            $obj->age = $request['age'];
-            $obj->select_service = $request['select_service'];
-            $obj->doctor = $request['doctor'];
-            $obj->select_type = $request['select_type'];
-            $obj->date = $request['date'];
-            $obj->time = $request['time'];
-            $obj->comment = $request['comment'];
+
+        $obj = Booking::where('email','=',$request['email'])->get()->first();
+        if(!isset($obj->email)) {
+            $obj = Booking::find($request['id']);
+            $obj->status = $request['status'];
+            $obj->confirmed_date = $request['confirmed_date'];
+            $obj->confirmed_time = $request['confirmed_time'];
+            $obj->content = $request['content'];
+
             $obj->save();
 
-            $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
-            //email to customer
-            Mail::send('admin.mail.confirmedmail', $data, function($message) use ($data) {
-                $message->to($data['email'],'Subscriber')->subject('Subscription');
-                $message->from('support@biopedclinic.com','Bioped Clinic');
-            });
-            echo 'Success';
-            exit(0);
-        }else{
-            echo 'duplicate';
-            exit(0);
+            $servicetype = \App\Helpers\UserHelper::servicetype($obj->select_service);
+
+            $doctor = \App\Helpers\UserHelper::userById($obj->doctor);
+
+            $type = \App\Helpers\UserHelper::appointmentType($obj->service_type);
+
+            $to_email = $obj->email;
+            $subject = 'Booking Confirmation Mail';
+            $message = view('admin.mail.confirmmail', ['name' => $obj->name, 'email' => $obj->email, 'phone' => $obj->phone, 'age' => $obj->age, 'select_service' => $servicetype->title, 'doctor' => $doctor->name, 'select_type' => $type->type, 'date' => $obj->date, 'time' => $obj->time, 'status' => $obj->status, 'confirmed_date' => $obj->confirmed_date, 'confirmed_time' => $obj->confirmed_time, 'comment' => $obj->comment, 'content' => $obj->content])->render();
+            $headers = 'From:' . \Config::get('env.service_mail');
+            mail($to_email, $subject, $message, $headers);
+
+
+            return redirect('admin/inquiry-list');
+
         }
 
-        echo 'failure';
-        exit(0);
     }
 
 }

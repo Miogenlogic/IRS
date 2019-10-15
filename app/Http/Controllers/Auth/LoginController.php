@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-//use App\Http\Requests\RegisterRequest;
+
+use App\Http\Requests\RegisterRequest;
+use App\Models\Email;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +16,7 @@ use Redirect;
 use Alert;
 use Input;
 use Eloquent;
+use DB;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\DoctorDetails;
@@ -139,39 +142,28 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-   /* public function register(){
+  public function registration(){
         return view('auth.registration');
     }
 
-    public function registerStore(RegisterRequest $request){
+     /*public function registerStore(RegisterRequest $request){
 
         //$myrequest=$request->all();
         //dd($myrequest);
 
-        $date = Carbon::now()->format('Ymd');
+        //$date = Carbon::now()->format('Ymd');
 
-        $getSeqNo = User::selectRaw('MAX(CAST(SUBSTRING(username, 10, 4) AS unsigned)) AS maxuser')
-            ->where('username', 'like', $date . "P%")
-            ->get()
-            ->first();
-        if ($getSeqNo->maxuser == NULL) {
-            $username = $date . "P0001";
-        } elseif ($getSeqNo->maxuser < 9) {
-            $username = $date . "P000" . ++$getSeqNo->maxuser;
-        } elseif ($getSeqNo->maxuser < 99) {
-            $username = $date . "P00" . ++$getSeqNo->maxuser;
-        } elseif ($getSeqNo->maxuser < 999) {
-            $username = $date . "P0" . ++$getSeqNo->maxuser;
-        } else {
-            $username = $date . "P" . ++$getSeqNo->maxuser;
-        }
+
+
         // echo $username;
 
         $obj = new User();
         $obj->email = $request['email'];
-        $obj->username = $username;
+        $obj->username = $request['email'];
         $obj->user_type = 'patient';
-        $obj->password = Hash::make($request['dob']);
+        $obj->otp = $randomid = mt_rand(100000,999999);
+
+
         // $obj->status = $request['status'];
         $obj->save();
         $id = $obj->id;
@@ -181,20 +173,82 @@ class LoginController extends Controller
         $obj1->user_id = $id;
         $obj1->name=$request['name'];
         $obj1->email=$request['email'];
-        $obj1->mobile=$request['mobile'];
-        $obj1->sex=$request['sex'];
-        $obj1->dob=$request['dob'];
+        $obj1->phone=$request['phone'];
+
         $obj1->address=$request['address'];
         $obj1->save();
 
-        DB::table('cn_role_user')
-            ->insert(['user_id' => $id, 'role_id' => 4]);
-        Session::flash('msg', $username);
-        return redirect('user-welcome');
+        DB::table('role_user')
+            ->insert(['user_id' => $id, 'role_id' => 2]);
+        //Session::flash('msg', $username);
+        return redirect('/');
 
 
     }*/
 
+    public function otpMail(RegisterRequest $request)
+    {
+        $obj = User::where('email','=',$request['email'])->get()->first();
+        $otp = mt_rand(100000,999999);
+        if(!isset($obj->email)) {
+            $obj = new User();
+            $obj->email = $request['email'];
+            $obj->username = $request['email'];
+            $obj->user_type = 'patient';
+            $obj->password = '$2y$10$USeFoOOaZir8KiyMcj3LKe78V8lrM.VeDIEk3MVniQOQ3RHDLarE.';
+            $obj->otp = $otp;
+            $obj->save();
+
+            $id = $obj->id;
+            $obj1 = new UserDetails();
+            $obj1->user_id = $id;
+            $obj1->name = $request['name'];
+            $obj1->email = $request['email'];
+            $obj1->phone = $request['phone'];
+
+            $obj1->address = $request['address'];
+            $obj1->save();
+
+            DB::table('role_user')
+                ->insert(['user_id' => $id, 'role_id' => 2]);
+
+            //$url=url('otp-validate'."/".$request['email']."/".$otp);
+            //$urlencode=urlencode($url);
+            $to_email = $obj->email;
+            $subject = 'OTP Generate';
+            $message = $contents = view('frontend.mail.otpMail', ['name' => $request['name'], 'email' => $request['email'], 'otp' => $otp])->render();
+            $headers = 'From:' . \Config::get('env.service_mail');
+            mail($to_email, $subject, $message, $headers);
+
+            return redirect('/otp-form')
+                ->with('email', $obj->email);
+            //email to subscriber
+            /*
+             *  $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
+             * Mail::send('frontend.mail.subscription', $data, function($message) use ($data) {
+                $message->to($data['email'],'Subscriber')->subject('Subscription');
+                $message->from('support@biopedclinic.com','Bioped Clinic');
+            });
+            echo 'Success';
+            exit(0);
+        }else{
+            echo 'duplicate';
+            exit(0);
+        }
+
+        echo 'failure';
+        exit(0);*/
+
+        }
+    }
+
+    public function otpValidate(){
+        return view('auth.otpValidate');
+    }
+    public function otpValidation(){
+
+
+    }
 
 
 }

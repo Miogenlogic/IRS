@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         $title='Add User';
         $role=Role::where('name','!=','admin')->get();
-        return view('admin.USER.addUser')
+        return view('admin.user.addUser')
             ->with('role',$role);
     }
 
@@ -38,6 +38,7 @@ class UserController extends Controller
         //  $myrequest=$request->all();
         //dd($myrequest);
         $user_type=explode('-',$request['user_type']);
+        $country=explode('-',$request['usercountry']);
         $obj =new User();
         $obj->username = $request['username'];
         $obj->email = $request['email'];
@@ -52,11 +53,12 @@ class UserController extends Controller
         $obj2->name=$request['name'];
         $obj2->email=$request['email'];
         $obj2->address=$request['address'];
+        $obj2->country_id=$country[1];
         $obj2->phone=$request['phone'];
         $obj2->age=$request['age'];
         $obj2->gender=$request['gender'];
 
-        $obj2->save();
+
         if ($request->file('image')) {
             $imgfile = $request->file('image');
             $tmp = explode('.', $imgfile->getClientOriginalName());
@@ -103,7 +105,7 @@ class UserController extends Controller
             })*/
 
             ->addColumn('action', function ($table) {
-                $btns = ' <a href="' . url('admin/user-edit/' . $table->id) . '" class="btn btn-outline-success" >EDIT</a>';
+                $btns = ' <a href="' . url('admin/user-edit/' . $table->user_id) . '" class="btn btn-outline-success" >EDIT</a>';
               //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
                 return $btns;
             })
@@ -133,10 +135,12 @@ class UserController extends Controller
     public function userEditStore(UserRequest $request)
     {
         //  $myrequest=$request->all();
-        //dd($myrequest);
+       //dd($request);
         $user_type=explode('-',$request['user_type']);
+        $country=explode('-',$request['usercountry']);
         $obj=User::find($request['id']);
         $obj->username = $request['username'];
+        //dd($request);
         $obj->email = $request['email'];
         if($request['password']!=NULL){
             $obj->password=Hash::make($request['password']);
@@ -154,6 +158,7 @@ class UserController extends Controller
         $obj2->name=$request['name'];
         $obj2->email=$request['email'];
         $obj2->address=$request['address'];
+        $obj2->country_id=$country[1];
         $obj2->phone=$request['phone'];
         $obj2->age=$request['age'];
         $obj2->gender=$request['gender'];

@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/color/color.css')}}" >
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/css/user-module.css')}}" >
 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
     <!--Favicon-->
     <link rel="icon" href="{{URL::asset('public/assets/frontend/images/logo.jpeg')}}" type="image/x-icon">
     <!--<link rel="icon" href="{{URL::asset('public/assets/frontend/images/favicon.png')}}" type="image/x-icon">-->

@@ -40,7 +40,7 @@
                         <a style="margin-left: 8px;color: darkgray;font-style: oblique;"><b>{{$settings['logo-title']}}</b></a>
                     @endif
                 </div>
-                <div class="col-lg ml-auto header-nav-wrap">
+                <div class="col-lg ml-auto header-nav-wrap ">
                     <div class="header-nav js-header-nav">
                         <nav class="navbar navbar-expand-lg btco-hover-menu">
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -62,13 +62,19 @@
                             </div>
                         </nav>
                     </div>
-                    <div class="header-search">
-                        <form action="#" class="form-inline">
-                            <i class="icon-search"></i>
-                            <input type="text" placeholder="Search">
-                            <button type="submit"><i class="icon-search"></i></button>
-                        </form>
-                    </div>
+                    {{--<div class="col-lg ml-auto header-nav-wrap lg-3">--}}
+
+                            {{--<form action="#" class="form-inline">--}}
+                            {{--<i class="icon-search"></i>--}}
+                            {{--<input type="text" placeholder="Search">--}}
+                            {{--<button type="submit"><i class="icon-search"></i></button>--}}
+                            {{--</form>--}}
+                         {{----}}
+
+
+                       {{----}}
+                    {{--</div>--}}
+
 
                 </div>
             </div>

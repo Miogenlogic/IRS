@@ -57,26 +57,6 @@
                     </div>
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="pwd">Meta Key</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="meta_key" value="{{old('meta_key')?old('meta_key'):$cmsmain->meta_key}}">
-                            @if($errors->has('meta_key'))
-                                <div class="invalid-feedback" style="display:block;">{{$errors->first('meta_key')}}</div>
-                            @endif
-                        </div>
-
-                    </div>
-                    <div class="col-md-6" style="clear:both">
-                        <div class="form-group">
-                            <label for="pwd">Meta Description</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="meta_description" value="{{old('meta_description')?old('meta_description'):$cmsmain->meta_description}}">
-                            @if($errors->has('meta_description'))
-                                <div class="invalid-feedback" style="display:block;">{{$errors->first('meta_description')}}</div>
-                            @endif
-                        </div>
-
-                    </div>
-                    <div class="col-md-6" style="clear:both">
-                        <div class="form-group">
                             <label for="email">Status</label>
                             <select name="status" class="form-control">
                                 <option value="Active" {{old('status')=='Active'?'Selected':($cmsmain->status=='Active'?'Selected':'')}}>Active</option>
@@ -86,6 +66,28 @@
                         <div class="col-md-6" style="clear:both">
                         </div>
                     </div>
+                    <div class="col-md-6" style="clear:both">
+                        <div class="form-group">
+                            <label for="pwd">Meta Key</label>
+                            <textarea id="" class="form-control"  placeholder="" name="meta_key" >{{old('meta_key')?old('meta_key'):$cmsmain->meta_key}}</textarea>
+
+                        @if($errors->has('meta_key'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('meta_key')}}</div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-md-6" style="clear:both">
+                        <div class="form-group">
+                            <label for="pwd">Meta Description</label>
+                            <textarea id="" class="form-control"  placeholder="" name="meta_description" >{{old('meta_description')?old('meta_description'):$cmsmain->meta_description}}</textarea>
+                            @if($errors->has('meta_description'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('meta_description')}}</div>
+                            @endif
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="clear:both">
