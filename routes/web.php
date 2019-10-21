@@ -177,6 +177,11 @@ Route::group(['prefix' => 'admin'], function(){
 
         Route::post('/confirm-emil', ['uses' => 'InquiryController@emilConfirm']);
 
+     //reply Questions
+        Route::get('/question-list', ['uses' => 'InquiryController@questionList']);
+        Route::get('/question-get-table', ['uses' => 'InquiryController@getTableQuestion']);
+        Route::get('/reply-question/{id}', ['uses' => 'InquiryController@replyQuestion']);
+        Route::post('/question-emil-send', ['uses' => 'InquiryController@emilQuestion']);
 
     });
 });
@@ -192,7 +197,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 //frontend//
-Route::group(['namespace' => 'Frontend'], function(){
+Route::group(['namespace' => 'frontend'], function(){
     Route::group(['middleware' => 'auth'], function() {
 
         Route::get('my-dashboard', ['uses' => 'HomeController@mydashboard']);
@@ -242,6 +247,9 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/edit-profile', ['uses' => 'PatientController@ProfileEdit']);
     Route::post('/edit-profile-save', [ 'uses' => 'PatientController@ProfileSave']);
 
+    Route::get('/appointment-list', ['uses' => 'PatientController@appointmentList']);
+
+    Route::get('/appointment-get-table', ['uses' => 'PatientController@getTableAppointment']);
 
 
 
@@ -258,8 +266,15 @@ Route::post('/register-save', [ 'uses' => 'Auth\LoginController@registerStore'])
 //mail for otp
 Route::post('/otp-mail', [ 'uses' => 'Auth\LoginController@otpMail']);
 
-Route::get('/otp-form', ['uses' => 'Auth\LoginController@otpValidate']);
+Route::get('/registration-validation/{str}', ['uses' => 'Auth\LoginController@registrationValidation']);
 
-Route::post('/otp-validate/', ['uses' => 'Auth\LoginController@otpValidation']);
+Route::post('/registration-validation-check', ['uses' => 'Auth\LoginController@registrationValidationCheck']);
+
+Route::get('/activation/', ['uses' => 'Auth\LoginController@activation']);
+
+Route::get('/forgot-password/', ['uses' => 'Auth\LoginController@forgotPassword']);
+Route::post('/reset-mail', [ 'uses' => 'Auth\LoginController@resetMail']);
 
 Route::get('/logout', [ 'uses' => 'Auth\LoginController@logout']);
+
+

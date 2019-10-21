@@ -6,7 +6,7 @@ THANK YOU SO MUCH FOR BOOKING.
 YOUR BOOKING DETAILS ARE BELOW
 NAME:{{$name}}
 EMAIL:{{$email}}
-PHONE NO:{{$phone}}
+PHONE NO:+{{$country_id}} {{$phone}}
 AGE:{{$age}}
 SERVICE NAME:{{$select_service}}
 DOCTOR NAME:{{$doctor}}
@@ -17,4 +17,4 @@ COMMENT:{{$comment}}
 
 YOUR CONFIRMED BOOKING DATE IS {{$confirmed_date}} AND CONFIRMED TIME IS {{$confirmed_time}}
 
-{{$content}}
+{!! $content !!}

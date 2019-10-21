@@ -1,6 +1,7 @@
 @extends('frontend.include.layout')
 @php
-//print_r($user_session);die;
+	$country=App\Helpers\UserHelper::country();
+ // print_r($Patient);die;
 @endphp
 		<!--section-->
 		@section('after_header')
@@ -16,7 +17,11 @@
 		   </div>
 	    @endsection
 		<!--//section-->
-
+@php
+	$user_session=Session::get('user');
+	//$country=App\Helpers\UserHelper::country();
+    //dd($user_session);
+@endphp
 		<!--section-->
 		@section('body')
 
@@ -39,11 +44,11 @@
 									<!-- SIDEBAR USER TITLE -->
 									<div class="profile-usertitle">
 										<div class="profile-usertitle-name">
-											John Doe
+											{{$user_session['name']}}
 										</div>
 										<div class="profile-usertitle-job">
-											<div><i class="icon-email"></i> email@domain.com</div>
-											<div class="mt-5"><i class="icon-phone"></i> 0123456789</div>
+											<div><i class="icon-email"></i>  {{$user_session['email']}}</div>
+											<div class="mt-5"><i class="icon-phone"></i>{{$user_session['user_type']}}</div>
 										</div>
 									</div>
 									<!-- END SIDEBAR USER TITLE -->
@@ -66,9 +71,9 @@
 											<li>
 												<a href="{{url('appointments')}}">Appointments </a>
 											</li>
-											<li>
-												<a href="{{url('reschedule-appointments')}}">Re-Schedule Appointments </a>
-											</li>
+											<!--<li>
+												<a href="{-{url('reschedule-appointments')}}">Re-Schedule Appointments </a>
+											</li>-->
 										</ul>
 									</div>
 									<!-- END MENU -->
@@ -82,15 +87,76 @@
 										<form method="post" action="{{url('/edit-profile-save')}}" enctype="multipart/form-data">
 
 											<div class="row">
+												<div class="col-md-12">
+													<h4 style="padding:2px;" class="card-title"> Edit User</h4>
+												</div>
+											</div>
+
+
+											<div class="row">
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
-														<label for="pwd">Name</label>
-														<input type="text" class="form-control" id="" placeholder="" name="name" value="{{old('name')?old('name'):$Patient->name}}">
+														<label for="email">Name</label>
+														<input type="text" class="form-control" id="" placeholder="" name="name" value="{{old('name')?old('name'):$Patient->name}} ">
 														@if($errors->has('name'))
 															<div class="invalid-feedback" style="display:block;">{{$errors->first('name')}}</div>
 														@endif
 													</div>
 												</div>
+												<div class="col-md-6" style="clear:both">
+													<div class="form-group">
+														<label for="pwd">Email</label>
+														<input type="text" class="form-control" id="" placeholder="" name="email" value="{{old('email')?old('email'):$profile->email}} ">
+														@if($errors->has('email'))
+															<div class="invalid-feedback" style="display:block;">{{$errors->first('email')}}</div>
+														@endif
+													</div>
+												</div>
+											</div>
+												<div class="row">
+													<div class="col-md-6" style="clear:both">
+														<div class="form-group">
+															<label for="pwd">Username</label>
+															<input type="text" class="form-control" id="" placeholder="" name="username" value="{{old('username')?old('username'):$profile->username}} ">
+															@if($errors->has('username'))
+																<div class="invalid-feedback" style="display:block;">{{$errors->first('username')}}</div>
+															@endif
+														</div>
+													</div>
+													<div class="col-md-6" style="clear:both">
+														<div class="form-group">
+															<label for="email">Password</label>
+															<input type="text" class="form-control" id="" placeholder="" name="password" >
+														</div>
+													</div>
+											    </div>
+
+
+
+
+
+											<div class="row">
+												<div class="col-md-6" style="clear:both">
+													<div class="form-group">
+														<label for="email">Status</label>
+														<select name="status" class="form-control">
+															<option value="Active" {{old('status')=='Active'?'Selected':($profile->status=='Active'?'Selected':'')}}>Active</option>
+															<option value="Inactive" {{old('status')=='Inactive'?'Selected':($profile->status=='Inactive'?'Selected':'')}}>Inactive</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="col-md-6" style="clear:both">
+													<div class="form-group">
+														<label for="email">Age</label>
+														<input type="text" class="form-control datepicker" id="" placeholder="" name="age" value="{{old('age')?old('age'):$Patient->age}} ">
+														@if($errors->has('age'))
+															<div class="invalid-feedback" style="display:block;">{{$errors->first('age')}}</div>
+														@endif
+													</div>
+												</div>
+											</div>
+											<div class="row">
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
 														<label for="pwd">Image</label>
@@ -104,84 +170,64 @@
 															<div class="invalid-feedback" style="display:block;">{{$errors->first('image')}}</div>
 														@endif
 													</div>
-
 												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6" style="clear:both">
-													<div class="form-group">
-														<label for="option">Phone</label>
-														<input type="text" class="form-control" id="" placeholder="" name="phone" value="{{old('phone')?old('phone'):$Patient->phone}}">
-														@if($errors->has('phone'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
-														@endif
-													</div>
 
-												</div>
-												<div class="col-md-6" style="clear:both">
-													<div class="form-group">
-														<label for="email">Email</label>
-														<input type="text" class="form-control" id="" placeholder="" name="email" value="{{old('email')?old('email'):$Patient->email}}">
-														@if($errors->has('email'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('email')}}</div>
-														@endif
-													</div>
 
-												</div>
-											</div>
 
-											<div class="row">
-												<div class="col-md-6" style="clear:both">
-													<div class="form-group">
-														<label for="email">Age</label>
-														<input type="text" class="form-control" id="" placeholder="" name="age" value="{{old('age')?old('age'):$Patient->age}}">
-														@if($errors->has('age'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('age')}}</div>
-														@endif
-													</div>
 
-												</div>
-												<div class="col-md-6" style="clear:both">
-													<div class="form-group">
-														<label for="email">Gender</label>
+												<div class="col-md-6" style="clear:both;margin-bottom:1rem;font-size: 0.875rem;">
+													<div class="form-group" style="margin-bottom:0.5rem">
+														<label for="pwd">Gender</label>
 														<select name="gender" class="form-control">
 															<option value="MALE" {{old('gender')=='MALE'?'Selected':($Patient->gender=='MALE'?'Selected':'')}}>MALE</option>
-															<option value="FEMALE" {{old('gender')=='FEMALE'?'Selected':($Patient->gender=='FEMALE'?'Selected':'')}}>FEMALE</option>
+															<option value="FEMALE" {{old('FEMALE')=='FEMALE'?'Selected':($Patient->gender=='FEMALE'?'Selected':'')}}>FEMALE</option>
 														</select>
 													</div>
 
 												</div>
+
 											</div>
+
 
 											<div class="row">
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
 														<label for="email">Country</label>
-															<select name="country" class="form-control">
-																@foreach($country as $coun)
-																	<option value="{{$coun->country}}" {{(old('country')==$Patient->country)? 'selected':($coun->country==$Patient->country?'Selected':'')}}>{{$coun->country}}</option>
-                                                                @endforeach
+														<select name="usercountry" id="usercountry" class="form-control">
 
-															</select>
+															<option selected="selected" disabled="disabled">Select Country For Phonecode</option>
+															@foreach($country as $wks)
+																<option value="{{$wks->id.'-'.$wks->phonecode}}" {{(old('country_id')==$Patient->country_id)? 'selected':($wks->phonecode==$Patient->country_id?'Selected':'')}}>{{$wks->country}}</option>
+
+
+															@endforeach
+														</select>
 													</div>
 												</div>
+
 
 												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
-														<label for="pwd">State</label>
-														<input type="text" class="form-control" id="" placeholder="" name="state" value="{{old('state')?old('state'):$Patient->state}}">
-														@if($errors->has('state'))
-															<div class="invalid-feedback" style="display:block;">{{$errors->first('state')}}</div>
+														<label style="position: relative;
+    right: 54px;" for="email">Mobile</label>
+														<input style="margin-top: 27px;
+    width: 12%;
+    float: left;" type="text" id="xyz" class="form-control" value="{{old('country_id')?old('country_id'):$Patient->country_id}}" readonly >
+														<input style="  width: 88%;
+    float: left;" type="text" class="form-control" id="" placeholder="enter" name="phone" value="{{old('phone')?old('phone'):$Patient->phone}} ">
+
+														@if($errors->has('phone'))
+															<div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
 														@endif
 													</div>
-
 												</div>
 											</div>
+
 											<div class="row">
-												<div class="col-md-12" style="clear:both">
+												<div class="col-md-6" style="clear:both">
 													<div class="form-group">
-														<label for="address">Address</label>
-                                                           <textarea type="text" class="form-control" id="address" placeholder="" name="address">{{old('address')?old('address'):$Patient->address}}</textarea>
+														<label for="email">Address</label>
+														<textarea class="form-control" rows="4" id="" placeholder="" name="address" >{{old('address')?old('address'):$Patient->address}}</textarea>
 														@if($errors->has('address'))
 															<div class="invalid-feedback" style="display:block;">{{$errors->first('address')}}</div>
 														@endif
@@ -189,12 +235,11 @@
 												</div>
 											</div>
 
-
 											<div class="row">
 												<div class="col-md-12" style="clear:both">
 													<div class="form-group">
-														<input type="hidden" name="id" value="{{$Patient->id}}">
-
+														<input type="hidden" name="id" value="{{$profile->id}}">
+														<!--<input type="hidden" name="id" value="{-{$Patient['id']}}">-->
 														<input type="hidden" name="_token" value="{{csrf_token()}}">
 														<button  type="submit" class="btn btn-outline-success">Submit</button>
 														<button  type="cancel" class="btn btn-outline-danger">Cancel</button>
@@ -217,6 +262,26 @@
 			</div>
 
 		@endsection
+
+@section('after_scripts')
+	<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript">
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'//,
+            //startDate: 'd'
+        });
+    </script>-->
+	<script type="text/javascript">
+        $("#usercountry").change(function(){
+            var countryCode=$(this).val();
+            var res = countryCode.split("-");
+            $("#xyz").val('+'+res[1]);
+        });
+	</script>
+
+
+
+@endsection
 
 
 

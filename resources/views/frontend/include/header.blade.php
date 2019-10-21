@@ -58,11 +58,28 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{url('contact')}}">Contact</a>
                                     </li>
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link" href="{-{url('registration')}}">Register</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{-{url('login')}}">Login</a>
+                                    </li>-->
+                                    <div class="header-cart nav-item dropdown" style="margin-top: 20px">
+                                        <a href="#" class="icon icon-user" data-toggle="dropdown"></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{url('login')}}">Login</a></li>
+                                            <li><a class="dropdown-item" href="{{url('registration')}}">Register</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="header-nav js-header-nav">
+                                    </div>
                                 </ul>
                             </div>
                         </nav>
                     </div>
-                    {{--<div class="col-lg ml-auto header-nav-wrap lg-3">--}}
+
+
+                            {{--<div class="col-lg ml-auto header-nav-wrap lg-3">--}}
 
                             {{--<form action="#" class="form-inline">--}}
                             {{--<i class="icon-search"></i>--}}

@@ -1,7 +1,7 @@
 
-Dear {{$name}}
+Dear Sir/Madam
 
-THANK YOU SO MUCH FOR REGISTRATION.
+
 Click to
 <a href="{{$url}}">Verify Email</a> or copy the url and run
 

@@ -143,9 +143,10 @@
         <label for="password">Password:</label>
         <input type="password" name="password" class="form-control" placeholder="Your password">
         <div id="lower">
-            <input type="checkbox" name="remember_me" value=""><label class="check" for="checkbox">Keep me logged in</label>
+            <input type="checkbox" name="remember_me" value="" style="margin-top: 5px"><label class="check" for="checkbox" style="padding-bottom: 15px">Keep me logged in</label>
             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
             <input type="submit" value="Login">
+            <div style="padding-left: 15px"><a href="{{url('forgot-password')}}">Forgot Password</a></div>
         </div><!--/ lower-->
     </form>
 </div><!--/ container-->

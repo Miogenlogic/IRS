@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\OtpFormRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ResetMailRequest;
 use App\Models\Email;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -142,60 +145,22 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-  public function registration(){
+    public function registration(){
         return view('auth.registration');
     }
 
-     /*public function registerStore(RegisterRequest $request){
-
-        //$myrequest=$request->all();
-        //dd($myrequest);
-
-        //$date = Carbon::now()->format('Ymd');
-
-
-
-        // echo $username;
-
-        $obj = new User();
-        $obj->email = $request['email'];
-        $obj->username = $request['email'];
-        $obj->user_type = 'patient';
-        $obj->otp = $randomid = mt_rand(100000,999999);
-
-
-        // $obj->status = $request['status'];
-        $obj->save();
-        $id = $obj->id;
-
-
-        $obj1= new UserDetails();
-        $obj1->user_id = $id;
-        $obj1->name=$request['name'];
-        $obj1->email=$request['email'];
-        $obj1->phone=$request['phone'];
-
-        $obj1->address=$request['address'];
-        $obj1->save();
-
-        DB::table('role_user')
-            ->insert(['user_id' => $id, 'role_id' => 2]);
-        //Session::flash('msg', $username);
-        return redirect('/');
-
-
-    }*/
 
     public function otpMail(RegisterRequest $request)
     {
         $obj = User::where('email','=',$request['email'])->get()->first();
         $otp = mt_rand(100000,999999);
         if(!isset($obj->email)) {
+            $country=explode('-',$request['country_id']);
             $obj = new User();
             $obj->email = $request['email'];
             $obj->username = $request['email'];
             $obj->user_type = 'patient';
-            $obj->password = '$2y$10$USeFoOOaZir8KiyMcj3LKe78V8lrM.VeDIEk3MVniQOQ3RHDLarE.';
+            $obj->password = '$2y$10$USeFoOOaZir8KiyMcj3LKeqwe78V8lrM.VeDIEk3MVniQOQ3RHDLarE.';
             $obj->otp = $otp;
             $obj->save();
 
@@ -204,6 +169,7 @@ class LoginController extends Controller
             $obj1->user_id = $id;
             $obj1->name = $request['name'];
             $obj1->email = $request['email'];
+            $obj1->country_id=$country[1];
             $obj1->phone = $request['phone'];
 
             $obj1->address = $request['address'];
@@ -211,17 +177,23 @@ class LoginController extends Controller
 
             DB::table('role_user')
                 ->insert(['user_id' => $id, 'role_id' => 2]);
+            $str=$request['email'].'||'.$otp;
+            $encryptStr=UserHelper::urlEncode($str);
+            $url=url('registration-validation'."/".$encryptStr);
 
-            //$url=url('otp-validate'."/".$request['email']."/".$otp);
-            //$urlencode=urlencode($url);
+            // To send HTML mail, the Content-type header must be set
+
             $to_email = $obj->email;
-            $subject = 'OTP Generate';
-            $message = $contents = view('frontend.mail.otpMail', ['name' => $request['name'], 'email' => $request['email'], 'otp' => $otp])->render();
-            $headers = 'From:' . \Config::get('env.service_mail');
+            $subject = 'Verify email for registration';
+            $message = $contents = view('frontend.mail.otpMail', ['name' => $request['name'], 'url' => $url])->render();
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From:' . \Config::get('env.service_mail')."\r\n";
             mail($to_email, $subject, $message, $headers);
 
-            return redirect('/otp-form')
-                ->with('email', $obj->email);
+            return redirect('/login');
+
+
             //email to subscriber
             /*
              *  $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
@@ -239,16 +211,79 @@ class LoginController extends Controller
         echo 'failure';
         exit(0);*/
 
+        }else{
+            return redirect('/registration');
+        }
+
+
+    }
+
+    public function registrationValidation($str){
+
+        return view('auth.registrationValidate')
+            ->with('str',$str);
+    }
+
+    public function registrationValidationCheck(OtpFormRequest $request){
+        $decryptStr=UserHelper::urlDecode($request['str']);
+        $exp=explode('||',$decryptStr);
+
+        $obj=User::where('email','=',$exp[0])
+            ->where('otp','=',$exp[1])
+            ->get()
+            ->first();
+        if(isset($obj->email)){
+            $obj->password=Hash::make($request['password']);
+            $obj->otp=Null;
+            $obj->save();
+            return redirect('/activation')
+                ->with('msg','success');
+        }else{
+            return redirect('/activation')
+                ->with('msg','error');
         }
     }
 
-    public function otpValidate(){
-        return view('auth.otpValidate');
-    }
-    public function otpValidation(){
-
-
+    public function activation(){
+        $msg=Session::get('msg');
+        return view('auth.activation')
+            ->with('msg',$msg);
     }
 
+    public function forgotPassword(){
+
+        return view('auth.forgotPassword');
+    }
+
+    public function resetMail(ResetMailRequest $request)
+    {
+
+        $obj = User::where('email', '=', $request['email'])->get()->first();
+        $otp = mt_rand(100000, 999999);
+        if (isset($obj->email)) {
+            $obj = new User();
+            $obj->email = $request['email'];
+            $obj->otp = $otp;
+            $obj->save();
+
+            $str = $request['email'] . '||' . $otp;
+            $encryptStr = UserHelper::urlEncode($str);
+            $url = url('registration-validation' . "/" . $encryptStr);
+
+            $to_email = $obj->email;
+            $subject = 'Reset email for registration';
+            $message = $contents = view('frontend.mail.resetMail', ['url' => $url])->render();
+            $headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From:' . \Config::get('env.service_mail') . "\r\n";
+            mail($to_email, $subject, $message, $headers);
+
+            return redirect('/login');
+
+        }else{
+            return redirect('/forgot-password');
+        }
+
+    }
 
 }

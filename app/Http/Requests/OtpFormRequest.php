@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileEditRequest extends FormRequest
+class OtpFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class ProfileEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required',
-            'email'=> 'required',
-            //'country'=> 'required',
-            //'city'=> 'required',
+            'password'=>'required|min:6',
+            'password_confirmation'=>'required_with:password|same:password',
 
         ];
     }
@@ -35,10 +33,12 @@ class ProfileEditRequest extends FormRequest
     public function messages()
     {
             return [
-                'name.required' => 'Field is required.',
-                'email.required' => 'Field is required.',
-                //'country.required' => 'Field is required.',
-               // 'city.required' => 'Field is required.',
+                'password.required' => 'Field is required.',
+                'password.min' => 'Field must be minimum 6 charecters',
+                'password_confirmation.same' => 'Field must be same as password',
+                'password_confirmation.required' => 'Field is required.',
+
+
                  ];
     }
 }

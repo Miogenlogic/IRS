@@ -14,7 +14,11 @@
 		   </div>
 	    @endsection
 		<!--//section-->
-
+@php
+	//$userSession=Session::get('user');
+	$country=App\Helpers\UserHelper::country();
+    //dd($userSession);
+@endphp
 		<!--section-->
 		@section('body')
 
@@ -48,14 +52,35 @@
 												<span class="invalid-feedback" style="display:block;">{{$errors->first('email')}}</span>
 											@endif
 										</div>
-
 										<div class="form-group">
-											<label>Mobile</label>
-											<input name="phone" class="form-control" placeholder="phone" type="text">
-											@if($errors->has('phone'))
-												<span class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</span>
+											<label>Country*</label>
+											<select name="country_id" id="registercountry" class="form-control questioncountry">
+
+												<option selected="selected" disabled="disabled">Select Country For Phonecode</option>
+												@foreach($country as $wks)
+
+													<option value="{{$wks->id.'-'.$wks->phonecode}}">{{$wks->country}}</option>
+
+												@endforeach
+											</select>
+											@if($errors->has('country_id'))
+												<div class="invalid-feedback" style="display:block;">{{$errors->first('country_id')}}</div>
 											@endif
 										</div>
+										<div  class="form-group">
+
+											<label style="position: relative;
+    right: 54px;" for="email">Mobile*</label>
+											<input style="margin-top: 27px;
+    width: 15%;
+    float: left;" type="text" id="xyz" class="form-control" value="" disabled >
+											<input style="  width: 85%;
+    float: left;" type="text" class="form-control" id="" placeholder="enter" name="phone" >
+											@if($errors->has('phone'))
+												<div class="invalid-feedback" style="display:block;">{{$errors->first('phone')}}</div>
+											@endif
+										</div>
+
 										<div class="form-group">
 											<label>Address</label>
 											<input name="address" class="form-control" placeholder="Address" type="text">
@@ -83,7 +108,15 @@
 @endsection
 	<!--footer-->
 	<!--//footer-->
+@section("after_scripts")
 
+<script type="text/javascript">
+    $("#registercountry").change(function(){
+        var countryCode=$(this).val();
+        var res = countryCode.split("-");
+        $("#xyz").val('+'+res[1]);
+    });
+</script>
 
-
+@endsection
 

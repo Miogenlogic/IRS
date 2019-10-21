@@ -29,8 +29,8 @@ class RegisterRequest extends FormRequest
             //'title'=> 'required',
             'email'=> 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
 
-            'phone' => 'min:10|numeric'
-
+            'phone' => 'min:10|numeric',
+             'country_id'=> 'required',
 
         ];
     }
@@ -48,6 +48,10 @@ class RegisterRequest extends FormRequest
                 'phone.min' => 'Please enter 10 digit phone number',
                 // 'phone.max' => 'Please enter only 10 digit phone number',
                 'phone.numeric' => 'Please enter numeric phone number',
+
+                'country_id.required' => 'Field is required.',
+
+
                  ];
     }
 }

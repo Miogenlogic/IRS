@@ -6,7 +6,7 @@
 @endsection
 @php
     //$servicetype=\App\Helpers\UserHelper::servicetype($service->select_service);
-          // print_r($servicetype);die;
+          // print_r($service);die;
 @endphp
 @section('body')
 
@@ -41,8 +41,15 @@
                 <div class="row">
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
-                            <label for="pwd">Phone</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="phone" value="{{old('phone')?old('phone'):$service->phone}}" disabled>
+                        <!-- <label for="pwd">Phone</label>
+                            <input type="text" class="form-control" id="" placeholder="" name="phone" value="{-{old('phone')?old('phone'):$service->phone}}" disabled>-->
+                            <label style="position: relative;
+    right: 54px;" for="pwd">Phone</label>
+                            <input style="margin-top: 22px;
+    width: 12%;
+    float: left;" type="text" id="" class="form-control" value="{{old('country_id')?old('country_id'):$service->country_id}}" readonly >
+                            <input style="  width: 88%;
+    float: left;" type="text" class="form-control" id="" placeholder="" name="phone" value="{{old('phone')?old('phone'):$service->phone}}" disabled>
 
                         </div>
                     </div>
@@ -124,7 +131,7 @@
 
                         <div class="form-group">
                             <label for="pwd"> Confirmed Date</label>
-                            <input type="text" class="form-control datetimepicker" id="confirmeddatepicker" placeholder="" name="confirmed_date" value="{{old('date')?old('date'):$service->confirmed_date!="0000-00-00" ?  $service->confirmed_date : $service->date}}" >
+                            <input type="text" class="form-control datetimepicker" id="confirmeddatepicker" placeholder="" name="confirmed_date" value="{{old('date')?old('date'):$service->confirmed_date!="" ?  $service->confirmed_date : $service->date}}" >
 
                         </div>
                     </div>
@@ -141,7 +148,7 @@
                     <div class="col-md-12" style="clear:both">
                         <div class="form-group">
                             <label for="email">Content</label>
-                            <textarea class="form-control" id="content"  name="content">{{old('content')}}</textarea>
+                            <textarea class="form-control" id="content"  name="content">{{old('content')?old('content'):$service->content}}</textarea>
                             @if($errors->has('content'))
                                 <div class="invalid-feedback" style="display:block;">{{$errors->first('content')}}</div>
                             @endif

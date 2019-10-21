@@ -33,41 +33,28 @@
                 <div class="row">
                     <div class="col-md-5 m-auto">
                         <div class="login-reg">
-                            <form id="otpmail">
-                                <!--<div class="form-group">
-                                    <label>Name*</label>
-                                    <input name="name" class="form-control" placeholder="Name" type="text">
-
-                                </div>-->
+                            <form action="{{url('registration-validation-check')}}" method="post">
                                 <div class="form-group">
-                                    <label>Email / Username*</label>
-                                    <input name="email" class="form-control" placeholder="Email or Username" type="hidden" value="">
+                                    <label>Provide Your New Password</label>
 
+                                    <input name="password" id="password" class="form-control" placeholder="Password" type="password">
+                                    @if($errors->has('password'))
+                                        <div class="invalid-feedback" style="display:block;">{{$errors->first('password')}}</div>
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>OTP</label>
-                                    <input name="otp" class="form-control" placeholder="otp" type="text">
+                                    <label>Confirm Password</label>
+                                    <input name="password_confirmation" class="form-control" placeholder="confirmed password" type="password">
+                                    @if($errors->has('password_confirmation'))
+                                        <div class="invalid-feedback" style="display:block;">{{$errors->first('password_confirmation')}}</div>
+                                    @endif
                                 </div>
-                                <div class="form-group">
-                                    <label>Old Password</label>
-
-                                    <input name="password" class="form-control" placeholder="Password" type="password" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label>New Password</label>
-
-                                    <input name="password" class="form-control" placeholder="Password" type="password">
-                                </div>
-                                <!--<div class="form-group">
-                                    <label>Address</label>
-                                    <input name="address" class="form-control" placeholder="Address" type="text">
-                                </div>-->
 
                                 <div class="form-group">
                                     <button class="btn btn-secondary btn-sm">Reset</button>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <input class="btn btn-sm btn-hover-fill mt-10 submit" type="submit" name="submit" value="Register Now"/>
-
+                                    <input type="hidden" name="str" value="{{$str}}">
+                                    <input class="btn btn-sm btn-hover-fill mt-10 submit" type="submit" name="submit" value="Submit"/>
                                 </div>
                             </form>
                         </div>

@@ -240,20 +240,25 @@ class HomeController extends Controller
 
     public function bookingFormAdd(Request $request)
     {
+
         $country=explode('-',$request['bookingcountry']);
-        $obj = new Booking();
-        $obj->name = $request['bookingname'];
-        $obj->email = $request['bookingemail'];
-        $obj->phone = $request['bookingphone'];
-        $obj->age = $request['bookingage'];
-        $obj->select_service = $request['bookingservice'];
-        $obj->doctor = $request['doctor'];
-        $obj->service_type = $request['service_type'];
-        $obj->date = $request['bookingdate'];
-        $obj->time = $request['bookingtime'];
-        $obj->comment = $request['bookingmessage'];
-        $obj->country_id=$country[1];
-        $obj->save();
+
+            $obj = new Booking();
+            $obj->name = $request['bookingname'];
+            $obj->email = $request['bookingemail'];
+            $obj->phone = $request['bookingphone'];
+            $obj->age = $request['bookingage'];
+            $obj->select_service = $request['bookingservice'];
+            $obj->doctor = $request['doctor'];
+            $obj->service_type = $request['service_type'];
+            $obj->date = $request['bookingdate'];
+            $obj->time = $request['bookingtime'];
+            $obj->comment = $request['bookingmessage'];
+            $obj->country_id = $country[1];
+            $obj->save();
+
+
+
 
         if (isset($obj->id)) {
             echo 'Success';

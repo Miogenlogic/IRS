@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileEditRequest extends FormRequest
+class ResetMailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class ProfileEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required',
-            'email'=> 'required',
-            //'country'=> 'required',
-            //'city'=> 'required',
+
+
+            'email'=> 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
 
         ];
     }
@@ -35,10 +34,14 @@ class ProfileEditRequest extends FormRequest
     public function messages()
     {
             return [
-                'name.required' => 'Field is required.',
+
+
                 'email.required' => 'Field is required.',
-                //'country.required' => 'Field is required.',
-               // 'city.required' => 'Field is required.',
+
+                'email.regex' => 'Please enter a valid email address',
+
+
+
                  ];
     }
 }

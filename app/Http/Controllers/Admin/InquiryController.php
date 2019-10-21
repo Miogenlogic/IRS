@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Askquestion;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\User;
@@ -47,7 +48,7 @@ class InquiryController extends Controller
             })
 
             ->addColumn('action', function ($table) {
-                $btns = ' <a href="' . url('admin/reply-inquiry/' . $table->id) . '" class="btn btn-outline-success" >EDIT</a>';
+                $btns = ' <a href="' . url('admin/reply-inquiry/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
               //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
                 return $btns;
             })
@@ -97,7 +98,7 @@ class InquiryController extends Controller
 
             $to_email = $obj->email;
             $subject = 'Booking Confirmation Mail';
-            $message = view('admin.mail.confirmmail', ['name' => $obj->name, 'email' => $obj->email, 'phone' => $obj->phone, 'age' => $obj->age, 'select_service' => $servicetype->title, 'doctor' => $doctor->name, 'select_type' => $type->type, 'date' => $obj->date, 'time' => $obj->time, 'status' => $obj->status, 'confirmed_date' => $obj->confirmed_date, 'confirmed_time' => $obj->confirmed_time, 'comment' => $obj->comment, 'content' => $obj->content])->render();
+            $message = view('admin.mail.confirmmail', ['name' => $obj->name, 'email' => $obj->email, 'country_id' => $obj->country_id, 'phone' => $obj->phone, 'age' => $obj->age, 'select_service' => $servicetype->title, 'doctor' => $doctor->name, 'select_type' => $type->type, 'date' => $obj->date, 'time' => $obj->time, 'status' => $obj->status, 'confirmed_date' => $obj->confirmed_date, 'confirmed_time' => $obj->confirmed_time, 'comment' => $obj->comment, 'content' => $obj->content])->render();
             $headers = 'From:' . \Config::get('env.service_mail');
             mail($to_email, $subject, $message, $headers);
 
@@ -107,6 +108,71 @@ class InquiryController extends Controller
         }
 
     }
+
+
+    public function questionList()
+    {
+        return view('admin.inquiry.listQuestion');
+    }
+
+    public function getTableQuestion(Request $request)
+    {
+
+        $table = Askquestion::select('*')->get();
+
+
+        $datatables =  Datatables::of($table)
+
+
+            ->addColumn('action', function ($table) {
+                $btns = ' <a href="' . url('admin/reply-question/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
+                //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
+                return $btns;
+            })
+
+            ->rawColumns(['action']);
+
+
+        return $datatables->make(true);
+    }
+
+    public function replyQuestion($id)
+    {
+
+        $service=Askquestion::find($id);
+
+        return view('admin.inquiry.replyQuestion')
+           // ->with('book',$book)
+            ->with('service',$service);
+
+    }
+
+    public function emilQuestion(Request $request)
+    {
+
+        $obj = Askquestion::where('email','=',$request['email'])->get()->first();
+        if(!isset($obj->email)) {
+            $obj = Askquestion::find($request['id']);
+
+            $obj->content = $request['content'];
+
+            $obj->save();
+
+
+            $to_email = $obj->email;
+            $subject = 'Query Resolve Mail';
+            $message = view('admin.mail.questionmail', ['name' => $obj->name, 'email' => $obj->email, 'country_id' => $obj->country_id, 'phone' => $obj->phone, 'message' => $obj->message, 'content' => $obj->content])->render();
+            $headers = 'From:' . \Config::get('env.service_mail');
+            mail($to_email, $subject, $message, $headers);
+
+
+            return redirect('admin/question-list');
+
+        }
+
+    }
+
+
 
 }
 

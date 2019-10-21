@@ -13,8 +13,16 @@
 			</div>
 		   </div>
 	    @endsection
+@php
+	$user_session=Session::get('user');
+	//$country=App\Helpers\UserHelper::country();
+    //dd($user_session);
+@endphp
 		<!--//section-->
+@section('after_styles')
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
+@endsection
 		<!--section-->
 		@section('body')
 
@@ -24,121 +32,11 @@
 						<div class="container">
 							<div class="row no-gutters">
 
-							<!--<div class="col">
-                                    <a href="#" class="link">
-                                        <i class="icon-clock"></i><span>{{$homeSection7->title}}</span>
-                                    </a>
-                                   <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-clock"></i>{{$homeSection7->title}}</h5>
-
-                                          {!! $homeSection7->content  !!}
-									</div>
-                                </div>
-
-
-                                <div class="col">
-                                    <a href="#" class="link">
-                                        <i class="icon-emergency-call"></i><span>{{$homeSection8->title}}</span>
-                                    </a>
-                                    <div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-emergency-call"></i>{{$homeSection8->title}}</h5>
-                                    {!! $homeSection8->content  !!}
-									</div>
-                                </div>-->
-
-
 								<div class="col">
 									<a href="#" class="link" data-toggle="modal" data-target="#modalBookingForm">
 										<i class="icon-pencil-writing"></i><span>Book an Appointment</span>
 									</a>
-								<!--<div class="link-drop">
-                                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Request Form</h5>
-                                        <div class="alert alert-danger print-error-msg" style="display:none">
-                                            <ul></ul>
-                                        </div>
-                                        <form id="requestForm">
-                                            <div class="successform">
-                                                <p>Your message was sent successfully!</p>
-                                            </div>
-                                            <div class="errorform">
-                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                            </div>
-                                            <div class="input-group">
-                                                <span>
-                                                <i class="icon-user"></i>
-                                            </span>
-                                                <input name="requestname" type="text" class="form-control" placeholder="Your Name*">
 
-                                            </div>
-                                            <span id="error_requestname" style="display: none;">Field is required</span>
-                                            <div class="row row-sm-space mt-1">
-                                                <div class="col">
-                                                    <div class="input-group">
-                                                        <span>
-                                                        <i class="icon-email2"></i>
-                                                    </span>
-                                                        <input name="requestemail" type="text" class="form-control" placeholder="Your Email*">
-
-                                                    </div>
-                                                    <span id="error_requestemail" style="display: none;">Field is required</span>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="input-group">
-                                                        <span>
-                                                        <i class="icon-smartphone"></i>
-                                                    </span>
-                                                        <input name="requestphone" type="text" class="form-control" placeholder="Your Phone*">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="selectWrapper input-group mt-1">
-                                                <span>
-                                                <i class="icon-tooth"></i>
-                                            </span>
-                                                <select name="requestservice" class="form-control">
-                                                    <option selected="selected" disabled="disabled">Select Service</option>
-                                                    <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
-                                                    <option value="General Dentistry">General Dentistry</option>
-                                                    <option value="Orthodontics">Orthodontics</option>
-                                                    <option value="Children`s Dentistry">Children`s Dentistry</option>
-                                                    <option value="Dental Implants">Dental Implants</option>
-                                                    <option value="Dental Emergency">Dental Emergency</option>
-                                                </select>
-
-                                            </div>
-                                            <span id="error_requestservice" style="display: none;">Field is required</span>
-                                            <div class="row row-sm-space mt-1">
-                                                <div class="col-sm-6">
-                                                    <div class="input-group flex-nowrap">
-                                                        <span>
-                                                            <i class="icon-calendar2"></i>
-                                                        </span>
-                                                        <div class="datepicker-wrap">
-                                                            <input name="requestdate" type="text" class="form-control datetimepicker" id="datepicker" placeholder="date" value="">
-                                                            <span id="error_requestdate" style="display: none;">Field is required</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mt-1 mt-sm-0">
-                                                    <div class="input-group flex-nowrap">
-                                                        <span>
-                                                                <i class="icon-clock"></i>
-                                                        </span>
-                                                        <div class="datepicker-wrap">
-                                                            <input name="requesttime" type="text" class="form-control timepicker" placeholder="Time" readonly="">
-                                                            <span id="error_requesttime" style="display: none;">Field is required</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-right mt-2">
-                                                <button type="button" onclick="requestForm();" class="btn btn-sm btn-hover-fill">Request</button>
-                                            </div>
-                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                        </form>
-                                    </div>-->
 								</div>
 
 								<div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close panel"></i></a></div>
@@ -172,11 +70,11 @@
 									<!-- SIDEBAR USER TITLE -->
 									<div class="profile-usertitle">
 										<div class="profile-usertitle-name">
-											John Doe
+											{{$user_session['name']}}
 										</div>
 										<div class="profile-usertitle-job">
-											<div><i class="icon-email"></i> email@domain.com</div>
-											<div class="mt-5"><i class="icon-phone"></i> 0123456789</div>
+											<div><i class="icon-email"></i> {{$user_session['email']}}</div>
+											<div class="mt-5"><i class="icon-phone">{{$user_session['user_type']}}</i></div>
 										</div>
 									</div>
 									<!-- END SIDEBAR USER TITLE -->
@@ -199,9 +97,9 @@
 											<li>
 												<a href="{{url('appointments')}}">Appointments </a>
 											</li>
-											<li>
-												<a href="{{url('reschedule-appointments')}}">Re-Schedule Appointments </a>
-											</li>
+											<!--<li>
+												<a href="{-{url('reschedule-appointments')}}">Re-Schedule Appointments </a>
+											</li>-->
 										</ul>
 									</div>
 									<!-- END MENU -->
@@ -212,44 +110,33 @@
 								<div class="profile-content">
 									<div class="table-record responsive-tbl">
 										<div class="push-right mb-15">
-											<a data-toggle="modal" data-target="#AppointmentModal" href="#" class="btn btn-sm action-btn text-uppercase"> Get an Appointment</a>
+											<a href="#" class="link" data-toggle="modal" data-target="#modalBookingForm">
+												<i class="icon-pencil-writing"></i><span>Book an Appointment</span>
+											</a>
+
 										</div>
-										<table class="table">
-											<thead>
-											<tr>
-												<th scope="col">Date</th>
-												<th scope="col">Doctor</th>
-												<th scope="col">Appointment Type</th>
-												<th scope="col">Status</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr>
-												<td data-label="Date">01.03.2019</td>
-												<td data-label="Doctor">Dr. John Doe</td>
-												<td data-label="Appointment Type">Virtual Consultation</td>
-												<td data-label="Status"><span class="badge badge-success">DONE</span></td>
-											</tr>
-											<tr>
-												<td scope="row" data-label="Date">01.03.2019</td>
-												<td data-label="Doctor">Dr. John Doe</td>
-												<td data-label="Appointment Type">Virtual Consultation</td>
-												<td data-label="Status"><span class="badge badge-info">SCHEDULED</span></td>
-											</tr>
-											<tr>
-												<td scope="row" data-label="Date">01.03.2019</td>
-												<td data-label="Doctor">Dr. John Doe</td>
-												<td data-label="Appointment Type">Virtual Consultation</td>
-												<td data-label="Status"><span class="badge badge-warning">RECEIVED</span></td>
-											</tr>
-											<tr>
-												<td scope="row" data-label="Date">01.03.2019</td>
-												<td data-label="Doctor">Dr. John Doe</td>
-												<td data-label="Appointment Type">Virtual Consultation</td>
-												<td data-label="Status"><span class="badge badge-danger">ERROR</span></td>
-											</tr>
-											</tbody>
-										</table>
+
+										<div class="table-responsive">
+											<table class="table table-condensed dataTable no-footer" id="tabe1">
+												<thead>
+												<tr class="bg-light">
+													<!--<td>#</td>-->
+													<td>Confirmed Date</td>
+													<td>Confirmed Time</td>
+													<td>Name</td>
+													<td>Status</td>
+													<td>Doctor</td>
+													<td>Service</td>
+													<td>Type</td>
+													<!--<td>Email</td>
+                                                    <td>Phone</td>
+
+													<td>Created At</td>
+													<td>Action</td>-->
+												</tr>
+												</thead>
+											</table>
+										</div>
 									</div>
 								</div>
 
@@ -269,6 +156,47 @@
 	<!--footer-->
 	<!--//footer-->
 
+@section('after_scripts')
+
+	<script  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+
+	<script>
+
+        $(document).ready(function(){
+            $('#tabe1').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax:{
+                    url: '{{ url("/appointment-get-table") }}',
+                },
+
+                columns: [
+                    //{data: 'id', name: 'id', orderable: false, searchable: false},
+                    {data: 'confirmed_date', name: 'confirmed_date'},
+                    {data: 'confirmed_time', name: 'confirmed_time'},
+                    {data: 'name', name: 'name'},
+                    {data: 'status', name: 'status'},
+                    // {data: 'phone', name: 'phone'},
+                   {data: 'doctor_name', name: 'doctor_name'},
+                    {data: 'service', name: 'service'},
+                    {data: 'type', name: 'type'},
+                    //{data: 'created_at', name: 'created_at'},
+                    //{data: 'action', name: 'action', orderable: false, searchable: false} ,
+                ],
+
+
+                // pageLength: 25,
+                // order: [[ 2, "asc" ]]
+            });
+
+        });
+	</script>
+
+
+
+@endsection
 
 
 

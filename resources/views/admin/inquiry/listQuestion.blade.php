@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 style="padding:2px;" class="card-title">List Of Customer's Booking Details</h3>
+                        <h3 style="padding:2px;" class="card-title">List Of Customer's Questions</h3>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -24,12 +24,8 @@
                             <tr class="bg-light">
                                 <td>#</td>
                                 <td>Name</td>
-                                <!--<td>Email</td>
-                                <td>Phone</td>-->
-                                <td>Doctor</td>
-                                <td>Service</td>
-                                <td>Date</td>
-                                <td>Time</td>
+                                <td>Email</td>
+
                                 <td>Created At</td>
                                 <td>Action</td>
                             </tr>
@@ -55,18 +51,14 @@
                 processing: true,
                 serverSide: true,
                 ajax:{
-                    url: '{{ url("admin/inquiry-get-table") }}',
+                    url: '{{ url("admin/question-get-table") }}',
                 },
 
                 columns: [
                     {data: 'id', name: 'id', orderable: false, searchable: false},
                     {data: 'name', name: 'name'},
-                    //{data: 'email', name: 'email'},
-                   // {data: 'phone', name: 'phone'},
-                    {data: 'doctor_name', name: 'doctor_name'},
-                    {data: 'title', name: 'title'},
-                    {data: 'date', name: 'date'},
-                    {data: 'time', name: 'time'},
+                    {data: 'email', name: 'email'},
+                    //{data: 'message', name: 'message'},
                     {data: 'created_at', name: 'created_at'},
                    {data: 'action', name: 'action', orderable: false, searchable: false} ,
                 ],
