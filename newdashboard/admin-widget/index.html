@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Doctor Dashboard - BioPed</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Custom Main CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- Page specific Style :: Date Range Picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+
+  <body>
+  
+    <!-- whole content should be wrapped by this div  -->
+    <div class="page-wrapper rk-theme toggled">
+	
+	<!-- sidebar-trigger  -->
+	<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+	  <i class="fas fa-bars"></i>
+    </a>
+	<!-- /sidebar-trigger  -->
+	  
+	  <!-- sidebar-wrapper  -->
+	  <nav id="sidebar" class="sidebar-wrapper">
+		<div class="sidebar-content">
+		  <div class="sidebar-brand">
+			<a href="index.html">BIOPED Admin</a>
+			<div id="close-sidebar">
+			  <i class="fas fa-times"></i>
+			</div>
+		  </div>
+		  
+		  <!-- /sidebar-header  -->
+		  <div class="sidebar-header">
+			<div class="user-pic">
+			  <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+				alt="User picture">
+			</div>
+			<div class="user-info">
+			  <span class="user-name">RaKesh
+				<strong>Mandal</strong>
+			  </span>
+			  <span class="user-role">Administrator</span>
+			  <span class="user-status">
+				<i class="fa fa-circle"></i>
+				<span>Online</span>
+			  </span>
+			</div>
+		  </div><!-- /sidebar-header  -->
+
+		  <!-- Sidebar search -->
+		  <div class="sidebar-search">
+			<div>
+			  <div class="input-group">
+				<input type="text" class="form-control search-menu" placeholder="Search...">
+				<div class="input-group-append">
+				  <span class="input-group-text">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				  </span>
+				</div>
+			  </div>
+			</div>
+		  </div><!-- /sidebar-search  -->
+		  
+		  <!-- sidebar-menu  -->
+		  <div class="sidebar-menu">
+			<ul>
+			  <li class="header-menu">
+				<span>General</span>
+			  </li>
+			  <li>
+				<a href="#">
+				  <i class="fa fa-tachometer-alt"></i>
+				  <span>Dashboard</span>
+				  <span class="badge badge-pill badge-warning">New</span>
+				</a>
+			   </li>
+			  <li class="sidebar-dropdown">
+				<a href="#">
+				  <i class="fa fa-shopping-cart"></i>
+				  <span>Menu 1</span>
+				  <span class="badge badge-pill badge-danger">3</span>
+				</a>
+				<div class="sidebar-submenu">
+				  <ul>
+					<li>
+					  <a href="#">Products
+
+					  </a>
+					</li>
+					<li>
+					  <a href="#">Orders</a>
+					</li>
+					<li>
+					  <a href="#">Credit cart</a>
+					</li>
+				  </ul>
+				</div>
+			  </li>
+			  <li class="sidebar-dropdown">
+				<a href="#">
+				  <i class="far fa-gem"></i>
+				  <span>Dropdown Menu</span>
+				</a>
+				<div class="sidebar-submenu">
+				  <ul>
+					<li>
+					  <a href="#">General</a>
+					</li>
+					<li>
+					  <a href="#">Panels</a>
+					</li>
+					<li>
+					  <a href="#">Tables</a>
+					</li>
+					<li>
+					  <a href="#">Icons</a>
+					</li>
+					<li>
+					  <a href="#">Forms</a>
+					</li>
+				  </ul>
+				</div>
+			  </li>
+			  <li class="sidebar-dropdown">
+				<a href="#">
+				  <i class="fa fa-chart-line"></i>
+				  <span>Another One</span>
+				</a>
+				<div class="sidebar-submenu">
+				  <ul>
+					<li>
+					  <a href="#">Pie chart</a>
+					</li>
+					<li>
+					  <a href="#">Line chart</a>
+					</li>
+					<li>
+					  <a href="#">Bar chart</a>
+					</li>
+					<li>
+					  <a href="#">Histogram</a>
+					</li>
+				  </ul>
+				</div>
+			  </li>
+			  <li class="sidebar-dropdown">
+				<a href="#">
+				  <i class="fa fa-globe"></i>
+				  <span>Maps</span>
+				</a>
+				<div class="sidebar-submenu">
+				  <ul>
+					<li>
+					  <a href="#">Google maps</a>
+					</li>
+					<li>
+					  <a href="#">Open street map</a>
+					</li>
+				  </ul>
+				</div>
+			  </li>
+			  <li class="header-menu">
+				<span>System</span>
+			  </li>
+			  <li>
+				<a href="#">
+				  <i class="fa fa-book"></i>
+				  <span>Settings</span>
+				  <span class="badge badge-pill badge-primary">Beta</span>
+				</a>
+			  </li>
+			  <li>
+				<a href="#">
+				  <i class="fa fa-calendar"></i>
+				  <span>Master Manage</span>
+				</a>
+			  </li>
+			  <li>
+				<a href="#">
+				  <i class="fa fa-folder"></i>
+				  <span>Role Manage</span>
+				</a>
+			  </li>
+			</ul>
+		  </div><!-- /sidebar-menu  -->
+		  
+		</div><!-- sidebar-content  -->
+
+		<!-- sidebar-footer  -->
+		<div class="sidebar-footer">
+		  <a href="#">
+			<i class="fa fa-bell"></i>
+			<span class="badge badge-pill badge-warning notification">3</span>
+		  </a>
+		  <a href="#">
+			<i class="fa fa-envelope"></i>
+			<span class="badge badge-pill badge-success notification">7</span>
+		  </a>
+		  <a href="#">
+			<i class="fa fa-cog"></i>
+			<span class="badge-sonar"></span>
+		  </a>
+		  <a href="#">
+			<i class="fa fa-power-off"></i>
+		  </a>
+		</div><!-- /sidebar-footer  -->
+	  </nav>
+	  <!-- /sidebar-wrapper  -->
+	
+		<!-- Main Wrapper for side bar sliding and toggle - should maintain for left sidebar layout -->
+		<main class="page-content">
+		
+		  <!-- partial -->
+		  <div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+			  <div class="content-wrapper">
+			  
+			  
+			  <style>
+				.text-facebook {
+					font-size: 25px;
+				}
+			  </style>
+
+				<!-- Widgets -->
+				<div class="row">
+				  <div class="col-12 grid-margin">
+					<div class="row">
+						<div class="col-md-3 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex flex-row align-items-top">
+										<i class="icon-pin text-facebook icon-md"></i>
+										<div class="ml-3">
+											<h6 class="text-facebook text-md">350</h6>
+											<p class="mt-2 text-muted card-text">Total appointment</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex flex-row align-items-top">
+										<i class="icon-calendar text-facebook icon-md"></i>
+										<div class="ml-3">
+											<h6 class="text-facebook">270</h6>
+											<p class="mt-2 text-muted card-text">Physical appointment</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex flex-row align-items-top">
+										<i class="icon-layers text-facebook icon-md"></i>
+										<div class="ml-3">
+											<h6 class="text-facebook">100</h6>
+											<p class="mt-2 text-muted card-text">Virtual appointment</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex flex-row align-items-top">
+										<i class="icon-refresh text-facebook icon-md"></i>
+										<div class="ml-3">
+											<h6 class="text-facebook">90</h6>
+											<p class="mt-2 text-muted card-text">Test appointment</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				  </div>
+				</div><!-- /Widget -->
+
+				<!-- Lat Records from Every scenerio -->
+				<div class="card">
+				  <div class="card-body">
+					<h4 class="card-title">Recent Appointment Request</h4>
+					<div class="row">
+					  <div class="col-12 table-responsive">
+						<table id="AllAppointment" class="table table-condensed">
+						  <thead>
+							<tr class="bg-light">
+							  <th>Appointment #</th>
+							  <th>Appointment Type</th>
+							  <th>Booked On</th>
+							  <th>Patient</th>
+							  <th>To Doctor</th>
+							  <th>Status</th>
+							  <th>Actions</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>1</td>
+							  <td><label class="badge badge-outline-info">Virtual Consultation</label></td>
+							  <td>11/04/2019</td>
+							  <td>Mr. Lorem Ipsum</td>
+							  <td>Dr. Jane Doe</td>
+							  <td>
+								<label class="badge badge-success">Confirmed</label>
+							  </td>
+							  <td>
+								<button class="btn btn-outline-success" data-toggle="modal" data-target="#ConfirmAppointmentModal">Confirm</button>
+								<button class="btn btn-outline-info" onclick="showSwal('warning-message-and-cancel')">Send
+								  Payment Link</button>
+							  </td>
+							</tr>
+							<tr>
+							  <td>2</td>
+							  <td><label class="badge badge-outline-info">Physical Consultation</label></td>
+							  <td>11/04/2019</td>
+							  <td>Mr. Lorem Ipsum</td>
+							  <td>Dr. Jane Doe</td>
+							  <td>
+								<label class="badge badge-warning">On Hold</label>
+							  </td>
+							  <td>
+								<button class="btn btn-outline-success" data-toggle="modal" data-target="#ConfirmAppointmentModal">Confirm</button>
+								<button class="btn btn-outline-info" onclick="showSwal('warning-message-and-cancel')">Send
+								  Payment Link</button>
+							  </td>
+							</tr>
+							<tr>
+							  <td>3</td>
+							  <td><label class="badge badge-outline-info">Virtual Consultation</label></td>
+							  <td>11/04/2019</td>
+							  <td>Mr. Lorem Ipsum</td>
+							  <td>Dr. Jane Doe</td>
+							  <td>
+								<label class="badge badge-success">Confirmed</label>
+							  </td>
+							  <td>
+								<button class="btn btn-outline-success" data-toggle="modal" data-target="#ConfirmAppointmentModal">Confirm</button>
+								<button class="btn btn-outline-info" onclick="showSwal('warning-message-and-cancel')">Send
+								  Payment Link</button>
+							  </td>
+							</tr>
+							<tr>
+							  <td>4</td>
+							  <td><label class="badge badge-outline-info">Diagnostic Consultation</label></td>
+							  <td>11/04/2019</td>
+							  <td>Mr. Lorem Ipsum</td>
+							  <td>Dr. Jane Doe</td>
+							  <td>
+								<label class="badge badge-warning">On Hold</label>
+							  </td>
+							  <td>
+								<button class="btn btn-outline-success" data-toggle="modal" data-target="#ConfirmAppointmentModal">Confirm</button>
+								<button class="btn btn-outline-info" onclick="showSwal('warning-message-and-cancel')">Send
+								  Payment Link</button>
+							  </td>
+							</tr>
+							<tr>
+							  <td>5</td>
+							  <td><label class="badge badge-outline-info">Virtual Consultation</label></td>
+							  <td>11/04/2019</td>
+							  <td>Mr. Lorem Ipsum</td>
+							  <td>Dr. Jane Doe</td>
+							  <td>
+								<label class="badge badge-warning">On Hold</label>
+							  </td>
+							  <td>
+								<button class="btn btn-outline-success" data-toggle="modal" data-target="#ConfirmAppointmentModal">Confirm</button>
+								<button class="btn btn-outline-info" onclick="showSwal('warning-message-and-cancel')">Send
+								  Payment Link</button>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <!-- content-wrapper ends -->
+			  <!-- partial:partials/_footer.html -->
+			  <footer class="footer">
+				<div class="w-100 clearfix">
+				  <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="index.html">BioPed</a>.
+					All rights reserved.</span>
+				</div>
+			  </footer>
+			  <!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		  </div>
+		  <!-- page-body-wrapper ends -->
+
+		  <!-- Appointment Modal -->
+		  <div class="modal fade modal-scroll" id="AppointmentModal">
+			<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+				  <h4 class="modal-title text-center">New Appointment</h4>
+				  <button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+				  <form action="#">
+					<!-- Appointment Type -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Appointment Type</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input consultationCommon" id="virtualConsultation"
+							  name="appointmentType" value="virtualAppointment">
+							<label class="custom-control-label" for="virtualConsultation">Virtual Consultation</label>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input consultationCommon" id="physicalConsultation"
+							  name="appointmentType" value="physicalAppointment">
+							<label class="custom-control-label" for="physicalConsultation">Physical Consultation</label>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input" id="DiagnosticAppointment" name="appointmentType"
+							  value="diagnosticAppointment">
+							<label class="custom-control-label" for="DiagnosticAppointment">Diagnostic Appointment</label>
+						  </div>
+						</div>
+					  </div>
+					</div><!-- /row -->
+
+					<!-- Hidden Div - If selects appointment type it will open -->
+					<div class="row appointmentDoctorDiv">
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <label for="email">Select Doctor</label>
+						  <select name="doctorList" class="custom-select">
+							<option selected>---</option>
+							<option value="Dr. John Doe">Dr. John Doe</option>
+							<option value="Dr. Lorem">Dr. Lorem</option>
+							<option value="Dr. Ipsum">Dr. Ipsum</option>
+						  </select>
+						</div>
+
+					  </div>
+					</div><!-- show hide based on radio value -->
+
+					<!-- Date & Time -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Select Date & Time Slot</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="selectdate">Select Date</label>
+						  <input type="text" class="form-control" name="daterange">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="">Select Time Slot</label>
+						  <select name="doctorList" class="custom-select">
+							<option value="">--</option>
+							<option value="Morning (8 AM to 12 PM)">Morning (8 AM to 12 PM)</option>
+							<option value="Afternoon (1 PM to 4 PM)">Afternoon (1 PM to 4 PM)</option>
+							<option value="Evening (5 PM to 9 PM)">Evening (5 PM to 9 PM)</option>
+						  </select>
+						</div>
+					  </div>
+					</div><!-- /Row -->
+
+					<!-- Patient Information -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Patient Information</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="name">Patient Name</label>
+						  <input type="text" class="form-control" name="name">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="name">Email</label>
+						  <input type="email" class="form-control" name="name">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="phone">Mobile Number</label>
+						  <input type="phone" class="form-control" name="phone">
+						</div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="form-group">
+						  <label for="age">Age</label>
+						  <input type="text" class="form-control" name="age">
+						</div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="form-group">
+						  <label for="gender">Gender</label>
+						  <select name="doctorList" class="custom-select">
+							<option>---</option>
+							<option value="MALE">MALE</option>
+							<option value="FEMALE">FEMALE</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="residential">Country</label>
+						  <select name="country" class="custom-select">
+							<option selected>---</option>
+							<option value="India">India</option>
+							<option value="Bangladesh">Bangladesh</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="residential">City</label>
+						  <select name="city" class="custom-select">
+							<option selected>---</option>
+							<option value="City1">City1</option>
+							<option value="City 2">City 2</option>
+						  </select>
+						</div>
+					  </div>
+					</div><!-- /Row -->
+
+					<!-- Payment -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Accept Payment</h5>
+					  </div>
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="acceptPayment" name="example1">
+							<label class="custom-control-label" for="acceptPayment">Accept full Payment for this appointment?</label>
+						  </div>
+						</div>
+					  </div>
+					</div>
+
+					<div style="display: none;" class="row collapsedPaymentMode">
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="paymentmode">Payment Mode</label>
+						  <select name="paymentmode" class="custom-select">
+							<option>---</option>
+							<option value="Cash">Cash</option>
+							<option value="Card">Card</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="ammount">Amount</label>
+						  <input type="text" class="form-control" name="amount">
+						</div>
+					  </div>
+					</div>
+				  </form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+				  <div class="pull-left">
+					<button type="button" data-dismiss="modal" class="btn btn-sm action-btn text-uppercase" onclick="showSwal('confirm-appointment')">Create Appointment & Print Receipt</button>
+				  </div>
+				  <div class="pull-right">
+					<button type="button" class="btn btn-sm not-action-btn" data-dismiss="modal">Cancel</button>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+		  </div> <!-- /Appointemnt Modal -->
+
+		  <!-- Confirm Appointment Modal -->
+		  <div class="modal fade modal-scroll" id="ConfirmAppointmentModal">
+			<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+				  <h4 class="modal-title text-center">Confirm Appointment</h4>
+				  <button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+				  <form action="#">
+					<!-- Appointment Type -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Appointment Type</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" checked class="custom-control-input" id="" name="appointmentType" value="virtualAppointment">
+							<label class="custom-control-label" for="virtualConsultation">Virtual Consultation</label>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input" id="" name="appointmentType" value="physicalAppointment">
+							<label class="custom-control-label" for="physicalConsultation">Physical Consultation</label>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input" id="" name="appointmentType" value="diagnosticAppointment">
+							<label class="custom-control-label" for="DiagnosticAppointment">Diagnostic Appointment</label>
+						  </div>
+						</div>
+					  </div>
+					</div><!-- /row -->
+
+					<!-- Hidden Div - If selects appointment type it will open -->
+					<div class="row">
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <label for="email">Select Doctor</label>
+						  <select name="doctorList" class="custom-select">
+							<option>---</option>
+							<option selected value="Dr. John Doe">Dr. John Doe</option>
+							<option value="Dr. Lorem">Dr. Lorem</option>
+							<option value="Dr. Ipsum">Dr. Ipsum</option>
+						  </select>
+						</div>
+
+					  </div>
+					</div><!-- show hide based on radio value -->
+
+					<!-- Date & Time -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Preferred Date & Time Slot</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="selectdate">Preferred Date</label>
+						  <input type="text" class="form-control" name="daterange">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="">Preferred Time Slot</label>
+						  <select name="doctorList" class="custom-select">
+							<option value="">--</option>
+							<option selected value="Morning (8 AM to 12 PM)">Morning (8 AM to 12 PM)</option>
+							<option value="Afternoon (1 PM to 4 PM)">Afternoon (1 PM to 4 PM)</option>
+							<option value="Evening (5 PM to 9 PM)">Evening (5 PM to 9 PM)</option>
+						  </select>
+						</div>
+					  </div>
+					</div><!-- /Row -->
+
+					<!-- Patient Information -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Patient Information</h5>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="name">Patient Name</label>
+						  <input type="text" class="form-control" name="name" value="RaKesh Mandal">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="name">Email</label>
+						  <input type="email" class="form-control" name="name" value="email@domain.com">
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="phone">Mobile Number</label>
+						  <input type="phone" class="form-control" name="phone" value="0123456789">
+						</div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="form-group">
+						  <label for="age">Age</label>
+						  <input type="text" class="form-control" name="age" value="10">
+						</div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="form-group">
+						  <label for="gender">Gender</label>
+						  <select name="doctorList" class="custom-select">
+							<option>---</option>
+							<option selected value="MALE">MALE</option>
+							<option value="FEMALE">FEMALE</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="residential">Country</label>
+						  <select name="country" class="custom-select">
+							<option>---</option>
+							<option selected value="India">India</option>
+							<option value="Bangladesh">Bangladesh</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="col-md-6">
+						<div class="form-group">
+						  <label for="residential">City</label>
+						  <select name="city" class="custom-select">
+							<option>---</option>
+							<option selected value="City1">City1</option>
+							<option value="City 2">City 2</option>
+						  </select>
+						</div>
+					  </div>
+					</div><!-- /Row -->
+
+					<!-- Privacy Check -->
+					<div class="row">
+					  <div class="col-md-12">
+						<h5 class="form-header">Health Record Permission</h5>
+					  </div>
+					  <div class="col-md-12">
+						<div class="form-group">
+						  <div class="custom-control custom-checkbox">
+							<input type="checkbox" checked class="custom-control-input" id="privacyCheck" name="example1">
+							<label class="custom-control-label" for="privacyCheck">Allow this Doctor to access your health record?</label>
+						  </div>
+						</div>
+					  </div>
+					</div><!-- /Row -->
+				  </form>
+
+				  <hr>
+
+				  <div class="row">
+					<div class="col-md-12">
+					  <small><strong class="imp-small">Note:</strong> Please cross-check with the doctor before confirming any appointment</small>
+					</div>
+				  </div>
+
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+				  <div class="pull-left">
+					<button type="button" data-dismiss="modal" class="btn btn-sm action-btn text-uppercase" onclick="showSwal('confirm-appointment')">Confirm Appointment</button>
+				  </div>
+				  <div class="pull-right">
+					<button type="button" class="btn btn-sm not-action-btn" data-dismiss="modal">Cancel</button>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+		  </div> <!-- /Appointemnt Modal -->
+		
+		</main><!-- Main Wrapper for side bar sliding and toggle - should maintain for left sidebar layout -->
+    </div><!-- /whole content should be wrapped by this div  -->
+
+    <!-- plugins:js -->
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- Custom js for this page-->
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/data-table.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script src="../js/alerts.js"></script>
+    <!-- End custom js for this page-->
+
+    <script>
+      // Appointment Booking show hide based on type
+      $(document).ready(function () {
+        $("input[name='appointmentType']").click(function () {
+          if ($(".consultationCommon").is(":checked")) {
+            $(".appointmentDoctorDiv").show("slideUp");
+          } else {
+            $(".appointmentDoctorDiv").hide("slideDown");
+          }
+        });
+
+        // Date Range Initialization
+        $('input[name="daterange"]').daterangepicker({
+          opens: 'left'
+        }, function (start, end, label) {
+          console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
+            'YYYY-MM-DD'));
+        });
+
+        // Payment Accept on Appointment
+        $("#acceptPayment").click(function () {
+          if ($(this).is(":checked")) {
+            $(".collapsedPaymentMode").show();
+          } else {
+            $(".collapsedPaymentMode").hide();
+          }
+        });
+
+      });
+	  
+	  
+	  //Sidebar init with fns
+	  jQuery(function ($) {
+
+		$(".sidebar-dropdown > a").click(function() {
+		  $(".sidebar-submenu").slideUp(200);
+		  if (
+			$(this)
+			  .parent()
+			  .hasClass("active")
+		  ) {
+			$(".sidebar-dropdown").removeClass("active");
+			$(this)
+			  .parent()
+			  .removeClass("active");
+		  } else {
+			$(".sidebar-dropdown").removeClass("active");
+			$(this)
+			  .next(".sidebar-submenu")
+			  .slideDown(200);
+			$(this)
+			  .parent()
+			  .addClass("active");
+		  }
+		});
+
+		$("#close-sidebar").click(function() {
+		  $(".page-wrapper").removeClass("toggled");
+		});
+		$("#show-sidebar").click(function() {
+		  $(".page-wrapper").addClass("toggled");
+		});
+
+
+		   
+		   
+		});
+    </script>
+  </body>
+
+</html>

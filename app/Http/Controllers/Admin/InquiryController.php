@@ -173,6 +173,58 @@ class InquiryController extends Controller
     }
 
 
+    public function bookingList()
+    {
+        return view('admin.inquiry.listBooking');
+    }
+
+    public function getTableBooking(Request $request)
+    {
+
+        $table = Booking::select('booking.*','service.title')
+            ->leftjoin('service','service.id','=','booking.select_service')
+            ->get();
+
+
+        $datatables =  Datatables::of($table)
+            ->addColumn('doctor_name', function ($table) {
+                $user="";
+                if($table->doctor>0){
+                    $user=UserHelper::userById($table->doctor);
+                    return $user->name;
+                }
+                return $user;
+            })
+            ->addColumn('type', function ($table) {  //type is name in listblade
+                $appotype="";
+                if($table->service_type>0){          //service_type is name in database
+                    $appotype=UserHelper::appointmentType($table->service_type);
+                    return $appotype->type;
+                }
+                return $appotype;
+            })
+
+            ->addColumn('action', function ($table) {
+                $btns = ' <a href="' . url('admin/reply-inquiry/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
+                //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
+                return $btns;
+            })
+
+            ->rawColumns(['action']);
+
+
+        return $datatables->make(true);
+    }
+//filter
+    public function nameFilter(Request $request)
+    {
+
+
+
+
+}
+
+
 
 }
 

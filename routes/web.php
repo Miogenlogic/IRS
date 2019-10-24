@@ -183,6 +183,14 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/reply-question/{id}', ['uses' => 'InquiryController@replyQuestion']);
         Route::post('/question-emil-send', ['uses' => 'InquiryController@emilQuestion']);
 
+        //dashboard
+        Route::get('/booking-list', ['uses' => 'InquiryController@bookingList']);
+        Route::get('/booking-get-table', ['uses' => 'InquiryController@getTableBooking']);
+
+        Route::post('/name-filter', ['uses' => 'InquiryController@nameFilter']);
+
+
+
     });
 });
 //File Manager
@@ -273,7 +281,10 @@ Route::post('/registration-validation-check', ['uses' => 'Auth\LoginController@r
 Route::get('/activation/', ['uses' => 'Auth\LoginController@activation']);
 
 Route::get('/forgot-password/', ['uses' => 'Auth\LoginController@forgotPassword']);
+
 Route::post('/reset-mail', [ 'uses' => 'Auth\LoginController@resetMail']);
+
+Route::get('/reset/', ['uses' => 'Auth\LoginController@reset']);
 
 Route::get('/logout', [ 'uses' => 'Auth\LoginController@logout']);
 

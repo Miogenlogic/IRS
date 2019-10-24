@@ -135,6 +135,15 @@
 </head>
 
 <body>
+@if(Session::has('msg'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center;
+    font-weight: 700;">
+        {{ Session::get('msg') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <!-- Begin Page Content -->
 <div id="container">
     <form method="post" action="{{url('loginchk')}}">
@@ -146,7 +155,7 @@
             <input type="checkbox" name="remember_me" value="" style="margin-top: 5px"><label class="check" for="checkbox" style="padding-bottom: 15px">Keep me logged in</label>
             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
             <input type="submit" value="Login">
-            <div style="padding-left: 15px"><a href="{{url('forgot-password')}}">Forgot Password</a></div>
+            <div style="padding-left: 15px"><a href="{{url('forgot-password')}}">Forgot Password?</a></div>
         </div><!--/ lower-->
     </form>
 </div><!--/ container-->

@@ -31,7 +31,7 @@
                             @if($msg=="error")
                                 Registration failed.
                             @elseif($msg=="success")
-                                Registration successful.
+                                Done successfully.
                             @endif
                         </div>
                     </div>

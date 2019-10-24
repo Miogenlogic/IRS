@@ -4,3 +4,8 @@
 [23-Sep-2019 12:54:23 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\Apache24\htdocs\bioped\storage\framework\views\10a10c4088c227369dd4e6d7081401a0d7450f34.php on line 256
 [23-Sep-2019 12:55:02 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\Apache24\htdocs\bioped\storage\framework\views\10a10c4088c227369dd4e6d7081401a0d7450f34.php on line 256
 [23-Sep-2019 12:55:05 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\Apache24\htdocs\bioped\storage\framework\views\10a10c4088c227369dd4e6d7081401a0d7450f34.php on line 256
+[22-Oct-2019 09:03:50 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\Apache24\htdocs\bioped\app\Http\Controllers\Auth\LoginController.php on line 285
+[22-Oct-2019 10:09:36 UTC] PHP Fatal error:  Cannot redeclare App\Helpers\UserHelper::totalPhysicalAppoinment() in C:\Apache24\htdocs\bioped\app\Helpers\UserHelper.php on line 235
+[22-Oct-2019 10:09:41 UTC] PHP Fatal error:  Cannot redeclare App\Helpers\UserHelper::totalPhysicalAppoinment() in C:\Apache24\htdocs\bioped\app\Helpers\UserHelper.php on line 235
+[22-Oct-2019 10:09:50 UTC] PHP Fatal error:  Cannot redeclare App\Helpers\UserHelper::totalPhysicalAppoinment() in C:\Apache24\htdocs\bioped\app\Helpers\UserHelper.php on line 235
+[22-Oct-2019 10:10:09 UTC] PHP Fatal error:  Cannot redeclare App\Helpers\UserHelper::totalPhysicalAppoinment() in C:\Apache24\htdocs\bioped\app\Helpers\UserHelper.php on line 235

@@ -23,7 +23,15 @@
 		@section('body')
 
 			<div class="page-content">
-
+				@if(Session::has('message'))
+					<div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center;
+    font-weight: 700;">
+						{{ Session::get('message') }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				@endif
 				<!--section dashboard-->
 				<div class="section dashboard">
 					<div class="container" style="margin: 0px">

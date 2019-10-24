@@ -17,7 +17,7 @@ use Mail;
 use Session;
 use Redirect;
 use Alert;
-use Input;
+//use Input;
 use Eloquent;
 use DB;
 use App\Models\User;
@@ -25,6 +25,7 @@ use App\Models\UserDetails;
 use App\Models\DoctorDetails;
 use App\Models\RoleUser;
 use Zizaco\Entrust\Entrust;
+use Illuminate\Support\Facades\Input;
 
 class LoginController extends Controller
 {
@@ -191,28 +192,12 @@ class LoginController extends Controller
             $headers .= 'From:' . \Config::get('env.service_mail')."\r\n";
             mail($to_email, $subject, $message, $headers);
 
-            return redirect('/login');
-
-
-            //email to subscriber
-            /*
-             *  $data = ['name'=>$request['name'],'email'=>$request['subscribe_mail']];
-             * Mail::send('frontend.mail.subscription', $data, function($message) use ($data) {
-                $message->to($data['email'],'Subscriber')->subject('Subscription');
-                $message->from('support@biopedclinic.com','Bioped Clinic');
-            });
-            echo 'Success';
-            exit(0);
-        }else{
-            echo 'duplicate';
-            exit(0);
-        }
-
-        echo 'failure';
-        exit(0);*/
+            return redirect('/login')
+                ->with('msg',"Chech Your mail");
 
         }else{
-            return redirect('/registration');
+            return redirect('/registration')
+                ->with('message',"You Registered already.");
         }
 
 
@@ -259,31 +244,42 @@ class LoginController extends Controller
     {
 
         $obj = User::where('email', '=', $request['email'])->get()->first();
+
         $otp = mt_rand(100000, 999999);
         if (isset($obj->email)) {
-            $obj = new User();
+            //$obj = new User();
             $obj->email = $request['email'];
             $obj->otp = $otp;
             $obj->save();
+
+
 
             $str = $request['email'] . '||' . $otp;
             $encryptStr = UserHelper::urlEncode($str);
             $url = url('registration-validation' . "/" . $encryptStr);
 
             $to_email = $obj->email;
-            $subject = 'Reset email for registration';
+            $subject = 'Reset email for change Password';
             $message = $contents = view('frontend.mail.resetMail', ['url' => $url])->render();
             $headers = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
             $headers .= 'From:' . \Config::get('env.service_mail') . "\r\n";
             mail($to_email, $subject, $message, $headers);
-
-            return redirect('/login');
+            return redirect('/reset')
+                ->with('msg',"Please Check Email For Reset Link");
 
         }else{
-            return redirect('/forgot-password');
+
+            return redirect('/forgot-password')
+                ->with('message',"Email does not exist");
         }
 
+    }
+
+    public function reset(){
+        $msg=Session::get('msg');
+        return view('auth.reset')
+            ->with('msg',$msg);
     }
 
 }
