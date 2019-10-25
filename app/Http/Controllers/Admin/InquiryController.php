@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Askquestion;
 use App\Models\Booking;
+use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -215,15 +216,71 @@ class InquiryController extends Controller
 
         return $datatables->make(true);
     }
-//filter
-    public function nameFilter(Request $request)
+//Contact related mail
+    public function contactList()
+    {
+        return view('admin.inquiry.listContact');
+    }
+
+    public function getTableContact(Request $request)
     {
 
+        $table = Contact::select('*')->get();
 
 
+        $datatables =  Datatables::of($table)
 
-}
 
+            ->addColumn('action', function ($table) {
+                $btns = ' <a href="' . url('admin/reply-contact/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
+                //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
+                return $btns;
+            })
+
+            ->rawColumns(['action']);
+
+
+        return $datatables->make(true);
+    }
+
+    public function replyContact($id)
+    {
+
+        $service=Contact::find($id);
+
+        return view('admin.inquiry.replyContact')
+            // ->with('book',$book)
+            ->with('service',$service);
+
+    }
+
+    public function emilContact(Request $request)
+    {
+
+        $obj = Contact::where('email','=',$request['email'])->get()->first();
+        if(!isset($obj->email)) {
+            $obj = Contact::find($request['id']);
+
+            $obj->content = $request['content'];
+
+            $obj->save();
+
+
+            $to_email = $obj->email;
+            $subject = 'Contact Query Resolve Mail';
+            $message = view('admin.mail.contactmail', ['name' => $obj->name, 'email' => $obj->email, 'country_id' => $obj->country_id, 'phone' => $obj->phone, 'message' => $obj->message, 'content' => $obj->content])->render();
+
+
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From:' . \Config::get('env.service_mail')."\r\n";
+            mail($to_email, $subject, $message, $headers);
+
+            return redirect('admin/contact-list');
+
+        }
+
+    }
 
 
 }

@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 //bookingform
 Route::post('/booking-add', ['uses' => 'frontend\HomeController@bookingFormAdd']);
+Route::post('/booking-otp', ['uses' => 'frontend\HomeController@bookingFormOtp']);
+
 
 Route::post('/service-associated-doctors', ['uses' => 'frontend\HomeController@serviceAssociatedDoctors']);
 Route::post('/service-type', ['uses' => 'frontend\HomeController@typeService']);
@@ -182,6 +184,13 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/question-get-table', ['uses' => 'InquiryController@getTableQuestion']);
         Route::get('/reply-question/{id}', ['uses' => 'InquiryController@replyQuestion']);
         Route::post('/question-emil-send', ['uses' => 'InquiryController@emilQuestion']);
+
+        //reply Contact
+        Route::get('/contact-list', ['uses' => 'InquiryController@contactList']);
+        Route::get('/contact-get-table', ['uses' => 'InquiryController@getTableContact']);
+        Route::get('/reply-contact/{id}', ['uses' => 'InquiryController@replyContact']);
+        Route::post('/contact-emil-send', ['uses' => 'InquiryController@emilContact']);
+
 
         //dashboard
         Route::get('/booking-list', ['uses' => 'InquiryController@bookingList']);

@@ -159,12 +159,14 @@
                         <div class="sidebar-submenu" {{ (Request::is('admin/blog*')||Request::is('admin/video-gallery*')||Request::is('admin/slider*') )? 'style="display: block;"' : '' }}>
                             <ul>
                                 <li>
-                                    <a href="{{url('admin/inquiry-list')}}">Booking Inquiry</a>
+                                    <a href="{{url('admin/inquiry-list')}}">Booking</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('admin/question-list')}}">Question Inquiry</a>
+                                    <a href="{{url('admin/question-list')}}">Question </a>
                                 </li>
-
+                                <li>
+                                    <a href="{{url('admin/contact-list')}}">Contact </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

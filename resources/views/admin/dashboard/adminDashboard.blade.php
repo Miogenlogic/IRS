@@ -142,7 +142,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$appo}}</h1>
+                                    <h1>{-{$appo}}</h1>
                                     <p class="text-muted mb-0">Total Appointment</p>
                                 </div>
                                 <i class="icon-pin text-primary icon-lg"></i>
@@ -151,7 +151,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$phy}}</h1>
+                                    <h1>{-{$phy}}</h1>
                                     <p class="text-muted mb-0">Physical Appointment</p>
                                 </div>
                                 <i class="icon-calendar text-primary icon-lg"></i>
@@ -160,7 +160,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$vir}}</h1>
+                                    <h1>{-{$vir}}</h1>
                                     <p class="text-muted mb-0">Virtual Appointment</p>
                                 </div>
                                 <i class="icon-layers text-primary icon-lg"></i>
@@ -182,7 +182,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$pend}}</h1>
+                                    <h1>{-{$pend}}</h1>
                                     <p class="text-muted mb-0">Pending Appointment</p>
                                 </div>
                                 <i class="icon-pin text-primary icon-lg"></i>
@@ -191,7 +191,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$phyappo}}</h1>
+                                    <h1>{-{$phyappo}}</h1>
                                     <p class="text-muted mb-0">Pending Physical Appointment</p>
                                 </div>
                                 <i class="icon-calendar text-primary icon-lg"></i>
@@ -200,7 +200,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                 <div>
-                                    <h1>{{$virappo}}</h1>
+                                    <h1>{-{$virappo}}</h1>
                                     <p class="text-muted mb-0">Pending Virtual Appointment</p>
                                 </div>
                                 <i class="icon-layers text-primary icon-lg"></i>

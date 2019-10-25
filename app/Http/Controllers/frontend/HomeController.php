@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
+use App\Models\Appointment;
 use App\Models\AppointmentType;
 use App\Models\CmsMain;
 use App\Models\CmsPage;
@@ -241,6 +242,8 @@ class HomeController extends Controller
     public function bookingFormAdd(Request $request)
     {
 
+
+
         $country=explode('-',$request['bookingcountry']);
 
             $obj = new Booking();
@@ -267,6 +270,31 @@ class HomeController extends Controller
         //return json_encode();
 
     }
+
+   public function bookingFormOtp(Request $request){
+       $otp = mt_rand(100000, 999999);
+       $obj1 = new Appointment();
+       $obj1->otp = $otp;
+       $obj1->email = $request['bookingemail'];
+       $obj1->save();
+
+       $to_email = $obj1->email;
+       $subject = 'Verify email for OTP';
+       $message = $contents = view('frontend.mail.bookingOtp', ['otp' => $otp])->render();
+       $headers = 'MIME-Version: 1.0' . "\r\n";
+       $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+       $headers .= 'From:' . \Config::get('env.service_mail') . "\r\n";
+       if(mail($to_email, $subject, $message, $headers)){
+           echo "Success";
+       }else{
+           echo 'Failure';
+       }
+
+
+
+
+   }
+
 
 
     public function askAdd(Request $request)
@@ -295,13 +323,6 @@ class HomeController extends Controller
         //return json_encode();
 
     }
-
-
-
-
-
-
-
 
     public function mydashboard()
     {
@@ -348,13 +369,6 @@ class HomeController extends Controller
             ->with('homeSection8',$homeSection8);
 
     }
-
-
-
-
-
-
-
 
     public function contactAdd(Request $request)
     {
