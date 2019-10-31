@@ -60,7 +60,7 @@
 								<div class="profile-sidebar">
 									<!-- SIDEBAR USERPIC -->
 									<div class="profile-userpic text-center">
-										<img src="https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg" class="img-responsive" alt="">
+										<img src="{{asset('public/assets/uploads/patient/image').'/'.$Patient->image}}" class="img-responsive" alt="">
 									</div>
 									<!-- END SIDEBAR USERPIC -->
 									<!-- SIDEBAR USER TITLE -->
@@ -72,7 +72,7 @@
 											<div><i class="icon-email"></i>  {{$user_session['email']}}</div>
 											<div class="mt-5"><i class="icon-phone"></i>{{$user_session['user_type']}} </div>
 										</div>
-									</div>s
+									</div>
 									<!-- END SIDEBAR USER TITLE -->
 									<!-- SIDEBAR BUTTONS -->
 									<div class="profile-userbuttons">

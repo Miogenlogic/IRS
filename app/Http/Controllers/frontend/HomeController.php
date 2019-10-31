@@ -15,6 +15,7 @@ use App\Models\AboutSlider;
 use App\Models\HomeSlider;
 use App\Models\RequestForm;
 use App\Models\Booking;
+use App\Models\User;
 use App\Models\ask;
 use App\Models\Askquestion;
 use App\Models\Contact;
@@ -326,20 +327,35 @@ class HomeController extends Controller
 
     public function mydashboard()
     {
+        $user_session=Session::get('user');
+        //dd($user_session);die;
+        $profile=User::find($user_session['user_id']);
+
+        $Patient=UserDetails::where('user_id','=',$profile->id)->get()->first();
+
         $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
         $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
         return view('frontend.patient.mydashboard')
             ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8);
+            ->with('homeSection8',$homeSection8)
+            ->with('profile',$profile)
+            ->with('Patient',$Patient);
 
     }
     public function appointments()
     {
+        $user_session=Session::get('user');
+        //dd($user_session);die;
+        $profile=User::find($user_session['user_id']);
+
+        $Patient=UserDetails::where('user_id','=',$profile->id)->get()->first();
         $homeSection7=Cms::where('page', '=', 'home-section7')->get()->first();
         $homeSection8=Cms::where('page', '=', 'home-section8')->get()->first();
         return view('frontend.patient.appointments')
             ->with('homeSection7',$homeSection7)
-            ->with('homeSection8',$homeSection8);
+            ->with('homeSection8',$homeSection8)
+            ->with('profile',$profile)
+            ->with('Patient',$Patient);
 
     }
     public function mypaymenthistory()
@@ -410,7 +426,10 @@ class HomeController extends Controller
             $to_email = $obj->email;
             $subject = 'Subscription';
             $message = $contents = view('frontend.mail.subscription', ['name'=>$request['name'],'email'=>$request['subscribe_mail']])->render();
-            $headers = 'From:'.\Config::get('env.service_mail');
+
+            $headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From:' . \Config::get('env.service_mail') . "\r\n";
             mail($to_email, $subject, $message, $headers);
 
 

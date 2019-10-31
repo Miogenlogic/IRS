@@ -30,6 +30,7 @@ use Alert;
 use Input;
 use DB;
 use DataTables;
+use Hash;
 class PatientController extends Controller
 {
 

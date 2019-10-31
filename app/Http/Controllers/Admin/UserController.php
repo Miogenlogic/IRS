@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
@@ -132,7 +133,7 @@ class UserController extends Controller
             ->with('user_detail',$user_detail);
     }
 
-    public function userEditStore(UserRequest $request)
+    public function userEditStore(UserEditRequest $request)
     {
         //  $myrequest=$request->all();
        //dd($request);

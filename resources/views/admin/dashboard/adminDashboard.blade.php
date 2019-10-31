@@ -39,7 +39,7 @@
                                 <i class="icon-calendar text-facebook icon-md"></i>
                                 <div class="ml-3">
                                     <h6 class="text-facebook">{{$phy}}</h6>
-                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list')}}">Physical appointment</a></p>
+                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list?param=Physical%20Consultation')}}">Physical appointment</a></p>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <i class="icon-layers text-facebook icon-md"></i>
                                 <div class="ml-3">
                                     <h6 class="text-facebook">{{$vir}}</h6>
-                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list')}}">Virtual appointment</a></p>
+                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list?param=Virtual%20Consultation')}}">Virtual appointment</a></p>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                                 <i class="icon-pin text-facebook icon-md"></i>
                                 <div class="ml-3">
                                     <h6 class="text-facebook text-md">{{$pend}}</h6>
-                                    <p class="mt-2 text-muted card-text">Pending appointment</p>
+                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list?param=Pending%20Appointment')}}">Pending appointment</a></p>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 <i class="icon-calendar text-facebook icon-md"></i>
                                 <div class="ml-3">
                                     <h6 class="text-facebook">{{$phyappo}}</h6>
-                                    <p class="mt-2 text-muted card-text">Pending Physical appointment</p>
+                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list?param=Pending%20Physical%20Appointment')}}">Pending Physical appointment</a></p>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                 <i class="icon-layers text-facebook icon-md"></i>
                                 <div class="ml-3">
                                     <h6 class="text-facebook">{{$virappo}}</h6>
-                                    <p class="mt-2 text-muted card-text">Pending Virtual appointment</p>
+                                    <p class="mt-2 text-muted card-text"><a href="{{url('admin/inquiry-list?param=Pending%20Virtual%20Appointment')}}">Pending Virtual appointment</a></p>
                                 </div>
                             </div>
                         </div>

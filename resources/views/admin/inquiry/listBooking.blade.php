@@ -23,7 +23,7 @@
                     <input type="text" class="form-control" name="search" placeholder="Search...">
                     <span class="input-group-btn">
                         <button class="btn btn-default-sm" type="submit">
-                            <i class="fa fa-search">Filter</i>
+                            Submit
                         </button>
                     </span>
                 </div>
@@ -68,6 +68,10 @@
                 serverSide: true,
                 ajax:{
                     url: '{{ url("admin/booking-get-table") }}',
+                    data: function (d) {
+                        d.name = $('input[name=name]').val();
+
+                    }
                 },
 
                 columns: [
@@ -90,7 +94,9 @@
                 // order: [[ 2, "asc" ]]
             });
 
+
         });
+
     </script>
 
 

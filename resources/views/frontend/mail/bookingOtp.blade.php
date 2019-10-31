@@ -453,7 +453,7 @@
                                 <td class="content-cell">
                                     <div class="f-fallback">
                                         <h1>Welcome, Sir/Madam </h1>
-                                        <p>Thanks for Booking for BioPed Clinic account. We’re thrilled to have you on board. Here is  your OTP - </p>
+                                        <p>Thanks for Booking  BioPed Clinic account. We’re thrilled to have you on board. Here is  your OTP - </p>
 
 
                                         <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation">

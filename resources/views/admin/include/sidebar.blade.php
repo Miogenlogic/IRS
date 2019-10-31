@@ -22,8 +22,8 @@
             </div>
             <div class="user-info">
 			  <span class="user-name">
-                 Rimpi Das 	</span>
-                <span class="user-role"> Admin </span>
+                Admin	</span>
+
                 <span class="user-status">
 				<i class="fa fa-circle"></i>
 				<span>Online</span>
@@ -49,7 +49,7 @@
                     <a href="@if(Entrust::hasRole('admin')){{url('admin/admin-dashboard')}} @elseif(Entrust::hasRole('doctor')) {{url('admin/doctor-dashboard')}} @elseif(Entrust::hasRole('patient')) {{url('admin/doctor-dashboard')}} @endif">
                         <i class="fa fa-tachometer-alt"></i>
                         <span>Dashboard</span>
-                        <span class="badge badge-pill badge-warning">New</span>
+
                     </a>
                 </li>
 

@@ -56,7 +56,12 @@
                 serverSide: true,
                 ajax:{
                     url: '{{ url("admin/inquiry-get-table") }}',
+                    data: function (d) {
+                        d.param = '{{$param}}';
+
+                    }
                 },
+
 
                 columns: [
                     {data: 'id', name: 'id', orderable: false, searchable: false},

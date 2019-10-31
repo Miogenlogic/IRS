@@ -59,7 +59,7 @@
                     <div class="col-md-6" style="clear:both">
                         <div class="form-group">
                             <label for="email">Password</label>
-                            <input type="text" class="form-control" id="" placeholder="" name="password">
+                            <input type="password" class="form-control" id="" placeholder="" name="password">
                             @if($errors->has('password'))
                                 <div class="invalid-feedback" style="display:block;">{{$errors->first('password')}}</div>
                             @endif
@@ -72,10 +72,14 @@
                         <div class="form-group" style="margin-bottom:0.5rem">
                             <label for="pwd">User Type</label>
                             <select name="user_type" class="form-control">
+                                <option selected="selected" disabled="disabled">Select User Type</option>
                                 @foreach($role as $valrole)
                                     <option value="{{$valrole->id.'-'.$valrole->name}}">{{$valrole->display_name}}</option>
                                 @endforeach
                             </select>
+                            @if($errors->has('user_type'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('user_type')}}</div>
+                            @endif
                         </div>
                     </div>
 
@@ -149,6 +153,9 @@
 
                                 @endforeach
                             </select>
+                            @if($errors->has('usercountry'))
+                                <div class="invalid-feedback" style="display:block;">{{$errors->first('usercountry')}}</div>
+                            @endif
                         </div>
                     </div>
                     {{--<div class="col-md-1">--}}
