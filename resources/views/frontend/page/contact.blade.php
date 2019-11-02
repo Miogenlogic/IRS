@@ -105,7 +105,7 @@
 
 							<div class="mt-3">
 								<!--<button type="button" onclick="contactForm();" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Send message</span><i class="icon-right-arrow"></i></button>-->
-								<input class="btn btn-sm btn-hover-fill mt-15 submit" type="submit" name="submit" value="submit"/>
+								<input class="btn btn-sm btn-hover-fill mt-15 submit" type="submit" id="contactFormSubmit" name="submit" value="submit"/>
 							</div>
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 						</form>
@@ -120,4 +120,86 @@
 	<div class="backToTop js-backToTop">
 		<i class="icon icon-up-arrow"></i>
 	</div>
+@endsection
+
+@section('after_scripts')
+	<script>
+        $('#contactFormSubmit').click(function(){
+            //$().ready(function() {
+            // validate signup form on keyup and submit
+            $("#contactForm").validate({
+                rules: {
+                    name: {
+
+                        required: true,
+
+                    },
+                    phone: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+
+                    email: {
+                        required: true,
+                        regex:"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}",
+                    },
+                    contactcountry: {
+
+                        required: true,
+
+                    },
+                    message:{
+                        required: true,
+                    }
+
+
+
+                },
+                messages: {
+
+                    name: {
+                        required: "Please enter a name",
+
+                    },
+                    phone: {
+
+                        number: "Must be number",
+                        minlength: "Your phone number must be at least 10 characters long",
+                        maxlength: "Your phone number only 10 characters long"
+                    },
+
+                    email: {
+                        required: "Please enter a valid email address",
+                        regex: "Please enter a valid email address",
+                    },
+                    message: {
+                        required: "Please enter your comments",
+
+                    },
+                    contactcountry: {
+                        required: "Please enter your country",
+
+                    },
+
+                },
+
+                submitHandler: function(form) {
+
+                    $(form).ajaxSubmit({
+                        url:"{{url('contact-add')}}",
+                        type:"POST",
+                        success: function(){
+                            alert('Successfully submited');
+                            $('#contactForm').get(0).reset();
+                            // $('#modalQuestionForm').modal('hide');
+
+                        }
+                    });
+                }
+            });
+
+        });
+	</script>
 @endsection

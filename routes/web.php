@@ -280,6 +280,7 @@ Route::post('/loginchk', [ 'uses' => 'Auth\LoginController@checklogin']);
 Route::get('/registration', ['uses' => 'Auth\LoginController@registration']);
 
 Route::post('/register-save', [ 'uses' => 'Auth\LoginController@registerStore']);
+
 //mail for otp
 Route::post('/otp-mail', [ 'uses' => 'Auth\LoginController@otpMail']);
 

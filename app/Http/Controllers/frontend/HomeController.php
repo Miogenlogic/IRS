@@ -242,11 +242,12 @@ class HomeController extends Controller
 
     public function bookingFormAdd(Request $request)
     {
-
-
-
+        $otp=Appointment::where('email','=',$request['bookingemail'])
+            ->where('otp','=',$request['otp'])
+            ->where('status','=','Active')
+            ->orderby('id','DESC')->get()->first();
         $country=explode('-',$request['bookingcountry']);
-
+        if(isset($request['bookingemail']) && $request['bookingemail'] != '' && isset($otp->id)){
             $obj = new Booking();
             $obj->name = $request['bookingname'];
             $obj->email = $request['bookingemail'];
@@ -261,6 +262,9 @@ class HomeController extends Controller
             $obj->country_id = $country[1];
             $obj->save();
 
+            $otp->status='Inactive';
+            $otp->save();
+        }
 
 
         if (isset($obj->id)) {

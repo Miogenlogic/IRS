@@ -93,7 +93,7 @@
 
 								<!--<button type="button" onclick="questionForm1();" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Ask Now</span><i class="icon-right-arrow"></i></button>-->
 
-								<input class="btn btn-sm btn-hover-fill mt-15 submit" type="submit" name="submit" value="submit"/>
+								<input class="btn btn-sm btn-hover-fill mt-15" id="expertFormSubmit" type="submit" name="submit" value="submit"/>
 								<input type="hidden"  name="_token" value="{{csrf_token()}}">
 								<input type="hidden"  name="service_id" value="{{$service2->id}}">
 							</form>
@@ -116,4 +116,86 @@
 			</div>
 	
 
+@endsection
+
+@section('after_scripts')
+	<script>
+        $('#expertFormSubmit').click(function(){
+            //$().ready(function() {
+            // validate signup form on keyup and submit
+            $("#expertForm").validate({
+                rules: {
+                    name: {
+
+                        required: true,
+
+                    },
+                    phone: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+
+                    email: {
+                        required: true,
+                        regex:"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}",
+                    },
+                    expertcountry: {
+
+                        required: true,
+
+                    },
+                    message:{
+                        required: true,
+                    }
+
+
+
+                },
+                messages: {
+
+                    name: {
+                        required: "Please enter a name",
+
+                    },
+                    phone: {
+
+                        number: "Must be number",
+                        minlength: "Your phone number must be at least 10 characters long",
+                        maxlength: "Your phone number only 10 characters long"
+                    },
+                    expertcountry: {
+                        required: "Please enter your country",
+
+                    },
+                    email: {
+                        required: "Please enter a valid email address",
+                        regex: "Please enter a valid email address",
+                    },
+                    message: {
+                        required: "Please enter your comments",
+
+                    },
+
+
+                },
+
+                submitHandler: function(form) {
+
+                    $(form).ajaxSubmit({
+                        url:"{{url('ask-add')}}",
+                        type:"POST",
+                        success: function(){
+                            alert('Successfully submited');
+                            $('#expertForm').get(0).reset();
+                            // $('#modalQuestionForm').modal('hide');
+
+                        }
+                    });
+                }
+            });
+
+        });
+	</script>
 @endsection
