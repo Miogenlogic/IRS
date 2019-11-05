@@ -707,6 +707,9 @@
 
 
 
+
+
+
     <div class="modal fade" id="modalDisclaimer">
 
         <div class="modal-dialog">
@@ -754,6 +757,223 @@
         </div>
 
     </div>
+
+    <div class="modal fade" id="modalAntiAgeing">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+
+                <!-- Modal Header -->
+
+                <div class="modal-header" style="background: #007bff;">
+
+                    <h4 class="modal-title" style="color: #fff">Anti Ageing</h4>
+
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+
+                </div>
+
+                <!-- Modal body -->
+
+                <div class="modal-body" style="padding: 15px;
+    height: 60vh;
+    overflow: auto;">
+
+                    <p><b>Anti-Aging Benefits of Hyperbaric Oxygen</b></p>
+                        <p>It is no wonder the anti-aging industry is worth hundreds of billions of dollars with the myriad of popular creams, lotions, and supplements. But, there is one cutting edge treatment which it’s called Hyperbaric Oxygen Therapy (HBOT). HBOT has been proven effective in treating virtually any condition in which poor circulation plays a role including everything from traumatic brain injury to ADD/ADHD, but the latest buzz on HBOT pertains to anti-aging.</p>
+                    <p> HBOT has been a growing choice of many top actors, actresses, and models, whose skin is constantly in the limelight. Have they found the secret to looking young? Depending on how you define aging, hyperbaric oxygen therapy may be the proverbial “fountain of youth.” HBOT promotes cell repair, age spots, saggy skin, wrinkles, poor collagen structure, and skin cell damage by increasing circulation to the most peripheral areas of the body, which is your skin. In a recent study, mice were exposed to UVB rays, known to prematurely age your skin, and when placed in oxygen chambers developed fewer wrinkles and showed fewer signs of tissue damage overall.</p>
+                    <p><b> What is aging?</b></p>
+                          <p> So, what is aging and how do you define it? Aging appears to be a genetically programmed event. Biologically, scientists have found that the chromosomes in our cells progressively shorten each time the cell divides. Eventually, the chromosomes can shorten no further and stop dividing.</p>
+                    <p>When this happens, the cells become sleepy and die. If this were the sole determinant of the length of a human life, then we would all live about the same length of time, plus or minus some genetic variation. In fact, as we all know, people’s life spans can vary widely, and this wide variation is largely due to the cumulative insults that a person’s body experiences over the course of a lifetime.</p>
+                    <p>Hyperbaric Oxygen Therapy (HBOT)</p>
+                    <p>Hyperbaric oxygen therapy (HBOT) can play a significant role in helping people maintain their health and prevent the negative effects of aging.</p>
+                    <p>Premature aging can result in a decreased quality of life and a shortened lifespan. It is caused by many factors, including the effects of environmental stresses and insults to the body. The most common and obvious ones are alcohol, tobacco and drugs, as these substances exert a tremendous aging effect due to the progressive chronic wounding of the body. Along with age also comes the increased risk of developing diseases such as dementia, heart disease, and arthritis.</p>
+                    <p> Hyperbaric oxygen therapy can help to heal and repair damaged cells. HBOT can boost metabolism, and counteract low oxygen levels that lead to slow-moving cell activity and oxidative stress throughout the body. It also helps to grow new blood vessels in tissue promoting healthy body function. Research has shown that it can also help to improve the efficiency of hemoglobin in transporting oxygen around the body; improve blood flow by helping to keep cell membranes flexible; suppress inflammation; and detoxify and fight infection by destroying bacteria, viruses, parasites and fungi that thrive in low-oxygen environments.</p>
+                    <p>In addition to the role of hyperbaric oxygen therapy in many medical conditions, HBOT is gaining widespread recognition for its success in improving a wide range of cosmetic concerns. Regular treatment is believed to increase skin elasticity and to stimulate collagen production. This can improve skin texture and reduce the appearance of fine lines, wrinkles and scars. Plastic surgeons often prescribe the therapy to enhance recovery from reconstructive surgery as increased oxygen leads to the creation of new blood vessels (angiogenesis) promoting healing and faster recovery times.</p>
+                    <p>Hyperbaric Oxygen is commonly used by celebrities as part of a detox protocol to increase the amount of oxygen in the blood. Oxygen promotes general health and wellness, increases energy, boosts the immune system, helps with pain relief(such as swollen joints and muscle pain), stress and regulating sleep patterns.</p>
+                    <p>It also improves mental function, helping with depression, anxiety, stress and concentration. It can be a helpful cure for jet lag and hangovers with its restorative, relaxing and rejuvenating effect.</p>
+                    <p>Hyperbaric oxygen has been endorsed by the British Board of Anti-aging and Integrative Medicine for its ability to enhance beauty and for its anti-ageing properties. It stimulates the production of collagen, improves skin elasticity, eliminates toxins and can help repair damaged skin. It can also promote healthy hair growth and help with weight loss, cellulite, wrinkles, acne, eczema, psoriasis and rosacea.</p>
+                    <p>Joseph Priestley, one of the first discoverers of oxygen, once said, “Who can tell but that, in time, this pure air may become a fashionable article in luxury.” It seems that as the world is developing and Joseph Priestley’s prediction about air is becoming a reality [4]. As the advancement of industrialization, the supply of fresh air is steadily decreasing, making good quality of air more and more of a luxury.</p>
+                    <p>Due to the reigning desire in today’s society to maintain youthful appearance, development of minimally invasive dermatological procedures is progressing to rejuvenate aging face. Quite a few of these minimally invasive procedures have been effectively developed such as chemical peels, intradermal fillers, and botulinum toxins, but one not yet fully understood is HBOT . HBOT as a therapy for aesthetic means is a relatively new use so there have not been a great number of researches done specifically on usage of oxygen therapy on reduction of wrinkles. However, from the few that has been done, positive outcomes were achieved and the use of oxygen therapy for treatment of wrinkles seems an attractive option.</p>
+                    <p>Receiving regular treatments of HBOT is thought to increase skin elasticity and stimulate collagen production, leading to reduction of wrinkles and fine lines and improvement in skin texture . Many dermatology clinics and even spas have utilized machines that deliver concentrated oxygen to the patient or client to treat age-related skin problems. Oxygen is used in skin care because it is thought that delivery of natural oxygen increases cell metabolism. The use of oxygen therapy as a process of skin rejuvenation and reduction of loss of elasticity leading to formation of lines and wrinkles are becoming increasingly widespread in skin care clinics because of increasing successful results of their usage due to developing technologies. However, scientific evidences for those claims are waiting to be provided.</p>
+                    <p><b> Causes of wrinkle formation</b></p>
+                    <p>Health of skin is related to whole body health because the skin not only acts as a physical barrier against infections from foreign materials, but also controls the immune system, and produces hormones and neurotransmitters. Wrinkles and aesthetic skin problems, like blemishes and acne scars, are caused by many factors such as aging, exposure to the environment, especially an overexposure to the sun, smoking, gender, and poor nutrition. Wrinkles caused through aging are an intrinsic factor-caused aging, or genetically programmed aging, that happens over time. This genetically programmed aging mainly causes a decrease production of fibroblast, collagen, and elastin, which results in skin wrinkling and elasticity loss. Smoking causes skin aging and wrinkles because tobacco inhibits production of collagen and increase MMP and elastosis production, which degrades matrix proteins important for skin elasticity. Gender wise, skin of women seems to receive more wrinkles than men due to perhaps the estrogen level in women. Estrogen has been found to increase collagen production and skin thickness so as women age with decrease estrogen production, wrinkles formation are more prominent in women than men.</p>
+                    <p>As for dietary intake, increasing vitamin C and linoleic acid consumption is associated with slower aging skin, while increasing fat and carbohydrates consumption causes faster skin aging.</p>
+                        <p>UV radiation causes wrinkles and skin damage, which are symptoms of cutaneous aging or photoaging. Photoaging is characterized by epidermal hyperplasia or atrophy, thickening of basement membrane and stratum corneum, loss of dermal papillae, unusual keratinocytes and melanocytes, degradation of extracellular matrix molecules such as damage to collagen fibers, excessive deposition of abnormal elastic fibers, and increase of glycosaminoglycans. Photoaging is also characterized by dryness, rough texture, abnormal pigmentation, thickening of epidermis, deep creases, and visible wrinkles. UV-B induces matrix metalloproteinases (MMPs), which degrades basement membrane and rearranges the extracellular matrix (ECM), and Type I Collagenase, which digest Type I collagen that is important for supporting the skin, are also causes of wrinkle formation. In addition, it has been found that UV radiation can cause cutaneous angiogenesis, the formation of new blood vessels from pre-existing vessels, that can lead to wrinkles formation by inducing the hypoxia inducible factor (HIF-1) and up-regulation of vascular endothelial growth factor (VEGF).<p>
+
+
+                    <p><b> Conclusion</b></p>
+                        <p>The use of HBOT in medicine has come a long way since its first main use to treat decompression sickness. Use of hyperbaric oxygen to reduce the visibility of wrinkles have shown to be promising and effective to a certain degree since this treatment is currently being used and is becoming more widespread in spas and dermatology clinics worldwide.
+
+                    </p>
+
+
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modalGeneralHealth">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+
+                <!-- Modal Header -->
+
+                <div class="modal-header" style="background: #007bff;">
+
+                    <h4 class="modal-title" style="color: #fff">General Health</h4>
+
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+
+                </div>
+
+                <!-- Modal body -->
+
+                <div class="modal-body" style="padding: 15px;
+    height: 60vh;
+    overflow: auto;">
+
+                    <p><b>General Health:</b></p>
+                    <p>Hyperbaric oxygen therapy (HBOT) is a natural way of maintaining general health and well-being as it promotes the release of stem cells from the bone marrow. This increase in the stem cell concentration in the body ensures healing and rejuvenation of organs and repair of bone, vascular and nervous tissue. This mechanism is also responsible for the shortened recovery time after surgery, injury or strenuous exercise.</p>
+                    <p>Research shows that many illnesses connected with aging can be avoided or slowed down through optimal cell health. Studies show that oxygen levels in arterial blood in a 70 year old are 20% lower than in a 30-50 year old. Chronic lack of oxygen can cause progressive nerve cell death (seen in Alzheimer’s Disease).</p>
+                    <p>Dr. Paul Harch, in his book entitled “The Oxygen Revolution” argues that <b>hyperbaric oxygen therapy</b> will likely become the fountain of youth by the baby boomer generation whose life has been compromised by years of drug experimentation in the 1960s and 1970s. Dr. Harch says, “<b>Hyperbaric oxygen therapy</b> will be able to restore waning brain function and prevent premature dementia”.</p>
+                    <p>Adding extra oxygen fights chronic conditions, especially inflammation and is very important in improving brain circulation and brain activity. On a longer scale, hyperbaric oxygen therapy provides neuroprotection by stimulating oxidative cerebral energy metabolism</p>
+                    <p><b>Wellness:</b></p>
+                    <p><b>Hyperbaric oxygen therapy</b> optimizes the white blood cells’ killing capacity, boosting the body’s immune system and improves blood circulation in all other organs, promoting detoxification and rejuvenation. Oxygen promotes bone mineralization and increases bone density. Additional oxygen initiates regeneration of damaged nerves due to age or injury giving a general relief of pain, swelling, cramps and numbness. <b>Hyperbaric oxygen therapy</b> bolsters the growth of new blood vessels in tissues promoting healthy bodily functions and greatly boosts the body’s metabolism making one feel energetic and invigorated. Inadequate oxygen level will cause cell death and organ malfunction which is aggravated by age, injury and illnesses. Adequate oxygen levels in your body will keep you in balance.</p>
+                    <p><b> Detoxification:</b></p>
+                    <p>Today’s hectic and stressful lifestyles with environmental pollutants, pesticides, fast-food diets and reduced activity has lowered our immune system and our body can easily be struggling hard to maintain an acceptable flow of oxygen. Reduced oxygen content slows down the exchange of the nutrients and metabolic byproducts which can accumulate and become toxic. Red blood cells instantly bind extra oxygen and the rest dissolves directly into the blood plasma, building up tissue oxygen levels far above normal in just a few minutes.  A higher (>20 times than normal) partial pressure of oxygen in the tissue will effectively drive out the toxins and heavy metals.</p>
+
+
+                       <p><b> Benefits of Hyperbaric Oxygen Therapy:</b></p>
+                    <p>•	Revitalizes by improving oxygenation of all organs</p>
+                    <p>•Organ function is improved with more effective blood flow and removal of toxins</p>
+                    <p>•	Regenerates small blood vessels (capillaries), nerves and bones</p>
+                    <p>•	Rejuvenates by releasing stems cells from the bone marrow for tissue repair</p>
+                    <p>•	Reduces pain, swelling, tingling, cramps and numbness.</p>
+                    <p>•	Suppresses inflammation and infection</p>
+                    <p>•	Shortens recovery time after injury/trauma, surgery or extreme exercise</p>
+                    <p>•	Boosts metabolism and energy</p>
+
+
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modalSportsInjuries">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+
+                <!-- Modal Header -->
+
+                <div class="modal-header" style="background: #007bff;">
+
+                    <h4 class="modal-title" style="color: #fff">Sports Injuries</h4>
+
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+
+                </div>
+
+                <!-- Modal body -->
+
+                <div class="modal-body" style="padding: 15px;
+    height: 60vh;
+    overflow: auto;">
+
+                    <p>How does Hyperbaric Oxygen Therapy (HBOT) help to heal sports injuries?</p>
+                    <p><b>Sports Injuries</b></p>
+                    <p>Hyperbaric oxygen therapy may help athletes at all skill levels heal more quickly and get back to their favorite pursuit. Many sports injuries involve strains and sprains, which naturally cause swelling and edema (accumulation of excess fluid in connective tissue). These natural reactions to injury compress blood vessels and restrict the vital flow of oxygen-carrying plasma and red blood cells to the injury site. Cells and tissues surrounding the injury site become starved for oxygen, which impedes healing. In extreme cases, cell and tissue death can occur. HBOT may promote faster healing in common sports injuries such as:</p>
+                    <p>High Ankle Sprains</p>
+                    <p> Fractures</p>
+                    <p>Pulled Muscles</p>
+                    <p>Achilles Tendinitis</p>
+                    <p>In the last decade, Hyperbaric Oxygen Therapy (HBOT) has been promoted in scientific literature or complementary therapy for sports injuries. Every week, increasing numbers of elite sports stars are using HBOT to boost their endurance and accelerate their recovery from musculoskeletal injury, ligament and cartilage damage — even bone fractures.</p>
+                    <p>Here at Bioped Clinic Newtown Kolkata, we can help patients from a wide range of sporting backgrounds, including professional footballers, jockeys, athletes and cricketers to recuperate from injuries and get back out on the pitch as quick as possible.</p>
+                       <p><b> The power of oxygen for sports</b>
+                    <p> With Hyperbaric Oxygen Therapy at our clinic, you’re breathing in pure oxygen in a private, purpose-built brand new Hyperbaric chamber at up to 2 times the normal atmospheric pressure which increases the oxygen-carrying capacity of your blood and allows your body to absorb 10-15 times more oxygen than normal.</p>
+
+                    <img src="{{URL::asset('public/assets/frontend/images/content/images.jpg')}}" class="img-responsive" style="width: 400px; height: 264px;">
+
+                    <p><b>HBOT helps sports professionals recover</b></p>
+                    <p> Many eminent sports stars are openly using HBOT as a way for healing injuries and boosting their performance. <b>Cristiano Ronaldo of Real Madrid</b> tore his hamstring and, despite a normal recovery time of 3-4 weeks, returned to play in 9 days because of HBOT. And after only 5 sessions of HBOT, endurance runner <b>Ellan Laquaniello</b> improved her performance by 35%.</p>
+                    <p>Novak Djokovic, Terrell Owens, Darren Sharper, and Tim Tebow. All of these sports personalities have something in common other than being the best of their game. These distinguished sportsmen have used hyperbaric chamber time and again either to gain active recovery or to treat sports-related wounds such as muscle strain, ligament tear, TBI, and concussions.</p>
+                    <p>Whether you are a minor league sportsman or a professional, injuries are an inevitable part of every sportsperson’s life. Professional and recreational sportspersons can get these injuries while playing on the field or during day-to-day training. Therefore, to recover in time and start playing again, athletes will have to take care of themselves, both physically and mentally.</p>
+                    <p><b>Hyperbaric Therapy for Athletes: A Way of Active Recovery</b></p>
+                    <p>In Hyperbaric Oxygen Therapy, the patient is put in a hyperbaric chamber where he/she breathes in 100 percent pure oxygen under an air pressure slightly higher than the normal sea level air pressure. Researchers have found that the healing process of sports-related injuries follows a consistent and natural path and takes place in three stages — inflammatory, proliferative, and remodeling. Oxygen plays an important role in the healing of the wounds and is a common element in all of the three stages.</p>
+                    <p>Hyperbaric Chamber Success Stories for treating Sports Wounds</p>
+                    <p><b>Terrel Owens uses Hyperbaric Chamber to return to Super Bowls:</b></p>
+                    <p>Back in 2004 doctors had declared Terrel Owens unfit to play against the Patriots in the Super Bowl XXXIX owing to his broken leg and critical ligament injury in the right ankle. However, within 7 weeks of his injury, the former NFL wide receiver surprised and shocked the world by playing 62 out of 72 offensive snaps in the Super Bowl game and caught a total of nine passes for the 122 yards.</p>
+                    <p>Owens admitted to using hyperbaric chamber as a part of his treatment and recovery process before returning to play for the Philadelphia Eagle. A 2011 study stated that HBOT had positive effects on injuries involving muscles, bones, and ligaments. Since his astonishing return to the game more than a decade ago, Owens’s performance was hailed as one of the most courageous in the history of Super Bowl.</p>
+                    <p><b>Novak Djokovic uses Hyperbaric Chamber for Active Recovery:</b></p>
+                    <p> Tennis star Novak Djokovic admitted in 2017 of using hyperbaric chamber for active recovery and to gain an edge on the field. Djokovic, the winner of 12 single grand slams, said that he uses the hyperbaric chamber to recover from the exhaustion of long-drawn tennis matches. “I think this (chamber)really helped. Not for the muscles, but more for recovering after an exhausting match. It is like a spaceship, a very interesting technology”, said Djokovic when asked about this unconventional treatment modality.</p>
+                    <p>Djokovic also said that he tries to use the hyperbaric chamber whenever possible but unfortunately does not have access to it everywhere he goes. The tennis superstar admits that the chamber has benefited him immensely and says that many top ranking players in the world resort to this treatment for active recovery and injury healing capabilities.</p>
+                    <p><b>Hyperbaric Chamber Aids Michael Phelps Recover From Training:</b></p>
+                    <p> As stated above, the hyperbaric chamber is not always used as a treatment modality. It can also be utilized to boost the body’s recovery process from regular, intensive training. World-renowned swimmer Michael Phelps used the chamber to recover faster from his intensive day-to-day training. Phelps admitted that with growing age the recovery process of the body slows down, which is why he resorted to using the hyperbaric chamber to fasten up the process. The 16-time Olympic medalist states that the experience was “strange” but “good” and helps him to bounce back to the game faster.</p>
+                    <p><b>Bill Romanowski used Hyperbaric Chamber for Concussions:</b></p>
+                    <p>During his long career of 16 years with the National Football League (NFL) Bill Romanowski had suffered at least 20 concussions, which ultimately lead him to retire from professional football. In a 2009 interview, Romanowski spoke openly about his injuries and the impact it had on his life. The now retired player states that in the last couple of years of his professional football career he would often forget things, which are right in front of him, or slurred and mixed up words while talking.</p>
+                    <p>“I would look for my car keys around the house and the keys were in my hand the whole time. I slurred my words; I was mixing words up. I would listen to my all-time favorite song on the radio and not remember who sang it,” said Romanowski.</p>
+                    <p>However, Romanowski’s health condition improved significantly after he started using a hyperbaric chamber. Since his retirement, Romanowski vouches for hyperbaric oxygen therapy and has recommended it other NFL players battling with head injuries and concussions.</p>
+                    <p><b>Final Takeaway:</b></p>
+                        <p>Hyperbaric Chamber is widely used by athletes to treat sports-related injuries and has become a novel way to recover actively from the exhaustive daily training and games. However, before starting the hyperbaric oxygen therapy an athlete must always consult a medical professional to get to know the treatment better and to determine how long or many sessions he/she must undertake for recovery and treatment.
+
+                    </p>
+
+
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 
 

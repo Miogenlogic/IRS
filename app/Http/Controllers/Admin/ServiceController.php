@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ServiceModalRequest;
+use App\Models\ServiceModal;
 use Illuminate\Http\Request;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Controllers\Controller;
@@ -91,6 +93,7 @@ class ServiceController extends Controller
 
         return $datatables->make(true);
     }
+
     public function serviceEdit($id)
     {
         $blog=Service::find($id);
@@ -140,6 +143,7 @@ class ServiceController extends Controller
         return redirect('admin/service-list');
 
     }
+
     public function serviceDelete($user_id)
     {
         $blog = Service::find($user_id);
@@ -150,5 +154,85 @@ class ServiceController extends Controller
         return redirect('admin/service-list');
     }
 
+    //modal
+    public function serviceModalAdd()
+    {
+
+        return view('admin.modal.addModal');
+    }
+
+
+    public function serviceModalAddStore(ServiceModalRequest $request)
+    {
+        //  $myrequest=$request->all();
+        //dd($myrequest);
+
+        $obj =new ServiceModal();
+        $obj->service_id = $request['service_id'];;
+        $obj->model_name = $request['model_name'];
+        $obj->model_title = $request['model_title'];
+        $obj->content = $request['content'];
+        $obj->save();
+        return redirect('admin/service-modal-list');
+
+    }
+
+    public function serviceModalEdit($id)
+    {
+        $servicemodal=ServiceModal::find($id);
+
+        return view('admin.modal.editModal')
+            ->with('servicemodal',$servicemodal);
+    }
+
+    public function serviceModalEditStore(Request $request)
+    {
+        //  $myrequest=$request->all();
+        //dd($myrequest);
+
+        $obj = ServiceModal::find($request['id']);
+
+        $obj->model_name = $request['model_name'];
+        $obj->model_title = $request['model_title'];
+        $obj->content = $request['content'];
+
+        $obj->save();
+
+        return redirect('admin/service-modal-list');
+
+    }
+
+    public function serviceModalList()
+    {
+        return view('admin.modal.listModal');
+    }
+
+    public function getTableServiceModal(Request $request)
+    {
+
+        $table = ServiceModal::select('*')->get();
+
+
+        $datatables =  Datatables::of($table)
+
+
+            ->addColumn('action', function ($table) {
+                $btns = ' <a href="' . url('admin/service-modal-edit/' . $table->id) . '" class="btn btn-outline-success" >EDIT</a>';
+                $btns .=' <a href="' . url('admin/service-modal-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
+                return $btns;
+            })
+
+            ->rawColumns(['action']);
+
+
+        return $datatables->make(true);
+    }
+ public function serviceModalDelete($user_id)
+ {
+     $modal = ServiceModal::find($user_id);
+     $modal->delete();
+     //dd($location);
+     return redirect('admin/service-modal-list');
+ }
 
 }

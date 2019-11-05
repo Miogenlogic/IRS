@@ -14,6 +14,11 @@
 		</div>
     @endsection
 		<!--//section-->
+@php
+
+    $modal=App\Helpers\UserHelper::modal();
+@endphp
+
 		<!--section services-->
 	@section('body')
 		<div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
@@ -52,6 +57,12 @@
 								<h5 class="service-card-name"><a href="{{url('service-page').'/'.$ser2->seo_url}}">{{$ser2->title}}</a></h5>
 								<div class="h-decor"></div>
 								{!!$ser2->short_content  !!}
+
+								@if($ser2->id==6)
+                                  @foreach($modal as $sermod)
+									<li><a href="#" class="btn-link" data-toggle="modal" data-target="#{{$sermod->model_name}}">{{$sermod->model_title}}</a></li>
+								  @endforeach
+                                 @endif
 							</div>
 						</div>
 
@@ -66,5 +77,64 @@
 	<!--footer-->
 
 	<!--//footer-->
+
+@endsection
+
+
+@section('after_scripts')
+
+
+@foreach($modal as $modname)
+
+<div class="modal fade" id="{{$modname->model_name}}">
+
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+
+
+
+			<!-- Modal Header -->
+
+			<div class="modal-header" style="background: #007bff;">
+
+				<h4 class="modal-title" style="color: #fff">{{$modname->model_title}}</h4>
+
+				<button type="button" class="close" data-dismiss="modal">×</button>
+
+			</div>
+
+
+
+			<!-- Modal body -->
+
+			<div class="modal-body" style="padding: 15px;
+    height: 60vh;
+    overflow: auto;">
+
+				<p>{!!$modname->content  !!}</p>
+
+
+
+			</div>
+
+
+
+			<!-- Modal footer -->
+
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+</div>
+@endforeach
 
 @endsection

@@ -110,8 +110,15 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/user-edit/{id}', ['uses' => 'UserController@userEdit']);
         Route::post('/user-edit-store', ['uses' => 'UserController@userEditStore']);
 
+       //service modal
+        Route::get('/service-modal-add', ['uses' => 'ServiceController@serviceModalAdd']);
+        Route::post('/service-modal-add-store', ['uses' => 'ServiceController@serviceModalAddStore']);
+        Route::get('/service-modal-list', ['uses' => 'ServiceController@serviceModalList']);
+        Route::get('/service-modal-get-table', ['uses' => 'ServiceController@getTableServiceModal']);
 
-
+        Route::get('/service-modal-edit/{id}', ['uses' => 'ServiceController@serviceModalEdit']);
+        Route::post('/service-modal-edit-store', ['uses' => 'ServiceController@serviceModalEditStore']);
+        Route::get('/service-modal-delete/{id}', ['uses' => 'ServiceController@serviceModalDelete']);
 
 
 

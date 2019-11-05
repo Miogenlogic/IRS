@@ -242,28 +242,43 @@ class HomeController extends Controller
 
     public function bookingFormAdd(Request $request)
     {
-        $otp=Appointment::where('email','=',$request['bookingemail'])
-            ->where('otp','=',$request['otp'])
-            ->where('status','=','Active')
-            ->orderby('id','DESC')->get()->first();
+        $userSession=Session::get('user');
         $country=explode('-',$request['bookingcountry']);
-        if(isset($request['bookingemail']) && $request['bookingemail'] != '' && isset($otp->id)){
-            $obj = new Booking();
-            $obj->name = $request['bookingname'];
-            $obj->email = $request['bookingemail'];
-            $obj->phone = $request['bookingphone'];
-            $obj->age = $request['bookingage'];
-            $obj->select_service = $request['bookingservice'];
-            $obj->doctor = $request['doctor'];
-            $obj->service_type = $request['service_type'];
-            $obj->date = $request['bookingdate'];
-            $obj->time = $request['bookingtime'];
-            $obj->comment = $request['bookingmessage'];
-            $obj->country_id = $country[1];
-            $obj->save();
+        if(isset($request['bookingemail']) && $request['bookingemail'] != ''){
 
-            $otp->status='Inactive';
-            $otp->save();
+
+            if(!isset($userSession['email'])) {
+                $otp = Appointment::where('email', '=', $request['bookingemail'])
+                    ->where('otp', '=', $request['otp'])
+                    ->where('status', '=', 'Active')
+                    ->orderby('id', 'DESC')->get()->first();
+                $otpID=$otp->id;
+
+
+            }else {
+                $otpID=1;
+            }
+            if($otpID>0){
+                $obj = new Booking();
+                $obj->name = $request['bookingname'];
+                $obj->email = $request['bookingemail'];
+                $obj->phone = $request['bookingphone'];
+                $obj->age = $request['bookingage'];
+                $obj->select_service = $request['bookingservice'];
+                $obj->doctor = $request['doctor'];
+                $obj->service_type = $request['service_type'];
+                $obj->date = $request['bookingdate'];
+                $obj->time = $request['bookingtime'];
+                $obj->comment = $request['bookingmessage'];
+                $obj->country_id = $country[1];
+                $obj->save();
+
+                if(isset($otp->id)){
+                    $otp->status='Inactive';
+                    $otp->save();
+                }
+
+            }
         }
 
 
