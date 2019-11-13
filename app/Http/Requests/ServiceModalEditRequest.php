@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class ServiceModalEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,20 +26,20 @@ class ServiceRequest extends FormRequest
         return [
 
             //'featured'=> 'required',
-            'title'=> 'required',
-            'seo_url'=> 'required|unique:service,seo_url',
-
+            'model_name'=> 'required|unique:service_model,model_name,'.$this->id.',id',
+            'model_title'=> 'required',
+            'service_id'=> 'required',
         ];
     }
 
     public function messages()
     {
             return [
-                //'featured.required' => 'Field is required.',
-                //'page.regex' => 'Field must consist of a-zA-Z0-9.',
-                'title.required' => 'Field is required.',
-                //'title.regex' => 'Field must consist of a-zA-Z0-9.',
-                'seo_url.required' => 'Field will be unique.',
+
+                'model_name.required' => 'Field is required.',
+                'model_name.unique' => 'Field will be unique.',
+                'model_title.required' => 'Field is required.',
+                'service_id.required' => 'Field is required.',
                  ];
     }
 }

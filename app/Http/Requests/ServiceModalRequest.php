@@ -26,9 +26,10 @@ class ServiceModalRequest extends FormRequest
         return [
 
             //'featured'=> 'required',
-            'model_name'=> 'required',
+            'model_name'=> 'required|unique:service_model,model_name',
             'model_title'=> 'required',
             'service_id'=> 'required',
+
         ];
     }
 
@@ -37,9 +38,12 @@ class ServiceModalRequest extends FormRequest
             return [
 
                 'model_name.required' => 'Field is required.',
+                'model_name.unique' => 'Field will be unique.',
 
                 'model_title.required' => 'Field is required.',
                 'service_id.required' => 'Field is required.',
+
+
                  ];
     }
 }

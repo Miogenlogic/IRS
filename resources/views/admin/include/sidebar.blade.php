@@ -100,6 +100,10 @@
                                     <a href="{{url('admin/service-list')}}" >Service List</a>
                                 </li>
                                 <li>
+                                    <a href="{{url('admin/service-modal-list')}}" >Service Modal List</a>
+                                </li>
+
+                                <li>
                                     <a href="{{url('admin/cms-service-page-list')}}">Service Page</a>
                                 </li>
 

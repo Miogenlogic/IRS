@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class ServiceEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class ServiceRequest extends FormRequest
 
             //'featured'=> 'required',
             'title'=> 'required',
-            'seo_url'=> 'required|unique:service,seo_url',
+            'seo_url'=> 'required|unique:service,seo_url,'.$this->id.',id',
 
         ];
     }

@@ -78,6 +78,7 @@ class UserController extends Controller
         DB::table('role_user')->insert(
             ['role_id' =>$user_type[0], 'user_id' => $obj->id]
         );
+
         return redirect('admin/user-list');
 
     }

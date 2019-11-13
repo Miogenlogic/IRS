@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\PaymentRequest;
 use App\Models\Askquestion;
 use App\Models\Booking;
 use App\Models\Contact;
+use App\Models\Payment;
+use App\Models\PaymentTransaction;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,6 +30,7 @@ class InquiryController extends Controller
 
     public function inquiryList(Request $request)
     {
+
         return view('admin.inquiry.listInquiry')
             ->with('param',$request['param']);
     }
@@ -90,7 +94,9 @@ class InquiryController extends Controller
             })
 
             ->addColumn('action', function ($table) {
+                $str=UserHelper::urlEncode($table->id);
                 $btns = ' <a href="' . url('admin/reply-inquiry/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
+                $btns .= ' <a href="' . url('admin/payment-invoice/').'/'.$str . '" class="btn btn-outline-success" >Payment</a>';
               //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
                 return $btns;
             })
@@ -351,6 +357,69 @@ class InquiryController extends Controller
 
         }
 
+    }
+
+//payment invoice
+
+    public function paymentInvoice($id)
+    {
+        $title="";
+        $booking_id=UserHelper::urlDecode($id);
+        //Print_r($id);die;
+        $pay=Booking::find($booking_id);
+
+        return view('admin.inquiry.payment')
+            ->with('pay',$pay)
+            ->with('id',$id);
+    }
+
+           public function paymentInvoiceSave(PaymentRequest $request)
+    {
+
+        //$obj1=Booking::find($request['id']);
+
+        $booking_id=UserHelper::urlDecode($request['id']);
+        $obj = new Payment();
+
+        $obj->amount=$request['amount'];
+        $obj->booking_id=$booking_id;
+        $obj->uncleared_amount = $request['uncleared_amount'];
+        $obj->payment_status = $request['payment_status'];
+        $obj->save();
+        $id=$obj->id;
+
+        $obj2=new PaymentTransaction();
+        $obj2->payment_id=$id;
+        $obj2->transaction_id=$request['transaction_id'];
+        $obj2->transaction_mode=$request['transaction_mode'];
+        $obj2->operator_name=$request['operator_name'];
+        $obj2->amount=$request['amount'];
+        $obj2->save();
+
+        return redirect('admin/inquiry-list');
+    }
+
+    public function getTablePayment(Request $request)
+    {
+
+        $booking_id=UserHelper::urlDecode($request['id']);
+        $table = Payment::where('booking_id','=',$booking_id)
+            ->get();
+//dd($table);
+
+        $datatables =  Datatables::of($table)
+
+
+           /* ->addColumn('action', function ($table) {
+                $btns = ' <a href="' . url('admin/reply-contact/' . $table->id) . '" class="btn btn-outline-success" >REPLY</a>';
+                //  $btns .=' <a href="' . url('admin/cms-delete/' . $table->id) . '" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger">DELETE</a>';
+                return $btns;
+            })*/
+
+            ->rawColumns(['action']);
+
+
+        return $datatables->make(true);
     }
 
 

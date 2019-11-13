@@ -56,7 +56,7 @@
                                 @foreach($service as $wks)
 
                                     <!--<option value="{/{$wks->id}}">{/{$wks->title}}</option>-->
-                                    <option value="{{$wks->id}}" {{(old('service_id')!=$servicemodal->service_id)?($wks->title==$servicemodal->service_id)?'selected=selected':'': 'selected=selected'}}>{{$wks->title}}</option>
+                                    <option value="{{$wks->id}}" {{(old('service_id')!=$servicemodal->service_id)?($wks->id==$servicemodal->service_id)?'selected=selected':'': 'selected=selected'}}>{{$wks->title}}</option>
 
                                 @endforeach
                             </select>

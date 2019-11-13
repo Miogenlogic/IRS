@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ServiceEditRequest;
+use App\Http\Requests\ServiceModalEditRequest;
 use App\Http\Requests\ServiceModalRequest;
 use App\Models\ServiceModal;
 use Illuminate\Http\Request;
@@ -102,7 +104,7 @@ class ServiceController extends Controller
             ->with('blog',$blog);
     }
 
-    public function serviceEditStore(ServiceRequest $request)
+    public function serviceEditStore(ServiceEditRequest $request)
     {
         //  $myrequest=$request->all();
         //dd($myrequest);
@@ -168,7 +170,7 @@ class ServiceController extends Controller
         //dd($myrequest);
 
         $obj =new ServiceModal();
-        $obj->service_id = $request['service_id'];;
+        $obj->service_id = $request['service_id'];
         $obj->model_name = $request['model_name'];
         $obj->model_title = $request['model_title'];
         $obj->content = $request['content'];
@@ -185,13 +187,13 @@ class ServiceController extends Controller
             ->with('servicemodal',$servicemodal);
     }
 
-    public function serviceModalEditStore(Request $request)
+    public function serviceModalEditStore(ServiceModalEditRequest $request)
     {
         //  $myrequest=$request->all();
         //dd($myrequest);
 
         $obj = ServiceModal::find($request['id']);
-
+        $obj->service_id = $request['service_id'];
         $obj->model_name = $request['model_name'];
         $obj->model_title = $request['model_title'];
         $obj->content = $request['content'];
@@ -210,7 +212,12 @@ class ServiceController extends Controller
     public function getTableServiceModal(Request $request)
     {
 
-        $table = ServiceModal::select('*')->get();
+        //$table = ServiceModal::select('*')->get();
+
+
+        $table = ServiceModal::select('service_model.*','service.title')
+            ->leftjoin('service','service.id','=','service_model.service_id')
+            ->get();
 
 
         $datatables =  Datatables::of($table)

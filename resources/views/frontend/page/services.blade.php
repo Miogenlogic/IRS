@@ -58,11 +58,13 @@
 								<div class="h-decor"></div>
 								{!!$ser2->short_content  !!}
 
-								@if($ser2->id==6)
+
                                   @foreach($modal as $sermod)
-									<li><a href="#" class="btn-link" data-toggle="modal" data-target="#{{$sermod->model_name}}">{{$sermod->model_title}}</a></li>
+										@if($ser2->id==$sermod->service_id)
+											<li><a href="#" class="btn-link" data-toggle="modal" data-target="#{{$sermod->model_name}}">{{$sermod->model_title}}</a></li>
+										@endif
 								  @endforeach
-                                 @endif
+
 							</div>
 						</div>
 

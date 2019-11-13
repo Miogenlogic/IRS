@@ -205,6 +205,9 @@ Route::group(['prefix' => 'admin'], function(){
 
         Route::post('/name-filter', ['uses' => 'InquiryController@nameFilter']);
 
+        Route::get('/payment-invoice/{id}', ['uses' => 'InquiryController@paymentInvoice']);
+        Route::post('/payment-invoice-save', ['uses' => 'InquiryController@paymentInvoiceSave']);
+        Route::get('/payment-get-table', ['uses' => 'InquiryController@getTablePayment']);
 
 
     });

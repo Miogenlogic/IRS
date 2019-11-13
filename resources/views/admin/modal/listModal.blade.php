@@ -13,12 +13,18 @@
             <div class="text-right mb-1">
                 <a class="btn btn-info text-white" href="{{url('admin/service-modal-add')}}">Add Modal</a>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="padding:2px;" class="card-title">List Of Service Modal Details</h3>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-condensed dataTable no-footer" id="tabe1">
                     <thead>
                     <tr class="bg-light">
                         <td>#</td>
-                        <td>Modal Name</td>
+                        <td>Service</td>
+                        <!--<td>Modal Name</td>-->
                         <td>Modal Title</td>
                         <td>Create</td>
                         <td>Action</td>
@@ -50,7 +56,8 @@
 
                 columns: [
                     {data: 'id', name: 'id', orderable: false, searchable: false},
-                    {data: 'model_name', name: 'model_name'},
+                    {data: 'title', name: 'title'},
+                    //{data: 'model_name', name: 'model_name'},
 
                     {data: 'model_title', name: 'model_title'},
 
