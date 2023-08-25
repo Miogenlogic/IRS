@@ -1,8 +1,79 @@
-<?php namespace App\Models;
+<?php
 
-use Zizaco\Entrust\EntrustRole;
 
-class Role extends EntrustRole
+
+namespace App\Models;
+
+
+
+use Illuminate\Database\Eloquent\Model;
+
+
+
+class Role extends Model
+
 {
-    protected $table='iit_roles';
+
+
+
+    protected $table='roles';
+
+
+
+    /**
+
+     * The attributes that are mass assignable.
+
+     *
+
+     * @var array
+
+     */
+
+    protected $fillable = [
+
+        // 'name', 'email', 'password',
+
+    ];
+
+
+
+
+
+    /*
+
+        protected $primaryKey = "";
+
+        public $incrementing = false;
+
+        public $timestamps = false;
+
+    */
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

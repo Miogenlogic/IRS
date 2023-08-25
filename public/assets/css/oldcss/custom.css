@@ -1,0 +1,160 @@
+/* =============== start: global css =============== */
+.d-flex {
+    display: flex;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+/* =============== end: global css =============== */
+p,
+.table thead th {
+    font-size: 15px !important;
+}
+
+a {
+    font-size: 15px !important;
+    text-decoration: none !important;
+}
+
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none !important;
+}
+
+footer {
+    font-size: inherit !important;
+}
+
+footer span {
+    font-size: 15px !important;
+}
+
+footer .copyright {
+    font-size: 15px !important;
+}
+
+footer .copyright a {
+    color: inherit !important;
+    font-size: inherit !important;
+}
+
+.table th,
+.table td {
+    font-size: 15px !important;
+}
+
+.btn {
+    font-size: 14px !important;
+}
+
+label {
+    font-size: 15px !important;
+}
+
+.breadcrumb {
+    padding: 15px 16px 10px !important;
+}
+
+.breadcrumb-item {
+    font-size: 15px !important;
+}
+
+.pageHeader {
+    padding: 8px 16px !important;
+    font-size: 16px !important;
+}
+
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=email],
+select,
+textarea,
+.input-group,
+.form-group,
+.incidentReporting.dashboard .formFieldsSectionWrap .input-group .form-control,
+.input-group a {
+    font-size: 14px !important;
+}
+
+.searchPannel .searchIcon {
+    margin-top: 0 !important;
+    transform: translateY(-50%) !important;
+    top: 50% !important;
+}
+
+.link-list a {
+    color: inherit !important;
+}
+
+.incidentNumberBlock .incidentTxt {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Start on-off-background-radio-btn */
+.r_act_ina input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    background: #e4e4e4;
+    padding: 19px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.r_act_ina input[type="radio"]:hover {
+    cursor: pointer;
+}
+
+.r_act_ina input:checked:focus {
+    border: none;
+    outline: none;
+}
+
+.r_act_ina input.yes {
+    margin-right: 6px;
+}
+
+.r_act_ina input.yes::before,
+.r_act_ina input.no::before {
+    content: '';
+    clear: both;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: FontAwesome;
+    color: #fff;
+    font-size: 17px;
+}
+
+.r_act_ina input.yes::before {
+    content: "\f00c";
+}
+
+.r_act_ina input.no::before {
+    content: "\f00d";
+}
+
+.r_act_ina input.yes:checked {
+    background: #5ad002;
+}
+
+.r_act_ina input.no:checked {
+    background: #ff0000
+}
+
+/* End on-off-background-radio-btn */
+h1.quicklinkWapperHeader{
+        color: #333;
+}
+.bold{
+    font-weight: bold !important;
+}

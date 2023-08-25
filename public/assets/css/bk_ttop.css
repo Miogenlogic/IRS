@@ -1,0 +1,27 @@
+/*--slider-up-arrow--*/
+#toTop {
+    display: none;
+    position: fixed;
+    cursor: pointer;
+    bottom: 30px;
+    right: 1px;
+    background-image: url(../img/arr.png);
+    background-repeat: no-repeat;
+    z-index: 1;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+
+#toTopHover {
+    width: 32px;
+    height: 32px;
+    display: block;
+    overflow: hidden;
+    float: right;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+/*--//slider-up-arrow--*/

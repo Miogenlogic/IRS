@@ -1,164 +1,181 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Untitled Document</title>
-    <style>
-        /* Basics */
-        html, body {
-            width: 100%;
-            height: 100%;
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-            color: #444;
-            -webkit-font-smoothing: antialiased;
-            background: #f0f0f0;
-        }
-        #container {
-            position: fixed;
-            width: 340px;
-            height: 280px;
-            top: 50%;
-            left: 50%;
-            margin-top: -140px;
-            margin-left: -170px;
-            background: #fff;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-
-        }
-        form {
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-        label {
-            color: #555;
-            display: inline-block;
-            margin-left: 18px;
-            padding-top: 10px;
-            font-size: 14px;
-        }
-        p a {
-            font-size: 11px;
-            color: #aaa;
-            float: right;
-            margin-top: -13px;
-            margin-right: 20px;
-            -webkit-transition: all .4s ease;
-            -moz-transition: all .4s ease;
-            transition: all .4s ease;
-        }
-        p a:hover {
-            color: #555;
-        }
-        input {
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-            font-size: 12px;
-            outline: none;
-        }
-        input[type=text],
-        input[type=password] {
-            color: #777;
-            padding-left: 10px;
-            margin: 10px;
-            margin-top: 12px;
-            margin-left: 18px;
-            width: 290px;
-            height: 35px;
-            border: 1px solid #c7d0d2;
-            border-radius: 2px;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
-            -webkit-transition: all .4s ease;
-            -moz-transition: all .4s ease;
-            transition: all .4s ease;
-        }
-        input[type=text]:hover,
-        input[type=password]:hover {
-            border: 1px solid #b6bfc0;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
-        }
-        input[type=text]:focus,
-        input[type=password]:focus {
-            border: 1px solid #a8c9e4;
-            box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
-        }
-        #lower {
-            background: #ecf2f5;
-            width: 100%;
-            height: 69px;
-            margin-top: 20px;
-            box-shadow: inset 0 1px 1px #fff;
-            border-top: 1px solid #ccc;
-            border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 3px;
-        }
-        input[type=checkbox] {
-            margin-left: 20px;
-            margin-top: 30px;
-        }
-        .check {
-            margin-left: 3px;
-            font-size: 11px;
-            color: #444;
-            text-shadow: 0 1px 0 #fff;
-        }
-        input[type=submit] {
-            float: right;
-            margin-right: 20px;
-            margin-top: 20px;
-            width: 80px;
-            height: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #acd6ef; /*IE fallback*/
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
-            background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
-            background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
-            border-radius: 30px;
-            border: 1px solid #66add6;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
-            cursor: pointer;
-        }
-        input[type=submit]:hover {
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
-            background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
-            background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
-        }
-        input[type=submit]:active {
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
-            background-image: -moz-linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
-            background-image: linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
-        }
-    </style>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Gainwell - Incident Information System</title>
+    <!-- ================== jQuery ================== -->
+    <script src="{{URL::asset('public/assets/js/jquery.min.js')}}"></script>
+    <!-- =================== bootstrap =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bootstrap.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- ================== font-awesome ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/font-awesome.min.css')}}" type="text/css">
+    <!-- =================== animation =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/animations.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/animations.min.js')}}"></script>
+    <!-- ================== Back To Top ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bk_ttop.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/move-top.js')}}"></script>
+    <script src="{{URL::asset('public/assets/js/easing.js')}}"></script>
+    <!-- ==================== google font ==================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- ==================== my css ==================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/responsive.css')}}" type="text/css">
 </head>
 
 <body>
-@if(Session::has('msg'))
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center;
-    font-weight: 700;">
-        {{ Session::get('msg') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-<!-- Begin Page Content -->
-<div id="container">
-    <form method="post" action="{{url('loginchk')}}">
-        <label for="username">Username:</label>
-        <input type="text" name="username" class="form-control" placeholder="User name">
-        <label for="password">Password:</label>
-        <input type="password" name="password" class="form-control" placeholder="Your password">
-        <div id="lower">
-            <input type="checkbox" name="remember_me" value="" style="margin-top: 5px"><label class="check" for="checkbox" style="padding-bottom: 15px">Keep me logged in</label>
-            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-            <input type="submit" value="Login">
-            <div style="padding-left: 15px"><a href="{{url('forgot-password')}}">Forgot Password?</a></div>
-        </div><!--/ lower-->
-    </form>
-</div><!--/ container-->
-<!-- End Page Content -->
+ <header>
+        <!-- start header-top -->
+        <!--<div class="header-top d-none d-md-block">-->
+        <div class="header-top clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="header-left">
+                            <a href="tel:18004193356"><i class="fa fa-phone circle-icon"></i> Toll Free: 1800 419 3356</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="social-icons float-sm-right">
+                            <li><a href="https://www.facebook.com/gainwellcat" target="_blank"><i class="fa fa-facebook circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/gainwellcat" target="_blank"><i class="fa fa-twitter circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://linkedin.com/company/gainwellcat/" target="_blank"><i class="fa fa-linkedin circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/GainwellCAT" target="_blank"><i class="fa fa-youtube-play circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://instagram.com/gainwellcat/" target="_blank"><i class="fa fa-instagram circle-icon" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header-top -->
+        <!-- start header-navbar -->
+        <div class="header-navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-logo1" href="#"><img src="{{URL::asset('public/assets/img/logo.gif')}}" alt=""></a>
+                    <a class="navbar-logo2 d-none d-lg-block" href="#"><img src="{{URL::asset('public/assets/img/cat75.png')}}" alt=""></a>
+                    <a class="navbar-logo3 d-block ml-auto" href="#"><img src="{{URL::asset('public/assets/img/gcpl_sml_logo.png')}}" alt=""></a>
+                </div>
+            </nav>
+        </div>
+        <!-- end header-navbar -->
+    </header>
+
+    <!-- ========================= start login-form ========================= -->
+    <section class="login-form">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+            <div class="card form-inner">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-5">
+						 @if(Session::has('msg'))
+                         <div style="color: red;font-size: 16px;display: inline-block;">{{ Session::get('msg') }}</div>
+                        @endif
+                            <form action="{{url('loginchk')}}" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="">Employee ID</label>
+                                    <input name="username" type="text" class="form-control" placeholder="Enter Employee ID" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input name="password" type="password" class="form-control" placeholder="Enter Password" required>
+                                </div>
+                                 <input type="hidden" name="_token" value="{{csrf_token()}}"/> 
+								 <div class="form-group">
+                                    <label for="">Select Role</label>
+									@php $roles = App\Helpers\UserHelper::GetRoles(); @endphp
+                                    <select class="form-control" name="role_id" required> 
+									<option value="">Please Select</option>
+									@foreach($roles as $data)
+										<option value="{{$data->id}}" >{{$data->display_name}}</option> 
+									@endforeach 
+									</select>
+                                </div>
+                                <div class="clearfix btn-div">
+                                    <button type="submit" class="btn-Dark">Login</button>
+                                    <a href="{{url('forgotpass')}}" class="ml-3">Forgot Password?</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= end login-form ========================= -->
+
+
+        <!-- Footer -->
+ <footer>
+        <div class="container-fluid">
+            <ul class="d-lg-flex justify-content-lg-between">
+                <li>
+                    <ul class="link-list">
+                        <li>
+                            <a href="http://www.gainwellindia.com/privacy_policy" target="_blank">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="http://www.gainwellindia.com/cookie-policy" target="_blank">Cookie Policy</a>
+                        </li>
+                        <li>
+                            <a href="http://www.gainwellindia.com/disclaimer" target="_blank">Discalimer</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="footer-middle">
+                        <p>Give a Missed Call at: <a href="tel:08081112244">08081112244</a> © 2020 GCPL, All rights reserved.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="copyright">                       
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- ================================ end footer ================================ -->
+
+
+
+    <!-- =================== start back to top =================== -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+
+    </script>
+    <a href="#" id="toTop" class="hover-bounce"></a>
+    <!-- =================== end back to top =================== -->
+
+    <!-- ================== bootstrap tooltip ================== -->
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
+
 </body>
+
 </html>

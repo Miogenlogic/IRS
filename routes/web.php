@@ -15,297 +15,153 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//bookingform
-Route::post('/booking-add', ['uses' => 'frontend\HomeController@bookingFormAdd']);
-Route::post('/booking-otp', ['uses' => 'frontend\HomeController@bookingFormOtp']);
-
-
-Route::post('/service-associated-doctors', ['uses' => 'frontend\HomeController@serviceAssociatedDoctors']);
-Route::post('/service-type', ['uses' => 'frontend\HomeController@typeService']);
-
 
 //Admin
 Route::group(['prefix' => 'admin'], function(){
-    Route::group(['namespace' => 'Admin','middleware' => 'auth'], function(){
+Route::group(['namespace' => 'Admin','middleware' => 'auth'], function(){
 
-        Route::get('/admin-dashboard', ['uses' => 'DashboardController@adminDashboard']);
+	Route::get('/admin-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/admin-closetable', ['uses' => 'DashboardController@closetable']);	
+	Route::get('/admin-view/{id}', ['uses' => 'DashboardController@Inciview']);
+	Route::get('/admin-incitable', ['uses' => 'DashboardController@incitable']);
+	Route::get('/admin-drafttable', ['uses' => 'DashboardController@drafttable']);
+	Route::get('/admin-pendrm', ['uses' => 'DashboardController@pendrm']);
+	Route::get('/admin-pendsf', ['uses' => 'DashboardController@pendsf']);
+	Route::get('/admin-changepass', ['uses' => 'DashboardController@changepassword']);
+	Route::post('/admin-changepssincident', ['uses' => 'DashboardController@changepss']);
+	Route::get('/manage-report', ['uses' => 'ReportController@dashboard']);
+	Route::post('/gen_report', ['uses' => 'ReportController@generateReport']);
+	Route::get('/health-report', ['uses' => 'ReportController@viewHRep']);
+	Route::post('/gen_hreport', ['uses' => 'ReportController@downloadHRep']);
+	
+	Route::get('/schamp-report', ['uses' => 'ReportController@viewSchampRep']);
+	Route::post('/gen_screport', ['uses' => 'ReportController@downloadSchampRep']);
 
+	/*********************** For Super Admin Section ***********************************/
+	Route::get('/super-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/edit-backDate', ['uses' => 'MasterController@backDateEdit']);
+    Route::post('/edit-backDate-save', ['uses' => 'MasterController@backDateEditSave']);
+	Route::get('/edit-repDays', ['uses' => 'MasterController@reptDaysEdit']);
+    Route::post('/edit-repDays-save', ['uses' => 'MasterController@reptDaysEditSave']);
+	Route::get('/employee-list', ['uses' => 'MasterController@employeelist']);
+	Route::get('/employee-getTable', ['uses' => 'MasterController@employeeGetTable']);
+	Route::get('/zones-list', ['uses' => 'MasterController@zoneslist']);
+	Route::get('/zones-getZonesTable', ['uses' => 'MasterController@zonesGetTable']);
+	Route::get('/zones-upload', ['uses' => 'MasterController@UploadZone']);
+	Route::post('/zone-save', ['uses' => 'MasterController@SaveZone']);
+	Route::get('/inci-list', ['uses' => 'MasterController@inciTypelist']);
+	Route::get('/incitype-getInciTypeTable', ['uses' => 'MasterController@incitypeGetTable']);
+	Route::get('/add-incitype', ['uses' => 'MasterController@inciTypeAdd']);
+	Route::get('/edit-incitype/{id}', ['uses' => 'MasterController@inciTypeEdit']);
+	Route::get('/delete-incitype/{id}/{stat}', ['uses' => 'MasterController@inciTypeDelete']);
+	Route::get('/delete-incistatus/{id}', ['uses' => 'MasterController@inciStatDelete']);
+	Route::post('/add-incitype-save', ['uses' => 'MasterController@inciTypeSave']);
+	Route::get('/incistat-list', ['uses' => 'MasterController@inciStatlist']);
+	Route::get('/incistat-getInciStatTable', ['uses' => 'MasterController@incistatGetTable']);
+	Route::get('/add-incistat', ['uses' => 'MasterController@inciStatAdd']);
+	Route::get('/edit-incistatus/{id}', ['uses' => 'MasterController@inciStatEdit']);
+	Route::post('/add-incistat-save', ['uses' => 'MasterController@inciStatSave']);	
+	
+	Route::get('/saftchamp-list', ['uses' => 'MasterController@saftyChamplist']);
+	Route::get('/location-wise-saftchamp-report', ['uses' => 'ReportController@locationWiseSafetyChampDownload']);
+	Route::get('/saftychamp-gettable', ['uses' => 'MasterController@saftyChampGetTable']);
+	Route::get('/saftychamp-gettable/{location_id}', ['uses' => 'MasterController@saftyChampGetTable']);
+	Route::get('/add-schamp', ['uses' => 'MasterController@sChampAdd']);
+	Route::post('/add-schamp-save', ['uses' => 'MasterController@sChampSave']);
+	//Route::get('/edit-incitype/{id}', ['uses' => 'MasterController@inciTypeEdit']);
+	
+	Route::get('/emp-saftchamp-list', ['uses' => 'MasterController@empSaftyChamplist']);
+	Route::get('/emp-saftychamp-gettable', ['uses' => 'MasterController@empSaftyChampGetTable']);
+	Route::get('/emp-add-schamp', ['uses' => 'MasterController@empSChampAdd']);
+	Route::post('/emp-add-schamp-save', ['uses' => 'MasterController@empsChampSave']);
+	Route::get('/schamp-edit/{id}', ['uses' => 'MasterController@ChampEdit']);
+	Route::post('/edit-schamp-save/{id}', ['uses' => 'MasterController@ChampEditSave']);
+	
+	
 
-        //CMS
-        Route::get('/cms-add', ['uses' => 'CmsController@cmsAdd']);
-        Route::post('/cms-add-store', ['uses' => 'CmsController@cmsAddStore']);
-        Route::get('/cms-list', ['uses' => 'CmsController@cmsList']);
-        Route::get('/cms-get-table', ['uses' => 'CmsController@getTableCms']);
-        Route::get('/cms-edit/{id}', ['uses' => 'CmsController@cmsEdit']);
-        Route::post('/cms-edit-store', ['uses' => 'CmsController@cmsEditStore']);
-        Route::get('/cms-delete/{id}', ['uses' => 'CmsController@cmsDelete']);
+	/*********************** For Employee Section ***********************************/
+	Route::get('/employee-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/employee-personalform', ['uses' => 'EmployeeController@personalform']);
+	Route::post('/employee-personaledit', ['uses' => 'EmployeeController@personaledit']);
+	Route::get('/employee-myhealth', ['uses' => 'EmployeeController@myhealth']);
+	Route::post('/employee-myhealthedit', ['uses' => 'EmployeeController@myhealthedit']);
+	Route::get('/employee-incident', ['uses' => 'EmployeeController@incident']);
+	Route::post('/employee-incidentrep', ['uses' => 'EmployeeController@incidentrep']);
+	Route::get('/employee-incident-edit/{id}', ['uses' => 'EmployeeController@incidentedit']);
+	Route::get('/employee-incident-view/{id}', ['uses' => 'EmployeeController@incidentview']);
+	Route::get('/employee-incident-delete/{id}', ['uses' => 'EmployeeController@incidentdelete']);
+	Route::post('/employee-incident-editstore', ['uses'=>'EmployeeController@incidenteditstore']);
 
+	/*********************** For Reporting Manager Section ***********************************/
+	Route::get('/rm-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/rm-incident-edit/{id}', ['uses' => 'RMController@incidentedit']);
+	Route::get('/rm-incident-view/{id}', ['uses' => 'RMController@incidentview']);
+	Route::post('/rm-rmcomment', ['uses' => 'RMController@rmcomment']);
 
+	/*********************** For Safety Head Section ***********************************/
+	Route::get('/sf-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/sf-incident-edit/{id}', ['uses' => 'SHController@incidentedit']);
+	Route::get('/sf-incident-view/{id}', ['uses' => 'SHController@incidentview']);
+	Route::post('/sf-shcomment', ['uses' => 'SHController@shcomment']);
+	
+	Route::post('/admin-statecity', ['uses' => 'DashboardController@statecity']);
+	Route::post('/admin-statedis', ['uses' => 'DashboardController@statedis']);
+	Route::post('/admin-exportdata/{type}', ['uses' => 'DashboardController@exportData']);
 
-        //CmsMain Home Page
-        Route::get('/cms-home-edit/{id}', ['uses' => 'CmsPageController@cmsHomeEdit']);
-        Route::post('/cms-home-edit-store', ['uses' => 'CmsPageController@cmsHomeEditStore']);
-        Route::get('/cms-home-list', ['uses' => 'CmsPageController@cmsHomeList']);
-        Route::get('/cms-home-get-table', ['uses' => 'CmsPageController@getTableCmsHome']);
+	/*Route::get('/admin-dashboard', ['uses' => 'DashboardController@dashboard']);
+	Route::get('/admin-incitable', ['uses' => 'DashboardController@incitable']);
+	Route::get('/admin-closetable', ['uses' => 'DashboardController@closetable']);
+	Route::get('/admin-opentable', ['uses' => 'DashboardController@opentable']);
+	Route::post('/admin-todate', ['uses' => 'DashboardController@todate']);
+	Route::get('/admin-reportform', ['uses' => 'DashboardController@reportform']);
+	Route::post('/admin-reporteditstore', ['uses' => 'DashboardController@reportedit']);
+	Route::post('/admin-search', ['uses' => 'DashboardController@search']);
+	Route::get('/admin-table', ['uses' => 'DashboardController@table']);
+	Route::get('/admin-myhealth', ['uses' => 'DashboardController@myhealth']);
+	Route::post('/admin-myhealthedit', ['uses' => 'DashboardController@myhealthedit']);
+	Route::get('/admin-incident', ['uses' => 'DashboardController@incident']);
+	Route::post('/admin-incident_rmcomment', ['uses' => 'DashboardController@rmcomment']);
+	Route::post('/admin-incident_zacomment', ['uses' => 'DashboardController@zacomment']);
+	Route::post('/admin-incident_shcomment', ['uses' => 'DashboardController@shcomment']);
+	Route::post('/admin-incident_ahcomment', ['uses' => 'DashboardController@ahcomment']);
+	
+	Route::get('/admin-incidentrm-edit/{id}', ['uses' => 'DashboardController@incidenteditrm']);
+	Route::post('/admin-incident-store', ['uses' => 'DashboardController@incidentformstore']);
+	Route::get('/admin-incident-edit/{id}', ['uses' => 'DashboardController@incidentedit']);
+	Route::post('/admin-incident-editstore', ['uses'=>'DashboardController@incidenteditstore']);
+	Route::get('/admin-changepass', ['uses' => 'DashboardController@changepassword']);
+	Route::post('/admin-changepssincident', ['uses' => 'DashboardController@changepss']);
+	Route::get('/admin-incidentlist', ['uses' => 'DashboardController@incilist']);
+	Route::get('/admin-incident-gettable', ['uses' => 'DashboardController@incidentgettable']);
+	
+	Route::get('/super-incilist', ['uses' => 'IncidentController@superincilist']);
+	Route::get('/super-incigetTable', ['uses' => 'IncidentController@inciGetTable']);
+	
+	Route::post('/zone-list', ['uses' => 'ZoneController@zonelist']);
+    Route::get('/inci-getTable', ['uses' => 'DashboardController@incilistGetTable']);
 
-        //CmsMain About Page
-        Route::get('/cms-about-edit/{id}', ['uses' => 'CmsPageController@cmsAboutEdit']);
-        Route::post('/cms-about-edit-store', ['uses' => 'CmsPageController@cmsAboutEditStore']);
-        Route::get('/cms-about-list', ['uses' => 'CmsPageController@cmsAboutList']);
-        Route::get('/cms-about-get-table', ['uses' => 'CmsPageController@getTableCmsAbout']);
-
-        //Cms visionmission
-        Route::get('/cms-vision-edit/{id}', ['uses' => 'CmsPageController@cmsVisionEdit']);
-        Route::post('/cms-vision-edit-store', ['uses' => 'CmsPageController@cmsVisionEditStore']);
-        Route::get('/cms-vision-list', ['uses' => 'CmsPageController@cmsVisionList']);
-        Route::get('/cms-vision-get-table', ['uses' => 'CmsPageController@getTableCmsVision']);
-
-
-        //Cms contact
-        Route::get('/cms-contact-edit/{id}', ['uses' => 'CmsPageController@cmsContactEdit']);
-        Route::post('/cms-contact-edit-store', ['uses' => 'CmsPageController@cmsContactEditStore']);
-        Route::get('/cms-contact-list', ['uses' => 'CmsPageController@cmsContactList']);
-        Route::get('/cms-contact-get-table', ['uses' => 'CmsPageController@getTableCmsContact']);
-
-        //service
-        Route::get('/cms-service-edit/{id}', ['uses' => 'CmsPageController@servicetEdit']);
-        Route::post('/cms-service-edit-store', ['uses' => 'CmsPageController@serviceEditStore']);
-        Route::get('/cms-service-list', ['uses' => 'CmsPageController@serviceList']);
-        Route::get('cms-service-get-table', ['uses' => 'CmsPageController@getTableService']);
-
-        //service page
-        Route::get('/cms-service-page-edit/{id}', ['uses' => 'CmsPageController@servicetPageEdit']);
-        Route::post('/cms-service-page-edit-store', ['uses' => 'CmsPageController@servicePageEditStore']);
-        Route::get('/cms-service-page-list', ['uses' => 'CmsPageController@servicePageList']);
-        Route::get('cms-service-page-get-table', ['uses' => 'CmsPageController@getTableServicePage']);
-
-
-
-
-       /* Route::get('/cms-main-add', ['uses' => 'CmsMainController@cmsMainAdd']);
-        Route::post('/cms-main-add-store', ['uses' => 'CmsMainController@cmsMainAddStore']);
-        Route::get('/cms-main-list', ['uses' => 'CmsMainController@cmsMainList']);
-        Route::get('/cms-main-get-table', ['uses' => 'CmsMainController@getTableCmsMain']);
-        Route::get('/cms-main-edit/{id}', ['uses' => 'CmsMainController@cmsMainEdit']);
-        Route::post('/cms-main-edit-store', ['uses' => 'CmsMainController@cmsMainEditStore']);
-        Route::get('/cms-main-delete/{id}', ['uses' => 'CmsMainController@cmsMainDelete']);
-
-        //CmsPage
-        Route::get('/cms-page-add/{id}', ['uses' => 'CmsPageController@cmsPageAdd']);
-        Route::post('/cms-page-add-store', ['uses' => 'CmsPageController@cmsPageAddStore']);
-        Route::get('/cms-page-list/{id}', ['uses' => 'CmsPageController@cmsPageList']);
-        Route::get('/cms-page-get-table', ['uses' => 'CmsPageController@getTableCmsPage']);
-        Route::get('/cms-page-edit/{id}', ['uses' => 'CmsPageController@cmsPageEdit']);
-        Route::post('/cms-page-edit-store', ['uses' => 'CmsPageController@cmsPageEditStore']);
-        Route::get('/cms-page-delete/{id}', ['uses' => 'CmsPageController@cmsPageDelete']);*/
-
-
-
-        //user
-        Route::get('/user-add', ['uses' => 'UserController@userAdd']);
-        Route::post('/user-add-store', ['uses' => 'UserController@userAddStore']);
-        Route::get('/user-list', ['uses' => 'UserController@userList']);
-        Route::get('/user-get-table', ['uses' => 'UserController@getTableUser']);
-
-        Route::get('/user-edit/{id}', ['uses' => 'UserController@userEdit']);
-        Route::post('/user-edit-store', ['uses' => 'UserController@userEditStore']);
-
-       //service modal
-        Route::get('/service-modal-add', ['uses' => 'ServiceController@serviceModalAdd']);
-        Route::post('/service-modal-add-store', ['uses' => 'ServiceController@serviceModalAddStore']);
-        Route::get('/service-modal-list', ['uses' => 'ServiceController@serviceModalList']);
-        Route::get('/service-modal-get-table', ['uses' => 'ServiceController@getTableServiceModal']);
-
-        Route::get('/service-modal-edit/{id}', ['uses' => 'ServiceController@serviceModalEdit']);
-        Route::post('/service-modal-edit-store', ['uses' => 'ServiceController@serviceModalEditStore']);
-        Route::get('/service-modal-delete/{id}', ['uses' => 'ServiceController@serviceModalDelete']);
-
-
-
-        //homemainslider
-
-        Route::get('/main-slider-add', ['uses' => 'HomeMainSliderController@mainSliderAdd']);
-        Route::post('/main-slider-add-save', ['uses' => 'HomeMainSliderController@mainSliderAddSave']);
-        Route::get('/main-slider-list', ['uses' => 'HomeMainSliderController@mainSliderList']);
-        Route::get('/main-slider-get-table', ['uses' => 'HomeMainSliderController@getTableMainSlider']);
-        Route::get('/main-slider-edit/{id}', ['uses' => 'HomeMainSliderController@mainSliderEdit']);
-        Route::post('/main-slider-edit-store', ['uses' => 'HomeMainSliderController@mainSliderEditStore']);
-        Route::get('/main-slider-delete/{id}', ['uses' => 'HomeMainSliderController@mainSliderDelete']);
-
-
-
-
-
-
-        Route::post('/ckeditor-upload', ['uses' => 'CkeditorUploadController@upload']);
-
-        //homeslider
-        Route::get('/home-slider-add', ['uses' => 'HomeSliderController@sliderAdd']);
-        Route::post('/home-slider-add-save', ['uses' => 'HomeSliderController@sliderAddSave']);
-        Route::get('/home-slider-list', ['uses' => 'HomeSliderController@sliderList']);
-        Route::get('/home-slider-get-table', ['uses' => 'HomeSliderController@getTableSlider']);
-        Route::get('/home-slider-edit/{id}', ['uses' => 'HomeSliderController@sliderEdit']);
-        Route::post('/home-slider-edit-store', ['uses' => 'HomeSliderController@sliderEditStore']);
-        Route::get('/home-slider-delete/{id}', ['uses' => 'HomeSliderController@sliderDelete']);
-
-
-         //requestform(demo)
-        //Route::get('/request-form-add', ['uses' => 'RequestFormController@requestFormAdd']);
-
-
-
-        //AboutSliderController
-        Route::get('/slider-add', ['uses' => 'AboutSliderController@sliderAdd']);
-        Route::post('/slider-add-save', ['uses' => 'AboutSliderController@sliderAddSave']);
-        Route::get('/slider-list', ['uses' => 'AboutSliderController@sliderList']);
-        Route::get('/slider-get-table', ['uses' => 'AboutSliderController@getTableSlider']);
-        Route::get('/slider-delete/{id}', ['uses' => 'AboutSliderController@sliderDelete']);
-
-
-        //Service
-        Route::get('/service-add', ['uses' => 'ServiceController@serviceAdd']);
-        Route::post('/service-add-save', ['uses' => 'ServiceController@serviceAddSave']);
-        Route::get('/service-list', ['uses' => 'ServiceController@serviceList']);
-        Route::get('/service-get-table', ['uses' => 'ServiceController@getTableService']);
-        Route::get('/service-edit/{id}', ['uses' => 'ServiceController@serviceEdit']);
-        Route::post('/service-edit-store', ['uses' => 'ServiceController@serviceEditStore']);
-        Route::get('/service-delete/{id}', ['uses' => 'ServiceController@serviceDelete']);
-
-        //settings
-        Route::get('/settings', ['uses' => 'SettingsController@settingsEdit']);
-        Route::post('/settings-save', [ 'uses' => 'SettingsController@settingsSave']);
-
-     //inquery
-        Route::get('/inquiry-list', ['uses' => 'InquiryController@inquiryList']);
-        Route::get('/inquiry-get-table', ['uses' => 'InquiryController@getTableInquiry']);
-
-
-        //Reply Inquiry
-        Route::get('/reply-inquiry/{id}', ['uses' => 'InquiryController@replyInquiry']);
-       // Route::get('/reply-inquiry-send', ['uses' => 'InquiryController@getTableReplyInquiry']);
-
-        Route::post('/confirm-emil', ['uses' => 'InquiryController@emilConfirm']);
-
-     //reply Questions
-        Route::get('/question-list', ['uses' => 'InquiryController@questionList']);
-        Route::get('/question-get-table', ['uses' => 'InquiryController@getTableQuestion']);
-        Route::get('/reply-question/{id}', ['uses' => 'InquiryController@replyQuestion']);
-        Route::post('/question-emil-send', ['uses' => 'InquiryController@emilQuestion']);
-
-        //reply Contact
-        Route::get('/contact-list', ['uses' => 'InquiryController@contactList']);
-        Route::get('/contact-get-table', ['uses' => 'InquiryController@getTableContact']);
-        Route::get('/reply-contact/{id}', ['uses' => 'InquiryController@replyContact']);
-        Route::post('/contact-emil-send', ['uses' => 'InquiryController@emilContact']);
-
-
-        //dashboard
-        Route::get('/booking-list', ['uses' => 'InquiryController@bookingList']);
-        Route::get('/booking-get-table', ['uses' => 'InquiryController@getTableBooking']);
-
-        Route::post('/name-filter', ['uses' => 'InquiryController@nameFilter']);
-
-        Route::get('/payment-invoice/{id}', ['uses' => 'InquiryController@paymentInvoice']);
-        Route::post('/payment-invoice-save', ['uses' => 'InquiryController@paymentInvoiceSave']);
-        Route::get('/payment-get-table', ['uses' => 'InquiryController@getTablePayment']);
-
-
+	Route::post('/admin-changeDateRange', ['uses' => 'DashboardController@changeDateRange']);*/
     });
-});
-//File Manager
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+ });
+
+// //File Manager
+ Route::group(['middleware' => 'auth'], function () {
+     Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
-    // list all lfm routes here...
-});
+//     // list all lfm routes here...
+ });
+	
+	
+	/*********************** For Login Section ***********************************/
+	Route::get('/login', ['uses' => 'Auth\LoginController@index']);
+	Route::post('/loginchk', [ 'uses' => 'Auth\LoginController@checklogin']);
+
+	Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
+	Route::get('/forgotpass', ['uses' => 'Auth\LoginController@forgotPassword']);
+
+	Route::post('/forgot', ['uses' => 'Auth\LoginController@forget']);
+	Route::get('/reset', ['uses' => 'Auth\LoginController@reset']);
 
 
-
-
-
-//frontend//
-Route::group(['namespace' => 'frontend'], function(){
-    Route::group(['middleware' => 'auth'], function() {
-
-        Route::get('my-dashboard', ['uses' => 'HomeController@mydashboard']);
-        Route::get('appointments', ['uses' => 'HomeController@appointments']);
-        Route::get('my-payment-history', ['uses' => 'HomeController@mypaymenthistory']);
-        Route::get('my-prescription', ['uses' => 'HomeController@myprescription']);
-        Route::get('reschedule-appointments', ['uses' => 'HomeController@rescheduleappointments']);
-
-
-    });
-    //AJAX
-    Route::post('/state-by-country-id', ['uses' => 'AjaxController@stateByCountryId']);
-    Route::post('/city-by-state-id', ['uses' => 'AjaxController@cityByStateId']);
-
-    Route::get('/', ['uses' => 'HomeController@index']);
-
-    Route::get('services', ['uses' => 'HomeController@services']);
-
-    Route::get('service-page/{seo}', ['uses' => 'HomeController@servicePage']);
-
-    Route::get('about', ['uses' => 'HomeController@about']);
-
-
-
-    Route::get('visionmission', ['uses' => 'HomeController@visionmision']);
-
-    Route::get('contact', ['uses' => 'HomeController@contact']);
-
-    //requestform
-    Route::post('/request-add', ['uses' => 'HomeController@requestFormAdd']);
-
-
-
-   //ask expert
-    Route::post('/ask-add', ['uses' => 'HomeController@askAdd']);
-
-   //contactform
-    Route::post('/contact-add', ['uses' => 'HomeController@contactAdd']);
-
-    //ask question
-    Route::post('/askquetion-add', ['uses' => 'HomeController@askQuestionAdd']);
-
-    //emailsubcribe
-    Route::post('/emil-add', ['uses' => 'HomeController@emilAdd']);
-
-    //edit patient profile
-    Route::get('/edit-profile', ['uses' => 'PatientController@ProfileEdit']);
-    Route::post('/edit-profile-save', [ 'uses' => 'PatientController@ProfileSave']);
-
-    Route::get('/appointment-list', ['uses' => 'PatientController@appointmentList']);
-
-    Route::get('/appointment-get-table', ['uses' => 'PatientController@getTableAppointment']);
-
-
-
-});
-
-//auth//
-Route::get('/login', ['uses' => 'Auth\LoginController@index']);
-
-Route::post('/loginchk', [ 'uses' => 'Auth\LoginController@checklogin']);
-
-Route::get('/registration', ['uses' => 'Auth\LoginController@registration']);
-
-Route::post('/register-save', [ 'uses' => 'Auth\LoginController@registerStore']);
-
-//mail for otp
-Route::post('/otp-mail', [ 'uses' => 'Auth\LoginController@otpMail']);
-
-Route::get('/registration-validation/{str}', ['uses' => 'Auth\LoginController@registrationValidation']);
-
-Route::post('/registration-validation-check', ['uses' => 'Auth\LoginController@registrationValidationCheck']);
-
-Route::get('/activation/', ['uses' => 'Auth\LoginController@activation']);
-
-Route::get('/forgot-password/', ['uses' => 'Auth\LoginController@forgotPassword']);
-
-Route::post('/reset-mail', [ 'uses' => 'Auth\LoginController@resetMail']);
-
-Route::get('/reset/', ['uses' => 'Auth\LoginController@reset']);
-
-Route::get('/logout', [ 'uses' => 'Auth\LoginController@logout']);
-
+   
 

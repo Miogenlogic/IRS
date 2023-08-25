@@ -1,85 +1,196 @@
-@extends('frontend.include.layout')
+<!DOCTYPE html>
+<html>
 
-		<!--section-->
-		@section('after_header')
-		  <div class="section mt-0">
-			<div class="breadcrumbs-wrap">
-				<div class="container">
-					<div class="breadcrumbs">
-						<a href="{{url('/')}}">Home</a>
-						<span>Forgot Password Link</span>
-					</div>
-				</div>
-			</div>
-		   </div>
-	    @endsection
-		<!--//section-->
-@php
-	//$userSession=Session::get('user');
-	//$country=App\Helpers\UserHelper::country();
-    //dd($userSession);
-@endphp
-		<!--section-->
-		@section('body')
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Gainwell - Incident Information System</title>
+    <!-- ================== jQuery ================== -->
+    <script src="{{URL::asset('public/assets/js/jquery.min.js')}}"></script>
+    <!-- =================== bootstrap =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bootstrap.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- ================== font-awesome ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/font-awesome.min.css')}}" type="text/css">
+    <!-- =================== animation =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/animations.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/animations.min.js')}}"></script>
+    <!-- ================== Back To Top ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bk_ttop.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/move-top.js')}}"></script>
+    <script src="{{URL::asset('public/assets/js/easing.js')}}"></script>
+    <!-- ==================== google font ==================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- ==================== my css ==================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/responsive.css')}}" type="text/css">
+    
+</head>
 
-			<div class="page-content">
-				@if(Session::has('message'))
-					<div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center;
-    font-weight: 700;">
-						{{ Session::get('message') }}
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				@endif
-				<!--section dashboard-->
-				<div class="section dashboard">
-					<div class="container" style="margin: 0px">
-						<div class="text-center mb-2  mb-md-3 mb-lg-4">
-							<div class="h-sub theme-color"></div>
-							<h1>Provide Your Email</h1>
-							<div class="h-decor"></div>
-						</div>
+<body>
+ <header>
+        <!-- start header-top -->
+        <!--<div class="header-top d-none d-md-block">-->
+        <div class="header-top clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="header-left">
+                            <a href="tel:18004193356"><i class="fa fa-phone circle-icon"></i> Toll Free: 1800 419 3356</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="social-icons float-sm-right">
+                            <li><a href="https://www.facebook.com/gainwellcat" target="_blank"><i class="fa fa-facebook circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/gainwellcat" target="_blank"><i class="fa fa-twitter circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://linkedin.com/company/gainwellcat/" target="_blank"><i class="fa fa-linkedin circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/GainwellCAT" target="_blank"><i class="fa fa-youtube-play circle-icon" aria-hidden="true"></i></a></li>
+                            <li><a href="https://instagram.com/gainwellcat/" target="_blank"><i class="fa fa-instagram circle-icon" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header-top -->
+        <!-- start header-navbar -->
+        <div class="header-navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-logo1" href="#"><img src="{{URL::asset('public/assets/img/logo.gif')}}" alt=""></a>
+                    <a class="navbar-logo2 d-none d-lg-block" href="#"><img src="{{URL::asset('public/assets/img/cat75.png')}}" alt=""></a>
+                    <a class="navbar-logo3 d-block ml-auto" href="#"><img src="{{URL::asset('public/assets/img/gcpl_sml_logo.png')}}" alt=""></a>
+                </div>
+            </nav>
+        </div>
+        <!-- end header-navbar -->
+    </header>
 
-						<!-- Login Container -->
-						<div class="row">
-							<div class="col-md-5 m-auto">
-								<div class="login-reg">
-									<form method="post" action="{{url('reset-mail')}}" enctype="multipart/form-data">
+    <!-- ========================= start login-form ========================= -->
+    <section class="login-form">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item active" aria-current="page">Forgot Password Link</li>
+            </ol>
+            <div class="card form-inner">
+                <div class="card-body">
+                    <div class="row">
 
-										<div class="form-group">
-											<label>Email*</label>
-											<input name="email" class="form-control" placeholder="Email or Username" type="text">
-											@if($errors->has('email'))
-												<span class="invalid-feedback" style="display:block;">{{$errors->first('email')}}</span>
-											@endif
-										</div>
+                        <div class="col-sm-12 col-md-6 col-lg-5">
+                         <!--     @if(Session::has('msg'))
+                        <div style="color: red;font-size: 16px;display: inline-block;">{{ Session::get('msg') }}</div>
+                        @endif -->
+                        @if(Session::has('message'))
+                    <div style="color: red;font-size: 16px;display: inline-block;">{{ Session::get('message') }}</div>
+                        @endif
+                            <form action="{{url('forgot')}}" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+
+                                    <label for="">Email</label>
+                                    <input name="email" type="text" class="form-control" placeholder="Enter User Id">
+                                   <!--  @if($errors->has('email'))
+                                    <div style="color: red;font-size: 16px;display: inline-block;">{{$errors->first('email')}}</div>
+                                    
+                                     @endif -->
+                                </div>
+                               
+                                 <input type="hidden" name="_token" value="{{csrf_token()}}"/> 
+                                <div class="clearfix btn-div">
+                                    <button type="submit" class="btn-Dark">Send</button>
+                                   <!--  <a href="#" class="ml-3" target="_blank">Forgot Password?</a> -->
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= end login-form ========================= -->
 
 
-										<div class="form-group">
+        <!-- 😘 Footer -->
+ <footer>
+        <div class="container-fluid">
+            <ul class="d-lg-flex justify-content-lg-between">
+                <li>
+                    <ul class="link-list">
+                        <li>
+                            <a href="http://www.gainwellindia.com/privacy_policy" target="_blank">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="http://www.gainwellindia.com/cookie-policy" target="_blank">Cookie Policy</a>
+                        </li>
+                        <li>
+                            <a href="http://www.gainwellindia.com/disclaimer" target="_blank">Discalimer</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="footer-middle">
+                        <p>Give a Missed Call at: <a href="tel:08081112244">08081112244</a> © 2020 GCPL, All rights reserved.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="copyright">                       
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- ================================ end footer ================================ -->
 
-											<input type="hidden" name="_token" value="{{csrf_token()}}">
-											<button  type="submit"  class="btn btn-outline-success">Send </button>
 
 
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+    <!-- =================== start back to top =================== -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
 
-					</div>
-				</div>
-				<!--//section services-->
-			</div>
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
 
+        });
 
+    </script>
+    <a href="#" id="toTop" class="hover-bounce"></a>
+    <!-- =================== end back to top =================== -->
 
-@endsection
-	<!--footer-->
-	<!--//footer-->
-@section("after_scripts")
+    <!-- ================== bootstrap tooltip ================== -->
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 
+    </script>
 
-@endsection
+<!-- <script type="text/javascript">
+   
+    $(document).ready(function() {
+        console.log('hi');
+        var isAuth = auth()->check();
+console.log(auth()->check());
+        if (location.href === 'http://localhost/Incident-Reporting/login')
+        {
+            if (isAuth) location.href('admin/admin-dashboard');
+        }
+        else
+        {
+            if (!isAuth) location.href('/login');
+        }
+    });
 
+</script> -->
+</body>
+
+</html>

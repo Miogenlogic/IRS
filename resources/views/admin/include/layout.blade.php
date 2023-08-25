@@ -1,38 +1,96 @@
+<!DOCTYPE html>
+<html>
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Gainwell - Incident Information System</title>
+    <!-- ================== jQuery ================== -->
+ 
+<!-- DatePicker -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  
+ 
+    
+ <!--  Site Js -->
+    <script src="{{URL::asset('public/assets/js/jquery.min.js')}}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+      <!-- TimePicker -->
+       <link rel="stylesheet" href="{{URL::asset('public/assets/picker/bootstrap-clockpicker.min.css')}}"type="text/css"> 
+        <link rel="stylesheet" href="{{URL::asset('public/assets/picker/jquery-clockpicker.min.css')}}"type="text/css"> 
+       
+  <!--  time js -->
+         <script src="{{URL::asset('public/assets/picker/bootstrap-clockpicker.min.js')}}"></script>
+        <script src="{{URL::asset('public/assets/picker/jquery-clockpicker.min.js')}}"></script >
+      <!--    <script src="{{URL::asset('public/assets/picker/js/highlight.min.js')}}"></script> 
+          <script src="{{URL::asset('public/assets/picker/js/html5shiv.js')}}"></script> 
+            <script src="{{URL::asset('public/assets/picker/js/respond.min.js')}}"></script> 
+ -->
+    <!-- =================== bootstrap =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/1.13.10-bootstrap-select.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{URL::asset('public/assets/js/1.13.10-bootstrap-select.min.js')}}"></script>
 
-    <meta name="author" content="Rimpi Das">
-    <title>BioPed</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/vendors/css/vendor.bundle.base.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/vendors/css/vendor.bundle.addons.css')}}">
+    <!-- ================== font-awesome ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/font-awesome.min.css')}}" type="text/css">
+  
+<!-- for search date css -->
+  <link rel="stylesheet" href="{{URL::asset('public/assets/css/daterangepicker.css')}}"type="text/css"> 
+  
+<style type="text/css">
+textarea {
+  display:block;
+  margin:1em 0;
+}  
+</style> 
 
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/css/style.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css')}}" >
 
-    <!-- Custom Main CSS -->
-    <link rel="stylesheet" href="{{URL::asset('public/assets/admin/css/main.css')}}">
-    <!-- Page specific Style :: Date Range Picker -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <!-- endinject -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="shortcut icon" href="{{URL::asset('public/assets/admin/images/favicon.png')}}" />
-{{--TIME PICKER--}}
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <!-- for search date js -->
+  <script src="{{URL::asset('public/assets/js/moment.min.js')}}"></script>
+    <script src="{{URL::asset('public/assets/js/daterangepicker.min.js')}}"></script>
+    <!-- =================== animation =================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/animations.min.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/animations.min.js')}}"></script>
+    <!-- ================== Back To Top ================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/bk_ttop.css')}}" type="text/css">
+    <script src="{{URL::asset('public/assets/js/move-top.js')}}"></script>
+    <script src="{{URL::asset('public/assets/js/easing.js')}}"></script>
+    <!-- ==================== google font ==================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	 <!-- ==================== picturezoom fancybox ==================== -->
+	  <link rel="stylesheet" href="{{URL::asset('public/assets/fancybox/fancybox.min.css')}}" type="text/css">
+	  <script src="{{URL::asset('public/assets/fancybox/fancybox.min.js')}}"></script>
+    <!-- ==================== my css ==================== -->
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('public/assets/css/responsive.css')}}" type="text/css">
+    
+  
+       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/> -->
+  
+   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+  <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	
+	
 
     @yield('after_styles')
+
 </head>
 
+@include('admin.include.header')
+
+
+        @yield('body')
+
+       
+
+@include('admin.include.footer')
 
 
 
@@ -40,82 +98,112 @@
 
 
 
-@php
-    //$data = Session::get('user');
-@endphp
 
-<body>
-<!-- whole content should be wrapped by this div  -->
-<div class="page-wrapper rk-theme toggled">
-    @include('admin.include.sidebar')
-    <main class="page-content">
 
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    @include('admin.include.header')
-                    @yield('body')
-                </div>
-                <!-- main-panel ends -->
-                @include('admin.include.footer')
-            </div>
-            <!-- main-panel ends -->
-        </div>
-    </main>
-</div>
-<!-- plugins:js -->
-<script src="{{URL::asset('public/assets/admin/vendors/js/vendor.bundle.base.js')}}"></script>
-<script src="{{URL::asset('public/assets/admin/vendors/js/vendor.bundle.addons.js')}}"></script>
 
-<script src="{{URL::asset('public/assets/admin/js/template.js')}}"></script>
-<script src="{{URL::asset('public/assets/frontend/vendor/bootstrap-datetimepicker/moment.js')}}"></script>
 
-<script src="{{URL::asset('public/assets/frontend/vendor/bootstrap-datetimepicker/moment.js')}}"></script>
 
-<script src="{{URL::asset('public/assets/frontend/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js')}}"></script>
-<link rel="stylesheet" href="{{URL::asset('public/assets/frontend/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css')}}" >
 
+
+
+
+
+
+ 
 @yield('after_scripts')
-<script>
-    //Sidebar init with fns
-    jQuery(function ($) {
 
-        $(".sidebar-dropdown > a").click(function() {
-            $(".sidebar-submenu").slideUp(200);
-            if (
-                $(this)
-                    .parent()
-                    .hasClass("active")
-            ) {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this)
-                    .parent()
-                    .removeClass("active");
-            } else {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this)
-                    .next(".sidebar-submenu")
-                    .slideDown(200);
-                $(this)
-                    .parent()
-                    .addClass("active");
-            }
-        });
-
-        $("#close-sidebar").click(function() {
-            $(".page-wrapper").removeClass("toggled");
-        });
-        $("#show-sidebar").click(function() {
-            $(".page-wrapper").addClass("toggled");
-        });
-
-
-
-
-    });
+<script >
+  @if(Session::has('notification'))
+  // alert("{{ Session::get('notification.alert-type') }}");
+    var type = "{{ Session::get('notification.alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('notification.message') }}");
+            break;
+        
+        case 'warning':
+            toastr.warning("{{ Session::get('notification.message') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('notification.message') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('notification.message') }}");
+            break;
+    }
+  
+   $("html,body").animate({ scrollTop: $(document).height() }, 1000);
+      
+  @endif
 </script>
+<script type="text/javascript">
+		var maxLength = 500;
+		$('textarea').keyup(function() {
+		  var textlen = maxLength - $(this).val().length;
+		  $('#rchars').text(textlen);
+		});
 
+        $('[data-fancybox="fancybox1"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
+	
+	<script type="text/javascript">
+        $('[data-fancybox="fancybox2"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
+	<script type="text/javascript">
+        $('[data-fancybox="fancybox3"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
+	<script type="text/javascript">
+        $('[data-fancybox="fancybox4"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
+	<script type="text/javascript">
+        $('[data-fancybox="fancybox5"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
+	<script type="text/javascript">
+        $('[data-fancybox="fancybox6"]').fancybox({
+            buttons: [
+                "fullScreen",
+                "thumbs",
+                "close"
+            ]
+
+        });
+    </script>
 </body>
 
 </html>
+

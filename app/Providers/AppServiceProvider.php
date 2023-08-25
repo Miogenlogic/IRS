@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //add error reporting level
+		error_reporting(0);
     }
 }

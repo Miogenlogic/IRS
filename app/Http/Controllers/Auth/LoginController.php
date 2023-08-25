@@ -1,34 +1,33 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\OtpFormRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ResetMailRequest;
-use App\Models\Email;
+use App\Models\User;
+use App\Models\Employeepersonal;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Datetime;
+
 use Hash;
 use Mail;
 use Session;
 use Redirect;
 use Alert;
-//use Input;
+
 use Eloquent;
 use DB;
-use App\Models\User;
-use App\Models\UserDetails;
-use App\Models\DoctorDetails;
-use App\Models\RoleUser;
-use Zizaco\Entrust\Entrust;
+
 use Illuminate\Support\Facades\Input;
 
 class LoginController extends Controller
 {
+public $successStatus = 200;
+  
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -40,7 +39,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    //  use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -56,230 +55,112 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
+
     }
 
-
     public function index() {
-
         $user = Auth::user();
-        //$id = Auth::id();
-        //return $id;
-
-        if(!isset($user->user_type)){
+         if(!isset($user->id)){
             return view('auth.login');
             exit;
         }
-        if($user->hasRole(['admin','patient','doctor'])){
-            $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
-            //dd($userDetails);die;
-           // $doctorDetails = DoctorDetails::where('user_id','=',$user->id)->get()->first();
-            //dd($doctorDetails);die;
-            $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'user_type'=>$user->user_type];
-            Session::put('user',$user_session);
-
-            return redirect('/admin/admin-dashboard');
-        }else{
-            //Session::flush();
-            //return redirect('/');
-        }
-
-/*
-       if($user->hasRole(['admin', 'doctor', 'clinic_attendant', 'pharmacy_admin', 'pharmacy_attendant'])){
-            $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
-            $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'company'=>$user->company_id, 'user_type'=>$user->user_type ];
-            Session::put('user',$user_session);
-            return redirect('/client/doctor');
-        }elseif($user->hasRole('patient')){
-           $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
-           $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'company'=>$user->company_id, 'user_type'=>$user->user_type ];
-           Session::put('user',$user_session);
-       }else{
-           //Session::flush();
-           //return redirect('/');
-       }*/
-
+      if(!empty($user)){
+        $user_session=[ 'user_id'=>$user->id,'email'=>$user->email,'employee_id'=>$user->employee_id,'role_id'=>$user->role_id];
+        Session::put('user',$user_session);        
+        return redirect('/admin/admin-dashboard');
+      }
+      else{
+        $request->session()->flush();
+        return redirect('/');
+      }
     }
 
     public function checklogin(Request $request) {
+		$input = $request->all();  
+        if(Auth::attempt(['username'=>$input['username'],'password'=>$input['password']])){
+			    $user = Auth::user(); 
 
-        //$input = $request->all();dd($input);
-        $field = filter_var($request['username'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $credentials = [$field =>$request['username'], 'password' => $request['password'],'status'=>'Active'];
-
-        if (Auth::attempt($credentials,$request->has('remember_me'))) {
-            $user = Auth::user();
-            $userDetails = UserDetails::where('user_id','=',$user->id)->get()->first();
-            $doctorDetails = DoctorDetails::where('user_id','=',$user->id)->get()->first();
-            $user_session=[ 'user_id'=>$user->id,'name'=>$userDetails->name,'username'=>$user->username,'email'=>$user->email, 'user_type'=>$user->user_type ];
-            Session::put('user',$user_session);
-
-            if($user->hasRole('admin')){
-                return redirect('/admin/admin-dashboard');
-
-            }elseif($user->hasRole('patient')){
-                return redirect('/my-dashboard');
-
-            }elseif ($user->hasRole('doctor')){
-                return redirect('/admin/admin-dashboard');
-
-            }/*elseif ($user->hasRole(['pharmacy_admin','pharmacy_attendant'])){
-                return redirect('/admin/pharmacy-dashboard');
-
-            }elseif ($user->hasRole('patient')){
-                return redirect('/patient/appointment');
-
-            }*/else{
-                $request->session()->flush();
-                return redirect('/');
+          $userRoll = User::select('users.*') 
+                            ->where('username','=',$input['username'])        
+                            ->where('role_id','=',$input['role_id'])
+                            ->get()->first();
+                                        
+            if(!empty($userRoll)){        
+              $userDetails = Employeepersonal::select('master_employee.*')         
+                                              ->where('emp_no','=',$user->username)
+                                              ->get()->first();
+        
+              $user_session=[ 'user_id'=>$user->id,'email'=>$user->email,'employee_name'=>$userDetails['name'],'role_id'=>$input['role_id'],
+                              'emp_id'=>$userDetails['emp_no']];
+                  
+              Session::put('user',$user_session);
+              //Update last login time and login from post login
+              date_default_timezone_set('Asia/Kolkata');
+              $currentDatetime = new DateTime();
+              $userRoll->last_logged_in = $currentDatetime->format('Y-m-d H:i:s'); 
+              $userRoll->log_in_from = "WEB";
+              $userRoll->update(); 
+              return redirect('/admin/admin-dashboard');
+              return redirect('/admin/admin-dashboard');    
+            }else{
+              $request->session()->flush();
+              return redirect('/login')->with('msg',"You have selected wrong role");
             }
-        }
-        else{
-            $request->session()->flush();
-            return redirect('/');
-        }
+        }else{
+          $request->session()->flush();
+          return redirect('/login')->with('msg',"User credentials mismatch");
+      } 
     }
 
     public function logout(Request $request){
         $request->session()->flush();
+        // dd($request);
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
+        
+// then redirect to login
+//return redirect()->route('login');
     }
-
-    public function registration(){
-        return view('auth.registration');
-    }
-
-
-    public function otpMail(RegisterRequest $request)
-    {
-        $obj = User::where('email','=',$request['email'])->get()->first();
-        $otp = mt_rand(100000,999999);
-        if(!isset($obj->email)) {
-            $country=explode('-',$request['country_id']);
-            $obj = new User();
-            $obj->email = $request['email'];
-            $obj->username = $request['email'];
-            $obj->user_type = 'patient';
-            $obj->password = '$2y$10$USeFoOOaZir8KiyMcj3LKeqwe78V8lrM.VeDIEk3MVniQOQ3RHDLarE.';
-            $obj->otp = $otp;
-            $obj->save();
-
-            $id = $obj->id;
-            $obj1 = new UserDetails();
-            $obj1->user_id = $id;
-            $obj1->name = $request['name'];
-            $obj1->email = $request['email'];
-            $obj1->country_id=$country[1];
-            $obj1->phone = $request['phone'];
-
-            $obj1->address = $request['address'];
-            $obj1->save();
-
-            DB::table('role_user')
-                ->insert(['user_id' => $id, 'role_id' => 2]);
-            $str=$request['email'].'||'.$otp;
-            $encryptStr=UserHelper::urlEncode($str);
-            $url=url('registration-validation'."/".$encryptStr);
-
-            // To send HTML mail, the Content-type header must be set
-
-            $to_email = $obj->email;
-            $subject = 'Verify email for registration';
-            $message = $contents = view('frontend.mail.otpMail', ['name' => $request['name'], 'url' => $url])->render();
-            $headers  = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-            $headers .= 'From:' . \Config::get('env.service_mail')."\r\n";
-            mail($to_email, $subject, $message, $headers);
-
-            return redirect('/login')
-                ->with('msg',"Chech Your mail");
-
-        }else{
-            return redirect('/registration')
-                ->with('message',"You Registered already.");
-        }
-
-
-    }
-
-    public function registrationValidation($str){
-
-        return view('auth.registrationValidate')
-            ->with('str',$str);
-    }
-
-    public function registrationValidationCheck(OtpFormRequest $request){
-        $decryptStr=UserHelper::urlDecode($request['str']);
-        $exp=explode('||',$decryptStr);
-
-        $obj=User::where('email','=',$exp[0])
-            ->where('otp','=',$exp[1])
-            ->get()
-            ->first();
-        if(isset($obj->email)){
-            $obj->password=Hash::make($request['password']);
-            $obj->otp=Null;
-            $obj->save();
-            return redirect('/activation')
-                ->with('msg','success');
-        }else{
-            return redirect('/activation')
-                ->with('msg','error');
-        }
-    }
-
-    public function activation(){
-        $msg=Session::get('msg');
-        return view('auth.activation')
-            ->with('msg',$msg);
-    }
-
-    public function forgotPassword(){
-
+	
+    public function forgotPassword(){  
         return view('auth.forgotPassword');
     }
-
-    public function resetMail(ResetMailRequest $request)
-    {
-
-        $obj = User::where('email', '=', $request['email'])->get()->first();
-
-        $otp = mt_rand(100000, 999999);
+	
+    public function forget(Request $request){
+       $obj = User::where('email', '=', $request['email'])->get()->first();
+      // dd( $obj);
         if (isset($obj->email)) {
-            //$obj = new User();
-            $obj->email = $request['email'];
-            $obj->otp = $otp;
-            $obj->save();
-
-
-
-            $str = $request['email'] . '||' . $otp;
-            $encryptStr = UserHelper::urlEncode($str);
-            $url = url('registration-validation' . "/" . $encryptStr);
-
-            $to_email = $obj->email;
-            $subject = 'Reset email for change Password';
-            $message = $contents = view('frontend.mail.resetMail', ['url' => $url])->render();
-            $headers = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-            $headers .= 'From:' . \Config::get('env.service_mail') . "\r\n";
-            mail($to_email, $subject, $message, $headers);
-            return redirect('/reset')
-                ->with('msg',"Please Check Email For Reset Link");
-
-        }else{
-
-            return redirect('/forgot-password')
+          //dd($obj->email);
+             $matchemail=$obj->email = $request['email'];
+            $pass= $obj->password = Hash::make('123456');
+           // dd($pass);
+             $obj->save();           
+//dd($request);
+        $url=url('/');
+        $mailsend=User::where('email','=',$request['email'])->get()->first(); 
+        $data=['subject'=>'Incident-Reporting','email'=>$mailsend['email'],'name'=>$mailsend['employee_name'],'url'=>$url];
+		
+		Mail::send('admin.mail.forgetmail', $data, function($message) use ($data) {
+            $message->to($data['email'])->subject($data['subject']);
+			//dd($message);
+		   // $message->from(env('service_mail'),'Incident-Reporting');
+			$message->from(\Config::get('env.service_mail'),'Incident-Reporting');
+         });
+			return redirect('/reset')
+			->with('msg',"Please Check Email For Reset Link");//sesssion msg
+       }else{
+            return redirect('/forgotpass')
                 ->with('message',"Email does not exist");
-        }
-
+        } 
     }
-
-    public function reset(){
-        $msg=Session::get('msg');
+	
+     public function reset(){
+        $msg=Session::get('msg');//get session msg
         return view('auth.reset')
             ->with('msg',$msg);
     }
+    
 
+    
 }

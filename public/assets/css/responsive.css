@@ -1,0 +1,656 @@
+@media all and (min-width:992px) and (max-width:1199px) {
+
+    /* ================== start: bootstrap customize ================== */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* ================== End: bootstrap customize ================== */
+
+
+}
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+
+    /* ================== start: global ================== */
+    section {
+        padding: 70px 0;
+    }
+
+    .circle-icon {
+        font-size: 13px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .table thead th {
+        font-size: 14px;
+    }
+
+    .table tbody td {
+        font-size: 14px
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    /* ================== end: global ================== */
+
+    /* ================== start: bootstrap customize ================== */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* ================== End: bootstrap customize ================== */
+    /* ================== Start: header ================== */
+    /* header-top */
+    .header-top .header-left a i {
+        font-size: 14px;
+        line-height: 33px;
+    }
+
+    .header-top .header-left a {
+        font-size: 18px;
+    }
+
+    /* header-navbar */
+    .header-navbar nav .navbar-logo1 img {
+        width: 180px;
+    }
+
+    .header-navbar button {
+        border: none;
+    }
+
+    .header-navbar button:focus {
+        outline: none;
+        border: none;
+    }
+
+    .header-navbar {
+        position: relative;
+    }
+
+    .header-navbar .navbar-collapse {
+        position: absolute;
+        background: #1f1f1f;
+        z-index: 999;
+        right: 35px;
+        top: 72%;
+    }
+
+    .header-navbar nav .dropdown-menu {
+        background: #2a2a2a;
+    }
+
+    .header-navbar nav ul.navbar-nav li a.nav-link {
+        background: transparent !important;
+    }
+
+    .header-navbar nav ul.navbar-nav li {
+        margin-right: 0;
+    }
+
+    /* ================== End: header ================== */
+    /* ================================ start: dashboard ================================ */
+    .breadcrumb-item.active {
+        font-size: 14px;
+    }
+
+    .repoting-form .breadcrumb li:first-child a {
+        font-size: 14px;
+    }
+
+    .repoting-form .card-body {
+        background: none;
+        padding: 10px 20px 30px;
+    }
+
+    .repoting-form h1 {
+        font-size: 20px;
+    }
+
+    .repoting-form .nav-tabs li a {
+        font-size: 14px;
+    }
+
+    .repoting-form h4 {
+        font-size: 15px;
+    }
+
+    .incident-information {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .incident-information li {
+        width: auto;
+    }
+
+    .incident-information li:first-child {
+        padding-left: 30px;
+    }
+
+    .incident-information li:nth-child(2n) {
+        padding-left: 50px;
+    }
+
+    .incident-information li:nth-child(3n) {
+        padding-left: 30px;
+    }
+
+    .incidentNumberBlock .incidentNumber {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+        line-height: 60px;
+    }
+
+    .incidentNumberBlock .incidentTxt {
+        padding: 7px 0 8px 60px;
+        font-size: 14px;
+    }
+
+    .searc-hpanel form {
+        margin: 0 auto;
+    }
+
+    .searc-hpanel input[type=search] {
+        width: 90%;
+    }
+
+    /* ================================ End: dashboard ================================ */
+    /* ================================ Start: footer ================================ */
+    footer {
+        padding: 10px 0;
+    }
+
+    /* ================================ End: footer ================================ */
+
+}
+
+@media all and (min-width: 576px) and (max-width:767px) {
+
+    /* ================== start: global ================== */
+    .btn-Primary {
+        font-size: 14px;
+        padding: 7px 40px;
+    }
+
+    .btn-Dark {
+        font-size: 14px;
+        padding: 7px 40px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .circle-icon {
+        font-size: 13px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .table thead th {
+        font-size: 14px;
+    }
+
+    .table tbody td {
+        font-size: 14px
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    .form-control {
+        font-size: 14px !important;
+        height: 40px !important;
+    }
+
+    .form-control option {
+        font-size: 13px !important;
+    }
+
+    /* ================== end: global ================== */
+
+    /* ================== start: bootstrap customize ================== */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* ================== End: bootstrap customize ================== */
+    /* ================== Start: header ================== */
+    /* header-top */
+    .header-top .header-left a i {
+        font-size: 14px;
+        line-height: 33px;
+    }
+
+    .header-top .header-left a {
+        font-size: 18px;
+    }
+
+    /* header-navbar */
+    .header-navbar nav .navbar-logo1 img {
+        width: 180px;
+    }
+
+    .header-navbar button {
+        border: none;
+    }
+
+    .header-navbar button:focus {
+        outline: none;
+        border: none;
+    }
+
+    .header-navbar {
+        position: relative;
+    }
+
+    .header-navbar .navbar-collapse {
+        position: absolute;
+        background: #1f1f1f;
+        z-index: 999;
+        right: 35px;
+        top: 72%;
+    }
+
+    .header-navbar nav .dropdown-menu {
+        background: #2a2a2a;
+    }
+
+    .header-navbar nav ul.navbar-nav li a.nav-link {
+        background: transparent !important;
+    }
+
+    .header-navbar nav ul.navbar-nav li {
+        margin-right: 0;
+    }
+
+    /* ================== End: header ================== */
+    /* ================================ start: dashboard ================================ */
+    .breadcrumb-item.active {
+        font-size: 14px;
+    }
+
+    .repoting-form .breadcrumb li:first-child a {
+        font-size: 14px;
+    }
+
+    .repoting-form .card-body {
+        background: none;
+        padding: 10px 20px 30px;
+    }
+
+    .repoting-form h1 {
+        font-size: 20px;
+    }
+
+    .repoting-form .nav-tabs li a {
+        font-size: 14px;
+    }
+
+    .repoting-form h4 {
+        font-size: 15px;
+    }
+
+    .incident-information {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .incident-information li {
+        width: auto;
+    }
+
+    .incident-information li:first-child {
+        padding-left: 30px;
+    }
+
+    .incident-information li:nth-child(2n) {
+        padding-left: 50px;
+    }
+
+    .incident-information li:nth-child(3n) {
+        padding-left: 30px;
+    }
+
+    .incidentNumberBlock .incidentNumber {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+        line-height: 60px;
+        top: -12px;
+    }
+
+    .incidentNumberBlock .incidentTxt {
+        padding: 7px 0 8px 60px;
+        font-size: 14px;
+    }
+
+    .searc-hpanel form {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+
+    .searc-hpanel input[type=search] {
+        width: 83%;
+    }
+
+    .searc-hpanel button {
+        height: 40px;
+    }
+
+    .repoting-form form ul {
+        flex-direction: column;
+    }
+
+    .repoting-form form ul li {
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .repoting-form form ul.emergencyInfo li:nth-child(2n) .form-group.d-flex label {
+        padding-top: 2px;
+    }
+
+    .repoting-form form ul li:last-child {
+        padding: 5px 0 0 !important;
+    }
+
+    /* ================================ End: dashboard ================================ */
+    /* ================================ Start: footer ================================ */
+    footer {
+        padding: 10px 0;
+    }
+
+    /* ================================ End: footer ================================ */
+    /* ================================ Start: on-off-background-radio-btn ================================ */
+    .r_act_ina input[type="radio"] {
+        padding: 16px 16px;
+    }
+
+    .r_act_ina input.yes::before,
+    .r_act_ina input.no::before {
+        font-size: 16px;
+    }
+
+    /* ================================ End: on-off-background-radio-btn ================================ */
+}
+
+@media all and (max-width: 575px) {
+
+    /* ================== start: global ================== */
+    .btn-Primary {
+        font-size: 14px;
+        padding: 7px 40px;
+    }
+
+    .btn-Dark {
+        font-size: 14px;
+        padding: 7px 40px;
+    }
+
+    section {
+        padding: 30px 0;
+    }
+
+    .circle-icon {
+        font-size: 13px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .table thead th {
+        font-size: 14px;
+    }
+
+    .table tbody td {
+        font-size: 14px
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    .form-control {
+        font-size: 14px !important;
+        height: 40px !important;
+    }
+
+    .form-control option {
+        font-size: 13px !important;
+    }
+
+    /* ================== end: global ================== */
+
+    /* ================== start: bootstrap customize ================== */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* ================== End: bootstrap customize ================== */
+    /* ================== Start: header ================== */
+    /* header-top */
+    .header-top {
+        display: none;
+    }
+
+    .header-top .header-left a i {
+        font-size: 14px;
+        line-height: 33px;
+    }
+
+    .header-top .header-left a {
+        font-size: 18px;
+    }
+
+    /* header-navbar */
+    .header-navbar nav {
+        padding: 10px 0 10px 0;
+
+    }
+
+    .header-navbar nav .navbar-logo1 img {
+        width: 160px;
+    }
+
+    .header-navbar button {
+        border: none;
+    }
+
+    .header-navbar button:focus {
+        outline: none;
+        border: none;
+    }
+
+    .header-navbar {
+        position: relative;
+    }
+
+    .header-navbar .navbar-collapse {
+        position: absolute;
+        background: #1f1f1f;
+        z-index: 999;
+        right: 35px;
+        top: 72%;
+    }
+
+    .header-navbar nav .dropdown-menu {
+        background: #2a2a2a;
+    }
+
+    .header-navbar nav ul.navbar-nav li a.nav-link {
+        background: transparent !important;
+    }
+
+    .header-navbar nav ul.navbar-nav li {
+        margin-right: 0;
+    }
+
+    /* ================== End: header ================== */
+    /* ================================ start: dashboard ================================ */
+    .breadcrumb-item.active {
+        font-size: 14px;
+    }
+
+    .repoting-form .breadcrumb li:first-child a {
+        font-size: 14px;
+    }
+
+    .repoting-form .card-body {
+        background: none;
+        padding: 5px 10px 20px;
+    }
+
+    .repoting-form h1 {
+        font-size: 20px;
+    }
+
+    .repoting-form .nav-tabs li a {
+        font-size: 14px;
+    }
+
+    .repoting-form h4 {
+        font-size: 15px;
+    }
+
+    .repoting-form form ul {
+        flex-direction: column;
+    }
+
+    .repoting-form form ul li {
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .repoting-form form ul.emergencyInfo li:nth-child(2n) .form-group.d-flex label {
+        padding-top: 2px;
+    }
+
+    .repoting-form form ul li:last-child {
+        padding: 5px 0 0 !important;
+    }
+
+    .incident-information {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .incident-information li {
+        width: auto;
+    }
+
+    .incident-information li:first-child {
+        padding-left: 20px;
+    }
+
+    .incident-information li:nth-child(2n) {
+        padding-left: 35px;
+    }
+
+    .incident-information li:nth-child(3n) {
+        padding-left: 20px;
+    }
+
+    .incidentNumberBlock .incidentNumber {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+        line-height: 60px;
+        top: -12px;
+    }
+
+    .incidentNumberBlock .incidentTxt {
+        padding: 9px 0 9px 60px;
+        font-size: 13px;
+        width: 90%;
+    }
+
+    .searc-hpanel form {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+
+    .searc-hpanel input[type=search] {
+        width: 75%;
+    }
+
+    .searc-hpanel button {
+        height: 40px;
+    }
+
+    .repoting-form .nav-tabs li {
+        display: block;
+        width: 100%;
+    }
+
+    .repoting-form .nav-tabs li a {
+        border-bottom: 1px solid #e6e5e5;
+        padding: 10px 5px;
+    }
+
+    .repoting-form .nav-tabs li > a.active {
+        border-bottom: 1px solid #fbca1a;
+    }
+
+    /* ================================ End: dashboard ================================ */
+    /* ================================ Start: footer ================================ */
+    footer {
+        padding: 10px 0;
+    }
+
+    /* ================================ End: footer ================================ */
+    /* ================================ Start: on-off-background-radio-btn ================================ */
+    .r_act_ina input[type="radio"] {
+        padding: 16px 16px;
+    }
+
+    .r_act_ina input.yes::before,
+    .r_act_ina input.no::before {
+        font-size: 16px;
+    }
+
+    /* ================================ End: on-off-background-radio-btn ================================ */
+}

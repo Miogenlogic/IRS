@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
+    use HasApiTokens;
     use EntrustUserTrait;
     use Notifiable;
 
@@ -20,10 +21,10 @@ class User extends Authenticatable implements JWTSubject
      */
 
 
-
+	public $timestamps = false;
 
     protected $fillable = [
-        'username', 'email', 'password',
+        'email', 'password',
     ];
 
     /**

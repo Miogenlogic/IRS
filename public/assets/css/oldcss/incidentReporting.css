@@ -1,0 +1,162 @@
+.incidentPages .breadcrumb-nw{background: rgba(255,255,255,0.9);}
+.homePage.main{
+	color: #504a34;
+    background-color: #feb913;
+    background-image: url(../img/cat-home1.jpg);
+    background-repeat: no-repeat;
+}
+.incidentBG{
+	background-image: url(../img/trade-in-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.incidentPages .card.box-shadow-depth-light{
+    background-color: rgba(251,202,26,0.8);    
+    font-weight: bold;
+    color: #000;    
+}
+.pageHeader{
+	background-color: #fbca1a;
+    padding: 6px 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.incidentReporting .box-shadow-depth-light {
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
+    background-color: #FAF7F8;
+}
+.incidentReporting .formFieldsSectionWrap .input-group input, 
+.incidentReporting .formFieldsSectionWrap .input-group select{
+    max-width: 100%;
+}
+.incidentReporting .formFieldsSectionWrap label{
+    /*font-weight: bold;*/
+}
+.datepicker .next i.icon-arrow-right:before{content:'\02C3'}
+.datepicker .prev i.icon-arrow-left:before{content:'\02C2'}
+.homePage.main .input-group .form-control{padding-left: 10px; border: 1px solid #333; color: #333;}
+.incidentReporting.dashboard .formFieldsSectionWrap .input-group .form-control{padding-left: 10px; border: 1px solid #c5c4c4; color: #333;}
+.dashboard .card .nav-tabs{
+	margin: 0 auto;
+    display: flex;    
+    justify-content: center;
+}
+.dashboard .card .nav-tabs li > a{
+	color: #ccc;
+    padding: 10px 20px;
+    line-height: 40px;
+	border-bottom: 2px solid #ccc;
+}
+.dashboard .card .nav-tabs li > a.active{color: #333; border-bottom: 2px solid #fbca1a; font-weight: bold;}
+.dashboard .card .nav-tabs li > a:hover{text-decoration: none}
+@media (min-width: 768px){
+.loginBox{border-right: 1px solid #f8f8f8;}
+.loginBtn{min-width:150px;}
+}
+.radioWrap{display: inline-block; margin-right: 20px;}
+.radioWrap > input[type="radio"]{width: auto;     display: inline;}
+@media screen and (max-width: 768px){
+.incidentReporting .nav-tabs {
+    display: inline-block;
+    width: 100%;    
+    text-align: center;
+	padding: 0 0 15px;
+}
+.incidentReporting .nav-tabs li{width: 100%}
+}
+.incidentNumberBlock{
+	display: block;
+    margin: 20px 0 40px;
+    color: #FFF;
+    font-weight: bold;
+    position: relative;	
+}
+.incidentNumberBlock .incidentNumber{	 
+    border-radius: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    z-index: 10;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+	background-color: #F96332;
+}
+.incidentNumberBlock .incidentTxt{	
+    padding: 10px;    
+    border-radius: 0 10px 10px 0;
+    width: 100%;
+    display: inline-block;
+    padding-left: 60px;    
+    max-width: 280px;
+	margin-left:10px;
+	background-color: #F96332;
+}
+.incidentNumberBlock.closedIncident .incidentNumber,
+.incidentNumberBlock.closedIncident .incidentTxt{background-color: #52ad4d;}
+.incidentNumberBlock.ongoingIncident .incidentNumber,
+.incidentNumberBlock.ongoingIncident .incidentTxt{background-color: #4BB5FF;}
+h1.quicklinkWapperHeader {
+    color: #92278F;    
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: left;    
+    font-weight: normal;    
+}
+h1.quicklinkWapperHeader:after {
+    content: '';
+    background-color: #fbca1a;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 8%;
+}
+.searchPannel {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    vertical-align: top;    
+    width: 100%;    
+    border: 1px solid #d6d6d6;
+    outline: 0 none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;    
+    font-size: 16px;    
+    font-weight: normal;
+    color: #0a0b0d;
+    margin-bottom: 30px;    
+    position: relative;
+    border-radius: 30px;
+	max-width: 500px;
+}
+.searchPannel input[type=search] {
+    padding: 14px 13px 12px;
+    height: 40px;
+    width: 100%;
+    border: none;    
+    border-radius: 30px;
+}
+.searchPannel .searchIcon {
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(../img/searchIcon.png);
+    width: 25px;
+    height: 25px;    
+    margin-top: 6px;
+    top: 0;
+    background-size: contain;
+}
